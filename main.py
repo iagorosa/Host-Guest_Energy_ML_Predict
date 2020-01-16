@@ -5,8 +5,10 @@ import pandas as pd
 from scipy.optimize import differential_evolution as de
 import glob as gl
 import pylab as pl
+import pygmo as pg
 import os
 from sklearn import preprocessing
+from functions import *
 
 
 path='./pkl/'
@@ -43,8 +45,8 @@ for f in xls:
      
 #%%
 
-# pop_size = 50
-# max_iter=50
+pop_size = 50
+max_iter=50
 n_splits = 5
 
 run0 = 0
@@ -53,7 +55,9 @@ n_runs = 1
 for run in range(run0, n_runs):
     random_seed=run*10+100
 
-    for dataset in datasets:#[:1]:   
+    for dataset in datasets:#[:1]:
+
+        print('oioioi')   
 
         target, y_              = dataset['target_names'], dataset['y_train']
         dataset_name, X_        = dataset['name'], dataset['X_train']
@@ -83,36 +87,27 @@ for run in range(run0, n_runs):
         ##   X,y = scale_X.transform(X_), scale_y.transform(y_)
 
         args = (X, y, 'eval', n_splits, random_seed)
-    
-        optimizers=[                
-            #('EN'   , get_parameters('EN'), fun_en_fs, args, random_seed,),
-            ('XGB'   , *get_parameters('XGB'), args, random_seed,),
-            #('DTC'   , get_parameters('DTC'), args, random_seed,),
-            #('VC'   , get_parameters('VC'), args, random_seed,),
-            #('BAG'  , get_parameters('BAG'), args, random_seed,),
-            #('KNN'  , get_parameters('KNN'), args, random_seed,),
-            #('ANN'  , get_parameters('ANN'), args, random_seed,),
-            #('ELM'  , get_parameters('ELM'), args, random_seed,),
-            #('SVM'  , get_parameters('SVM'), args, random_seed,),
-            #('MLP'  , get_parameters('MLP'), args, random_seed,),
-            #('GB'   , get_parameters('GB'), args, random_seed,),      
-            #('KRR'  , get_parameters('KRR'), args, random_seed,),
-            #('CAT'  , get_parameters('CAT'), args, random_seed,),
+
+        list_opt_name = ['EN', 'XGB', 'DTC', 'VC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'MLP', 'GB', 'KRR', 'CAT']
+
+        name_opt = ['XGB', 'ELM']
+        optimizers=[      
+
+            (name, *get_parameters(name), args, random_seed) for name in name_opt 
             ]
 
-        #for (clf_name, lb, ub, fun, args, random_seed) in optimizers:
-        for (clf_name, lb, ub, args, random_seed) in optimizers:
-                print(clf_name, random_seed)
+        for (clf_name, lb, ub, fun, args, random_seed) in optimizers:
+                #print(clf_name, random_seed)
                 #print(clf_name, fun, random_seed)
                 np.random.seed(random_seed)
 
                 algo = pg.algorithm(pg.de(gen = max_iter, variant = 1, seed=random_seed))
 
                 algo.set_verbosity(1)
-                '''
                 prob = pg.problem(evoML(args, fun, lb, ub))
                 pop = pg.population(prob,pop_size, seed=random_seed)
                 pop = algo.evolve(pop)
+                '''
                 xopt = pop.champion_x
                 sim = fun(xopt, *(X,y,'run',n_splits,random_seed))
                 sim['ALGO'] = algo.get_name()
@@ -207,14 +202,14 @@ def get_parameters(opt):
     elif opt == 'XGB':
         lb = [0.0,  10,  1, 0.0,  1, 0.0]#+ [0.0]*n_features
         ub = [1.0, 900, 30, 1.0, 10, 1.0]#+ [1.0]*n_features
-        #fun = fun_xgb_fs
+        fun = fun_xgb_fs
 
     elif opt == 'CAT':
         lb = [0.0,  10,  1,    0.,  1., 0.0]#+ [0.0]*n_features
         ub = [1.0, 900, 16, 1000., 50., 1.0]#+ [1.0]*n_features
         fun = fun_cat_fs
 
-    return lb, ub
-    #return lb, ub, fun
+    #return lb, ub
+    return lb, ub, fun
 
 # %%
