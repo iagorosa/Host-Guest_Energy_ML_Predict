@@ -10,6 +10,8 @@ import os
 from sklearn import preprocessing
 from functions import *
 
+import seaborn as sns
+
 
 path='./pkl/'
 os.system('mkdir  '+path)
@@ -42,12 +44,37 @@ for f in xls:
     dataset['n_samples'], dataset['n_features'] = X_train.shape
     dataset['task'] = 'regression'
     datasets.append(dataset)
+
+#%%
+
+col_env = ['pH', 'Temp (C)'] # colunas do meio 
+
+for dataset in datasets:
+    
+    X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
+
+    col_host = [ i for i in dataset['var_names'] if "host" in str.lower(i)] # colunas do host: colunas que contem 'host' no nome 
+    
+    # colunas do ligante: colunas que sobraram do meio e do host
+    col_lig = dataset['var_names'].drop(col_host) 
+    col_lig = col_lig.drop(col_env)
+
+
+#%%
+# Colocar no loop depois 
+
+# Informacoes do Host
+correlacoes(X, col_host, matrix = True, grafic = False, ext = 'png')
+
+# Informacoes do Ligante
+correlacoes(X, col_lig, matrix = True, grafic = True, ext = 'png')    
+
      
 #%%
 
-pop_size = 50
-max_iter=50
-n_splits = 5
+pop_size = 50 # tamanho da populacao de individuos
+max_iter=50   # quantidade maxima de iteracoes do DE 
+n_splits = 5  # 
 
 run0 = 0
 n_runs = 1
@@ -57,8 +84,7 @@ for run in range(run0, n_runs):
 
     for dataset in datasets:#[:1]:
 
-        print('oioioi')   
-
+        # Definicao das variaveis associadas aos datasets
         target, y_              = dataset['target_names'], dataset['y_train']
         dataset_name, X_        = dataset['name'], dataset['X_train']
         n_samples, n_features   = dataset['n_samples'], dataset['n_features']
@@ -70,7 +96,7 @@ for run in range(run0, n_runs):
         list_results=[]
         print('='*80+'\n'+dataset_name+': '+target+'\n'+'='*80+'\n')
         
-        # colocando um valor para cada label existente
+        # defindo o target y conforme a task associada
         if task=='classification':
             le = preprocessing.LabelEncoder()
             #le=preprocessing.LabelBinarizer()
@@ -88,8 +114,10 @@ for run in range(run0, n_runs):
 
         args = (X, y, 'eval', n_splits, random_seed)
 
+        # lista com todos os possiveis algoritmos otmizadores para o DE
         list_opt_name = ['EN', 'XGB', 'DTC', 'VC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'MLP', 'GB', 'KRR', 'CAT']
 
+        # lista das opcoes de algoritmos selecionados da lista acima
         name_opt = ['XGB', 'ELM']
         optimizers=[      
 
@@ -211,5 +239,40 @@ def get_parameters(opt):
 
     #return lb, ub
     return lb, ub, fun
+
+# %%
+
+
+def correlacoes(X, atributes, matrix = True, grafic = False, ext = 'png'):
+    
+    atr_type = 'host' if str.lower(atributes[0][:4]) == 'host' else 'lig'
+    X_ = X[atributes].dropna()
+    
+    if grafic == True:
+        pl.rcParams.update(pl.rcParamsDefault)
+
+        pl.figure()
+
+        sns.pairplot(X_, vars=atributes)
+
+        pl.savefig('./imgs/grap_corr_'+atr_type+'.'+ext, dpi=300)
+    
+    if matrix == True:
+        pl.figure(figsize=(20,10))
+        sns.set(font_scale=1.4)
+        sns.heatmap(X_.corr(), xticklabels=atributes, yticklabels=atributes, linewidths=.5, annot=True)
+        
+        locs, labels = pl.xticks()
+        pl.setp(labels, rotation=15)
+        
+        pl.title('Matriz de Correlação '+str.capitalize(atributes), fontsize=22)
+        pl.tight_layout()
+        
+        pl.savefig('./imgs/mat_corr_'+atr_type+'.'+ext, dpi=300)
+        
+        pl.show()
+
+#%%
+    
 
 # %%

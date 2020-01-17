@@ -1,8 +1,8 @@
 #%%
 # -*- coding: utf-8 -*-    
 import numpy as np
-from xgboost import  XGBRegressor
-from ELM import  ELMRegressor, ELMRegressor
+from xgboost import XGBRegressor
+from ELM import ELMRegressor, ELMRegressor
 
 #%%
 class evoML:
