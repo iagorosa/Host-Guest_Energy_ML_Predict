@@ -11,6 +11,9 @@ from sklearn import preprocessing
 from functions import *
 
 import seaborn as sns
+import scipy.stats as scs
+from statsmodels.stats.diagnostic import lilliefors
+from sklearn.preprocessing import PolynomialFeatures
 
 
 path='./pkl/'
@@ -53,6 +56,7 @@ for dataset in datasets:
     
     X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
 
+    col_lig = []
     col_host = [ i for i in dataset['var_names'] if "host" in str.lower(i)] # colunas do host: colunas que contem 'host' no nome 
     
     # colunas do ligante: colunas que sobraram do meio e do host
@@ -64,10 +68,19 @@ for dataset in datasets:
 # Colocar no loop depois 
 
 # Informacoes do Host
-correlacoes(X, col_host, matrix = True, grafic = False, ext = 'png')
+
+# correlacoes(X, col_host, "host", matrix = True, grafic = True, ext = 'png', save = True, show = True)
+boxplots(X, col_host, "host", complete = False)
+boxplots(X, col_host, "host")
+
 
 # Informacoes do Ligante
-correlacoes(X, col_lig, matrix = True, grafic = True, ext = 'png')    
+
+# correlacoes(X, col_lig, "ligante", matrix = True, grafic = True, ext = 'png', save = True, show = True)   
+
+boxplots(X, col_lig, "ligante")
+boxplots(X, col_lig, "ligante", complete = False)
+
 
      
 #%%
@@ -243,36 +256,287 @@ def get_parameters(opt):
 # %%
 
 
-def correlacoes(X, atributes, matrix = True, grafic = False, ext = 'png'):
+def correlacoes(X, atributes, atr_type, matrix = True, grafic = False, ext = 'png', show = False, save = True, scale = 1.4):
     
-    atr_type = 'host' if str.lower(atributes[0][:4]) == 'host' else 'lig'
+    # atr_type = 'host' if str.lower(atributes[0][:4]) == 'host' else 'ligante'
     X_ = X[atributes].dropna()
+
+    if atr_type == 'host':
+        try: 
+            name_atr = [ i[5:] for i in atributes ]
+        except:
+            name_atr = atributes
+    else:
+        name_atr = atributes
+
+    X_.columns = name_atr
     
     if grafic == True:
         pl.rcParams.update(pl.rcParamsDefault)
 
         pl.figure()
 
-        sns.pairplot(X_, vars=atributes)
-
-        pl.savefig('./imgs/grap_corr_'+atr_type+'.'+ext, dpi=300)
+        #colocar titulo no grafico
+        g = sns.pairplot(X_, vars=name_atr)
+        g.fig.suptitle('Pairplot '+str.capitalize(atr_type))
+        
+        if save == True:
+            pl.savefig('./imgs/grap_corr_'+atr_type+'.'+ext, dpi=300)
+        if show == True:
+            pl.show()
     
     if matrix == True:
         pl.figure(figsize=(20,10))
-        sns.set(font_scale=1.4)
-        sns.heatmap(X_.corr(), xticklabels=atributes, yticklabels=atributes, linewidths=.5, annot=True)
+        sns.set(font_scale=scale)
+        sns.heatmap(X_.corr(), xticklabels=name_atr, yticklabels=name_atr, linewidths=.5, annot=True)
         
         locs, labels = pl.xticks()
         pl.setp(labels, rotation=15)
         
-        pl.title('Matriz de Correlação '+str.capitalize(atributes), fontsize=22)
+        pl.title('Matriz de Correlação '+str.capitalize(atr_type), fontsize=22)
         pl.tight_layout()
         
-        pl.savefig('./imgs/mat_corr_'+atr_type+'.'+ext, dpi=300)
+        if save == True:
+            pl.savefig('./imgs/mat_corr_'+atr_type+'.'+ext, dpi=300)
+        if show == True:
+            pl.show()
+    
+    pl.close('all')
+
+#%%
+
+def boxplots(X, atributes, atr_type, complete = True):
+
+    # atr_type = 'host' if str.lower(atributes[0][:4]) == 'host' else 'ligante'
+
+    if atr_type == 'host':
+        name_atr = [ i[5:] for i in atributes ]
+    else:
+        name_atr = atributes
+
+    x = X.loc[:, atributes]
+    x.columns = name_atr
+
+    if complete == True:
+        pl.figure()
+
+        x.boxplot()
+        pl.xticks(rotation=15)
+        pl.title("Boxplot Atributos do "+str.capitalize(atr_type))
+        pl.tight_layout()
+        pl.savefig("./imgs/boxplots_"+atr_type+".png", dpi=300)
         
         pl.show()
 
-#%%
+    else:
+        for atr in name_atr:
+            pl.figure()
+            
+            x[atr].plot.box()
+            # atr = atr[5:] if str.lower(atr[:4]) == 'host' else atr
+            
+            pl.title("Boxplot do "+ str.capitalize(atr) + " " +str.capitalize(atr_type))
+            pl.grid(axis='y')
+            pl.tight_layout()
+            pl.savefig("./imgs/"+atr_type+"/boxplot_"+atr+"_"+atr_type+".png", dpi=300)
+            
+            pl.show()
+
     
+    pl.close('all')
 
 # %%
+
+def outlier_identifier(X, atributes):
+
+    X_ = X.loc[:, atributes].dropna()
+
+    Q1 = X_.quantile(0.25)
+    Q3 = X_.quantile(0.75)
+    IQR = Q3 - Q1
+    
+    print(IQR)
+
+    out = (X_ < (Q1 - 1.5 * IQR)) | (X_ > (Q3 + 1.5 * IQR))
+    # print(type(out))
+    # print( (X_ < (Q1 - 1.5 * IQR)) | (X_ > (Q3 + 1.5 * IQR)) )
+    return out
+
+#%%
+
+out_host = outlier_identifier(X, col_host)
+out_lig  = outlier_identifier(X, col_lig)
+out = outlier_identifier(X, list(col_lig)+col_host)
+
+
+# %%
+
+# identifcacao da quantidade de outliers do host
+print('OUTLIERS:\nHOST')
+print(out_host.sum())
+print()
+print(out_host.sum(axis=1))
+print()
+qtd=out_host.sum(axis=1)[out_host.sum(axis=1) == 8]
+print('Qtd instancia com todos os valores outliers: ', len(qtd))
+print()
+print(X.T[qtd.index].T)
+
+print()
+print()
+
+print('\nLIGANTE')
+print(out_lig.sum())
+print()
+print(out_lig.sum(axis=1))
+print()
+qtd=out_lig.sum(axis=1)[out_lig.sum(axis=1) == 8]
+print('Qtd instancia com todos os valores outliers: ', len(qtd))
+print()
+print(X.T[qtd.index].T)
+
+# %%
+
+qtd = out.sum(axis=1)[out.sum(axis=1)>0]
+df_out = X.T[qtd.index].T
+
+#%%
+
+col_out = np.zeros(len(out))
+shape = out.shape
+col_arr = np.array(out.columns)
+
+for index in out.shape[0]:
+    # aux = 
+    col in out.shape[1]:
+        if index[col] == True:
+            
+
+
+#%%
+
+col = np.array(out.columns)
+res = out.values * col.T
+res_ = [list(i[i != '']) for i in res]
+
+outliers_col = [res_[i] for i in list(df_out.index)]
+df_out['outlier'] = outliers_col
+
+df_out.to_csv('outliers.csv')
+
+# %%
+
+ini = True
+trat = True
+
+val_trat = {'AMW': 4000, 'LabuteASA':1500, 'NumLipinskiHBA': 100, 'NumRotableBonds': 280, 'HOST_SlogP': 15, 'HOST_SMR': 350, 'TPSA': 1000, 'HOST_AMW': 1600, 'HOST_LabuteASA': 650, }
+
+for atr in X.columns[2:]:
+
+    if atr[:4] == 'HOST':
+        atr_name = atr[5:]
+        atr_type = 'host'
+    else:
+        atr_name = atr
+        atr_type = 'ligante'
+
+    pl.figure()
+
+    if trat == True:
+        try:
+            Y = X[atr][X[atr] < val_trat[atr]]
+            aux = X[atr][X[atr] > val_trat[atr]]
+            aux.to_csv("./csv/outliers_"+atr_name+"_"+atr_type+"_"+str(val_trat[atr])+".csv")
+        except:
+            Y = X[atr]
+        trat_tex = '_trat'
+    else:
+        Y = X[atr]
+        trat_tex = ''
+
+    Y.hist(histtype='bar', density=True, ec='black', zorder=2)
+
+    min = int(round(Y.min()-0.5))
+    max = int(round(Y.max()+0.5))
+
+    print(min)
+    print(max)
+
+    pl.xticks(range(min, max, round((max-min)/10+0.5)))
+    
+    pl.xlabel(atr)
+    pl.ylabel("Frequência")
+    
+    pl.title("Histograma " + atr_name + " " + str.capitalize(atr_type) )
+    pl.grid(axis='x')
+
+    # estatistica
+    mu, std = scs.norm.fit(Y)
+
+    print(mu, std)
+    print(x)
+
+    # Plot the PDF.
+    xmin, xmax = pl.xlim()
+    x = np.linspace(xmin, xmax, 100)
+    p = scs.norm.pdf(x, mu, std)
+    pl.plot(x, p, 'r--', linewidth=2)
+
+    # Teste de hipotese de normalidade com 5% de significancia:
+    # H0: A amostra provem de uma população normal
+    # H1: A amostra nao provem de uma distribuicao normal
+
+    # Testes de shapiro e lillefors: 
+    s   = scs.shapiro(Y)
+    lil = lilliefors(Y)
+
+    ymin, ymax = pl.ylim()
+    pl.text(xmin+xmin*0.01, ymax-ymax*0.12, 'Shapiro: '+str(round(s[1], 5) )+'\nLilliefors: '+str(round(lil[1], 5)), bbox=dict(facecolor='red', alpha=0.4), zorder=4 )
+
+    if ini == True:
+        D = pd.DataFrame(Y.describe())
+        ini = False
+    else:
+        D.loc[list(Y.describe().index), atr] = Y.describe()
+        
+    D.loc['skewness', atr] = scs.skew(Y)
+    D.loc['kurtosis', atr] = scs.kurtosis(Y, fisher=False)
+
+
+    pl.tight_layout()
+    pl.savefig("imgs/hists/"+atr_name+"_"+atr_type+trat_tex+".png")
+    pl.show()
+
+    pl.close()
+
+D.to_csv('descricao_resumo'+trat_tex+'.csv')
+    
+
+# a, b = pl.ylim()
+
+
+#%%
+
+
+X_ = X[col_lig] 
+poly = PolynomialFeatures(2)
+pp = poly.fit_transform(X_)
+
+
+df_pf_lig = pd.DataFrame(pp)
+
+correlacoes(df_pf_lig, df_pf_lig.columns, atr_type='ligante', matrix=True, grafic=False, show=False, save=True, ext= 'pdf', scale=0.7)
+
+# %%
+
+X_ = X[col_host] 
+poly = PolynomialFeatures(2)
+pp = poly.fit_transform(X_)
+
+
+df_pf_host = pd.DataFrame(pp)
+
+correlacoes(df_pf_host, df_pf_host.columns, atr_type='host', matrix=True, grafic=False, show=False, save=True, ext= 'pdf', scale=0.7)
+
+
+#%%
