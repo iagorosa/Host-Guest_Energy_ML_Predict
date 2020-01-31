@@ -1,7 +1,7 @@
 #%%
 
 import sys
-sys.path.append('/home/medina/Documentos/UFJF/PGMC/Ciencia_de_Dados/Host-Guest_Energy_ML_Predict')
+#sys.path.append('/home/medina/Documentos/UFJF/PGMC/Ciencia_de_Dados/Host-Guest_Energy_ML_Predict')
 
 # -*- coding: utf-8 -*-    
 import numpy as np
@@ -10,6 +10,8 @@ from scipy.optimize import differential_evolution as de
 import glob as gl
 import pylab as pl
 import pygmo as pg
+import pickle
+
 import os
 from sklearn import preprocessing
 from functions import *
@@ -80,20 +82,20 @@ for dataset in datasets:
 
 # Informacoes do Host
 
-# correlacoes(X, col_host, "host", matrix = True, grafic = True, ext = 'png', save = True, show = True)
-boxplots(X, col_host, "host", complete = False)
-boxplots(X, col_host, "host")
+# correlacoes(X_, col_host, "host", matrix = True, grafic = True, ext = 'png', save = True, show = True)
+boxplots(X_, col_host, "host", complete = False)
+boxplots(X_, col_host, "host")
 
 
 # Informacoes do Ligante
 
-# correlacoes(X, col_lig, "ligante", matrix = True, grafic = True, ext = 'png', save = True, show = True)   
+# correlacoes(X_, col_lig, "ligante", matrix = True, grafic = True, ext = 'png', save = True, show = True)   
 
-boxplots(X, col_lig, "ligante")
-boxplots(X, col_lig, "ligante", complete = False)
+boxplots(X_, col_lig, "ligante")
+boxplots(X_, col_lig, "ligante", complete = False)
 
 
-     
+pl.close('all')
 #%%
 
 pop_size = 50 # tamanho da populacao de individuos
@@ -127,7 +129,7 @@ for run in range(run0, n_runs):
             le.fit(y_)
             y=le.transform(y_)
         else:
-            y=y_.copy()
+            y=y_.copy()[0] #TODO: precisei pegar o indice 0 para funcionar
         
         X=X_.copy()
         ##scale_X = MinMaxScaler(feature_range=(0.15,0.85)).fit(X_)
@@ -159,7 +161,7 @@ for run in range(run0, n_runs):
                 prob = pg.problem(evoML(args, fun, lb, ub))
                 pop = pg.population(prob,pop_size, seed=random_seed)
                 pop = algo.evolve(pop)
-                '''
+                
                 xopt = pop.champion_x
                 sim = fun(xopt, *(X,y,'run',n_splits,random_seed))
                 sim['ALGO'] = algo.get_name()
@@ -172,7 +174,7 @@ for run in range(run0, n_runs):
                     sim['Y_TRAIN_TRUE'] = sim['Y_TRUE']
                     sim['Y_TRAIN_PRED'] = sim['Y_PRED']
 
-                                sim['RUN']=run; #sim['Y_NAME']=yc
+                sim['RUN']=run; #sim['Y_NAME']=yc
                 sim['DATASET_NAME']=dataset_name; 
                 list_results.append(sim)
         
@@ -184,12 +186,13 @@ for run in range(run0, n_runs):
                             #time.strftime("%Y_%m_%d_") + time.strftime("_%Hh_%Mm_%S")+
                             #'_loo'+
                             '.pkl') 
-                pk=pk.replace(' ','_').replace("'","").lower()
+
+                pk=pk[0].replace(' ','_').replace("'","").lower() #TODO: precisei pegar o indice 0 para funcionar
                 data.to_pickle(pk)
                 
                 pm = pk.replace('.pkl', '.dat')
                 pickle.dump(sim['ESTIMATOR'], open(pm, "wb"))
-                '''
+                
 
 
 #%%
@@ -206,10 +209,10 @@ def get_parameters(opt):
         ub = [2, 1, 1,] #+ [1.0]*n_features
         fun = fun_en_fs
 
-    elif opt == 'MPL':
+    elif opt == 'MLP':
         lb =[0, 0,     1,  1,  1,  1,  1,  1,] #+ [0.0]*n_features
         ub =[1, 1,     5, 50, 50, 50, 50, 50,] #+ [1.0]*n_features, "rb"))
-        fun = fun_en_fs
+        fun = fun_mlp_fs
 
     elif opt == 'GB':
         lb  = [0.001,  100,  10,  5,  5,   0, 0.1, ] #+ [0.0]*n_features
@@ -375,9 +378,9 @@ def outlier_identifier(X, atributes):
 
 #%%
 
-out_host = outlier_identifier(X, col_host)
-out_lig  = outlier_identifier(X, col_lig)
-out = outlier_identifier(X, list(col_lig)+col_host)
+out_host = outlier_identifier(X_, col_host)
+out_lig  = outlier_identifier(X_, col_lig)
+out = outlier_identifier(X_, list(col_lig)+col_host)
 
 
 # %%
@@ -391,7 +394,7 @@ print()
 qtd=out_host.sum(axis=1)[out_host.sum(axis=1) == 8]
 print('Qtd instancia com todos os valores outliers: ', len(qtd))
 print()
-print(X.T[qtd.index].T)
+print(X_.T[qtd.index].T)
 
 print()
 print()
@@ -404,12 +407,8 @@ print()
 qtd=out_lig.sum(axis=1)[out_lig.sum(axis=1) == 8]
 print('Qtd instancia com todos os valores outliers: ', len(qtd))
 print()
-print(X.T[qtd.index].T)
-
-# %%
-
-qtd = out.sum(axis=1)[out.sum(axis=1)>0]
-df_out = X.T[qtd.index].T
+print(X_.T[qtd.indexcol_out = np.zeros(len(out))
+].T)
 
 #%%
 
@@ -426,113 +425,116 @@ for index in out.shape[0]:
 
 #%%
 
-col = np.array(out.columns)
-res = out.values * col.T
-res_ = [list(i[i != '']) for i in res]
+## DATAFRAME PARA AS INSTANCIAS QUE TEM ALGUM DADO FALTANTE
 
-outliers_col = [res_[i] for i in list(df_out.index)]
-df_out['outlier'] = outliers_col
+qtd = out.sum(axis=1)[out.sum(axis=1)>0] # numero da instancia e quantidade de dados faltante em cada uma
+df_out = X.T[qtd.index].T # pega as instancias com dados faltantes pelos indices
+
+col = np.array(out.columns) 
+res = out.values * col.T
+res_ = [list(i[i != '']) for i in res] # pega o nome da coluna com dado faltante em cada instancia
+
+outliers_col = [res_[i] for i in list(df_out.index)] # lista das colunas com dados faltantes em cada instancia encontrada em df_out
+df_out['outlier'] = outliers_col 
 
 df_out.to_csv('outliers.csv')
 
 # %%
 
-ini = True
-trat = True
+# histogramas com ajuste de um modelo normal
+# trat: se berdadeiro, ativa o tratamento dos outliers e elima-os dos histogramas
+def histogramas(X, ini=True, trat=False):
+    val_trat = {'AMW': 4000, 'LabuteASA':1500, 'NumLipinskiHBA': 100, 'NumRotableBonds': 280, 'HOST_SlogP': 15, 'HOST_SMR': 350, 'TPSA': 1000, 'HOST_AMW': 1600, 'HOST_LabuteASA': 650, }
+    ini = True 
 
-val_trat = {'AMW': 4000, 'LabuteASA':1500, 'NumLipinskiHBA': 100, 'NumRotableBonds': 280, 'HOST_SlogP': 15, 'HOST_SMR': 350, 'TPSA': 1000, 'HOST_AMW': 1600, 'HOST_LabuteASA': 650, }
+    for atr in X.columns[2:]:
 
-for atr in X.columns[2:]:
+        if atr[:4] == 'HOST':
+            atr_name = atr[5:]
+            atr_type = 'host'
+        else:
+            atr_name = atr
+            atr_type = 'ligante'
 
-    if atr[:4] == 'HOST':
-        atr_name = atr[5:]
-        atr_type = 'host'
-    else:
-        atr_name = atr
-        atr_type = 'ligante'
+        pl.figure()
 
-    pl.figure()
-
-    if trat == True:
-        try:
-            Y = X[atr][X[atr] < val_trat[atr]]
-            aux = X[atr][X[atr] > val_trat[atr]]
-            aux.to_csv("./csv/outliers_"+atr_name+"_"+atr_type+"_"+str(val_trat[atr])+".csv")
-        except:
+        if trat == True:
+            try:
+                Y = X[atr][X[atr] < val_trat[atr]]
+                aux = X[atr][X[atr] > val_trat[atr]]
+                aux.to_csv("./csv/outliers_"+atr_name+"_"+atr_type+"_"+str(val_trat[atr])+".csv")
+            except:
+                Y = X[atr]
+            trat_tex = '_trat'
+        else:
             Y = X[atr]
-        trat_tex = '_trat'
-    else:
-        Y = X[atr]
-        trat_tex = ''
+            trat_tex = ''
 
-    Y.hist(histtype='bar', density=True, ec='black', zorder=2)
+        Y.hist(histtype='bar', density=True, ec='black', zorder=2)
 
-    min = int(round(Y.min()-0.5))
-    max = int(round(Y.max()+0.5))
+        min_ = int(round(Y.min()-0.5))
+        max_ = int(round(Y.max()+0.5))
 
-    print(min)
-    print(max)
+        print(min_)
+        print(max_)
 
-    pl.xticks(range(min, max, round((max-min)/10+0.5)))
-    
-    pl.xlabel(atr)
-    pl.ylabel("Frequência")
-    
-    pl.title("Histograma " + atr_name + " " + str.capitalize(atr_type) )
-    pl.grid(axis='x')
-
-    # estatistica
-    mu, std = scs.norm.fit(Y)
-
-    print(mu, std)
-    print(x)
-
-    # Plot the PDF.
-    xmin, xmax = pl.xlim()
-    x = np.linspace(xmin, xmax, 100)
-    p = scs.norm.pdf(x, mu, std)
-    pl.plot(x, p, 'r--', linewidth=2)
-
-    # Teste de hipotese de normalidade com 5% de significancia:
-    # H0: A amostra provem de uma população normal
-    # H1: A amostra nao provem de uma distribuicao normal
-
-    # Testes de shapiro e lillefors: 
-    s   = scs.shapiro(Y)
-    lil = lilliefors(Y)
-
-    ymin, ymax = pl.ylim()
-    pl.text(xmin+xmin*0.01, ymax-ymax*0.12, 'Shapiro: '+str(round(s[1], 5) )+'\nLilliefors: '+str(round(lil[1], 5)), bbox=dict(facecolor='red', alpha=0.4), zorder=4 )
-
-    if ini == True:
-        D = pd.DataFrame(Y.describe())
-        ini = False
-    else:
-        D.loc[list(Y.describe().index), atr] = Y.describe()
+        pl.xticks(range(min_, max_, round((max_-min_)/10+0.5)))
         
-    D.loc['skewness', atr] = scs.skew(Y)
-    D.loc['kurtosis', atr] = scs.kurtosis(Y, fisher=False)
+        pl.xlabel(atr)
+        pl.ylabel("Frequência")
+        
+        pl.title("Histograma " + atr_name + " " + str.capitalize(atr_type) )
+        pl.grid(axis='x')
+
+        # estatistica
+        mu, std = scs.norm.fit(Y)
+
+        # Plot the PDF.
+        xmin, xmax = pl.xlim()
+        x = np.linspace(xmin, xmax, 100)
+        p = scs.norm.pdf(x, mu, std)
+        pl.plot(x, p, 'r--', linewidth=2)
+
+        print(mu, std)
+        print(x)
+
+        # Teste de hipotese de normalidade com 5% de significancia:
+        # H0: A amostra provem de uma população normal
+        # H1: A amostra nao provem de uma distribuicao normal
+
+        # Testes de shapiro e lillefors: 
+        s   = scs.shapiro(Y)
+        lil = lilliefors(Y)
+
+        ymin, ymax = pl.ylim()
+        pl.text(xmin+xmin*0.01, ymax-ymax*0.12, 'Shapiro: '+str(round(s[1], 5) )+'\nLilliefors: '+str(round(lil[1], 5)), bbox=dict(facecolor='red', alpha=0.4), zorder=4 )
+
+        if ini == True:
+            D = pd.DataFrame(Y.describe())
+            ini = False
+        else:
+            D.loc[list(Y.describe().index), atr] = Y.describe()
+            
+        D.loc['skewness', atr] = scs.skew(Y)
+        D.loc['kurtosis', atr] = scs.kurtosis(Y, fisher=False)
 
 
-    pl.tight_layout()
-    pl.savefig("imgs/hists/"+atr_name+"_"+atr_type+trat_tex+".png")
-    pl.show()
+        pl.tight_layout()
+        pl.savefig("imgs/hists/"+atr_name+"_"+atr_type+trat_tex+".png")
+        pl.show()
 
-    pl.close()
+        pl.close()
 
-D.to_csv('descricao_resumo'+trat_tex+'.csv')
+    D.to_csv('descricao_resumo'+trat_tex+'.csv')
     
-
-# a, b = pl.ylim()
-
+histogramas(X_)
 
 #%%
 
 
-X_ = X[col_lig] 
+X = X_[col_lig] 
 poly = PolynomialFeatures(2)
-pp = poly.fit_transform(X_)
-
+pp = poly.fit_transform(X)
 
 df_pf_lig = pd.DataFrame(pp)
 
@@ -540,7 +542,7 @@ correlacoes(df_pf_lig, df_pf_lig.columns, atr_type='ligante', matrix=True, grafi
 
 # %%
 
-X_ = X[col_host] 
+X = X_[col_host] 
 poly = PolynomialFeatures(2)
 pp = poly.fit_transform(X_)
 
