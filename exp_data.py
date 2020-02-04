@@ -7,6 +7,7 @@ from sklearn.decomposition import PCA
 
 import numpy as np
 from numpy.linalg import norm
+import os
 
 import scipy.stats as scs
 from statsmodels.stats.diagnostic import lilliefors
@@ -15,7 +16,7 @@ from sklearn.preprocessing import PolynomialFeatures
 
 #%%
 
-def correlacoes(X, atributes, atr_type, matrix = True, grafic = False, ext = 'png', show = False, save = True, extra_name='', scale = 1.4):
+def correlacoes(X, atributes, atr_type, matrix = True, grafic = False, ext = 'png', show = False, save = True, file_name='', extra_name='', scale = 1.4):
     '''
         comentario util
     '''
@@ -33,6 +34,13 @@ def correlacoes(X, atributes, atr_type, matrix = True, grafic = False, ext = 'pn
 
     X_.columns = name_atr
     
+    if (grafic or matrix) and (file_name != ''):
+        try:
+            os.mkdir('./imgs/'+file_name)
+            os.mkdir('./imgs/'+file_name+'/'+atr_type)
+        except:
+            pass
+    
     if grafic == True:
         pl.rcParams.update(pl.rcParamsDefault)
 
@@ -43,7 +51,7 @@ def correlacoes(X, atributes, atr_type, matrix = True, grafic = False, ext = 'pn
         g.fig.suptitle('Pairplot '+str.capitalize(atr_type))
         
         if save == True:
-            pl.savefig('./imgs/grap_corr_'+atr_type+extra_name+'.'+ext, dpi=300)
+            pl.savefig('./imgs/'+file_name+'/grap_corr_'+atr_type+extra_name+'.'+ext, dpi=300)
         if show == True:
             pl.show()
     
@@ -59,7 +67,7 @@ def correlacoes(X, atributes, atr_type, matrix = True, grafic = False, ext = 'pn
         pl.tight_layout()
         
         if save == True:
-            pl.savefig('./imgs/mat_corr_'+atr_type+extra_name+'.'+ext, dpi=300)
+            pl.savefig('./imgs/'+file_name+'/mat_corr_'+atr_type+extra_name+'.'+ext, dpi=300)
         if show == True:
             pl.show()
     
@@ -67,7 +75,7 @@ def correlacoes(X, atributes, atr_type, matrix = True, grafic = False, ext = 'pn
 
 #%%
 
-def boxplots(X, atributes, atr_type, complete = True):
+def boxplots(X, atributes, atr_type, complete = True, file_name=''):
 
     # atr_type = 'host' if str.lower(atributes[0][:4]) == 'host' else 'ligante'
 
@@ -79,6 +87,13 @@ def boxplots(X, atributes, atr_type, complete = True):
     x = X.loc[:, atributes]
     x.columns = name_atr
 
+    if file_name != '':
+        try:
+            os.mkdir('./imgs/'+file_name)
+            os.mkdir('./imgs/'+file_name+'/'+atr_type)
+        except:
+            pass
+
     if complete == True:
         pl.figure()
 
@@ -86,7 +101,7 @@ def boxplots(X, atributes, atr_type, complete = True):
         pl.xticks(rotation=15)
         pl.title("Boxplot Atributos do "+str.capitalize(atr_type))
         pl.tight_layout()
-        pl.savefig("./imgs/boxplots_"+atr_type+".png", dpi=300)
+        pl.savefig("./imgs/"+file_name+"/boxplots_"+atr_type+".png", dpi=300)
         
         pl.show()
 
@@ -100,7 +115,7 @@ def boxplots(X, atributes, atr_type, complete = True):
             pl.title("Boxplot do "+ str.capitalize(atr) + " " +str.capitalize(atr_type))
             pl.grid(axis='y')
             pl.tight_layout()
-            pl.savefig("./imgs/"+atr_type+"/boxplot_"+atr+"_"+atr_type+".png", dpi=300)
+            pl.savefig("./imgs/"+file_name+"/"+atr_type+"/boxplot_"+atr+"_"+atr_type+".png", dpi=300)
             
             pl.show()
 
@@ -228,22 +243,29 @@ def histogramas(X, ini=True, trat=False):
 
 #%%
 
-def df_outliers(out, save=True):
+def df_outliers(X, out, save=True, folder_name=''):
     '''
     DATAFRAME PARA AS INSTANCIAS QUE TEM ALGUM DADO FALTANTE
     '''
-    qtd = out.sum(axis=1)[out.sum(axis=1)>0] # numero da instancia e quantidade de dados faltante em cada uma
-    df_out = X.T[qtd.index].T # pega as instancias com dados faltantes pelos indices
+    qtd = out.sum(axis=1)[out.sum(axis=1)>0]                                   # numero da instancia e quantidade de dados faltante em cada uma
+    df_out = X.T[qtd.index].T                                                  # pega as instancias com dados faltantes pelos indices
 
     col = np.array(out.columns) 
     res = out.values * col.T
-    res_ = [list(i[i != '']) for i in res] # pega o nome da coluna com dado faltante em cada instancia
+    res_ = [list(i[i != '']) for i in res]                                     # pega o nome da coluna com dado faltante em cada instancia
 
-    outliers_col = [res_[i] for i in list(df_out.index)] # lista das colunas com dados faltantes em cada instancia encontrada em df_out
+    outliers_col = [res_[i] for i in list(df_out.index)]                       # lista das colunas com dados faltantes em cada instancia encontrada em df_out
     df_out['outlier'] = outliers_col 
 
     if save == True:
-        df_out.to_csv('outliers.csv')
+        
+        if folder_name != '':
+            try:
+                os.mkdir('./imgs/'+folder_name)
+            except:
+                pass
+        
+        df_out.to_csv('./imgs/'+folder_name+'/outliers.csv')
 
     return df_out, qtd
     

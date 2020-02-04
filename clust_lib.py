@@ -3,7 +3,7 @@
 from exp_data import *
 from sklearn import cluster, metrics
 from sklearn.neighbors import kneighbors_graph
-
+import time
 
 #%%
 

@@ -5,6 +5,7 @@ from xgboost import XGBRegressor
 from ELM import ELMRegressor, ELMRegressor
 import pickle
 from sklearn import preprocessing
+from   scipy.optimize import differential_evolution as de
 
 import os
 import pygmo as pg
