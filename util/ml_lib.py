@@ -1,16 +1,24 @@
 #%%
-# -*- coding: utf-8 -*-    
+# -*- coding: utf-8 -*- 
+
+## IMPORTES BÁSICOS   
 import numpy as np
-from xgboost import XGBRegressor
-from ELM import ELMRegressor, ELMRegressor
-import pickle
-from sklearn import preprocessing
-from   scipy.optimize import differential_evolution as de
-
-import os
 import pygmo as pg
+import pandas as pd
 
-from exp_dt_lib import *
+## PRE-PROCESSAMENTO, VALIDAÇÃO E DEFINIÇÃO DE HIPERPARÂMETROS
+from sklearn import preprocessing
+from scipy.optimize import differential_evolution as de
+from sklearn.model_selection import GridSearchCV, KFold, cross_val_predict
+from sklearn.model_selection import cross_val_score, LeaveOneOut, train_test_split, StratifiedKFold
+
+## IMPORTES DE SISTEMA
+import os
+import pickle
+
+## LISTA DE REGRESSOERES UTILIZADOS
+from ELM import  ELMRegressor, ELMRegressor
+from xgboost import  XGBRegressor
 
 
 #%%
@@ -236,21 +244,26 @@ def get_parameters(opt, flb=[], fub=[]):
 
 #%%
 
-def regressions(datasets, name_opt, pop_size=50, max_iter=50, n_splits=5, run0 = 0, n_runs = 1, path='./pkl/', basename='host_guest_ml___'):
+def run_DE_optmization_train_ml_methods(datasets, name_opt, \
+                                        de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=50, \
+                                        kf_n_splits=5, \
+                                        save_path='./pkl/', save_basename='host_guest_ml___'):
     '''
     # lista com todos os possiveis algoritmos otmizadores para o DE
     list_opt_name = ['EN', 'XGB', 'DTC', 'VC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'MLP', 'GB', 'KRR', 'CAT']
     
-    pop_size: tamanho da populacao de individuos
-    max_iter: quantidade maxima de iteracoes do DE 
-    n_splits: usado no K-fold 
+    de_pop_size: tamanho da populacao de individuos
+    de_max_iter: quantidade maxima de iteracoes do DE 
+    kf_n_splits: usado no K-fold 
 
-    run0:
-    n_runs:
+    de_run0:
+    de_runf:
     '''
 
-    for run in range(run0, n_runs):
+    for run in range(de_run0, de_runf):
+        
         random_seed=run*10+100
+        np.random.seed(random_seed)
 
         for dataset in datasets:#[:1]:
 
@@ -260,10 +273,8 @@ def regressions(datasets, name_opt, pop_size=50, max_iter=50, n_splits=5, run0 =
             n_samples, n_features   = dataset['n_samples'], dataset['n_features']
             task                    = dataset['task']
 
-            # print(dataset_name, target, n_samples, n_features,)
-            np.random.seed(random_seed)
-
-            list_results=[]
+            list_results = []
+            
             print('='*80+'\n'+dataset_name+': '+target+'\n'+'='*80+'\n')
             
             # defindo o target y conforme a task associada
@@ -282,12 +293,11 @@ def regressions(datasets, name_opt, pop_size=50, max_iter=50, n_splits=5, run0 =
             ##   scale_y = MinMaxScaler(feature_range=(0.15,0.85)).fit(y_)    
             ##   X,y = scale_X.transform(X_), scale_y.transform(y_)
 
-            args = (X, y, 'eval', n_splits, random_seed)
+            args = (X, y, 'eval', kf_n_splits, random_seed)
 
             # lista das opcoes de algoritmos selecionados da lista acima
             
             optimizers=[      
-
                 (name, *get_parameters(name), args, random_seed) for name in name_opt 
                 ]
 
@@ -296,15 +306,15 @@ def regressions(datasets, name_opt, pop_size=50, max_iter=50, n_splits=5, run0 =
                     #print(clf_name, fun, random_seed)
                     np.random.seed(random_seed)
 
-                    algo = pg.algorithm(pg.de(gen = max_iter, variant = 1, seed=random_seed))
+                    algo = pg.algorithm(pg.de(gen = de_max_iter, variant = 1, seed=random_seed))
 
                     algo.set_verbosity(1)
                     prob = pg.problem(evoML(args, fun, lb, ub))
-                    pop = pg.population(prob,pop_size, seed=random_seed)
+                    pop = pg.population(prob, de_pop_size, seed=random_seed)
                     pop = algo.evolve(pop)
                     
                     xopt = pop.champion_x
-                    sim = fun(xopt, *(X,y,'run',n_splits,random_seed))
+                    sim = fun(xopt, *(X,y,'run',kf_n_splits,random_seed))
                     sim['ALGO'] = algo.get_name()
 
                     sim['ACTIVE_VAR_NAMES']=dataset['var_names'][sim['ACTIVE_VAR']]
@@ -320,7 +330,7 @@ def regressions(datasets, name_opt, pop_size=50, max_iter=50, n_splits=5, run0 =
                     list_results.append(sim)
             
                     data = pd.DataFrame(list_results)
-                    pk=(path+'__'+basename+
+                    pk=(save_path+'__'+save_basename+
                                 '_run_'+str("{:02d}".format(run))+'_'+dataset_name+'_'+
                                 os.uname()[1]+'__'+ str.lower(sim['EST_NAME'])+'__'+
                                 target+'__'+

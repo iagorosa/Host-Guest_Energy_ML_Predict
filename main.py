@@ -200,17 +200,28 @@ for dataset in datasets:
 
 #%%
 
+### DEFINIÇÃO DE CONJUNTO DE TREINO E TESTE ENTRE AS BASES DE DADOS A SEREM UTILIZADAS
+#\TODO ALL OF IT
+
+
+#%%
+                
 ### DEFINIÇÃO DE HIPERPARÂMETROS LEVES DA EXECUÇÃO DA EVOLUÇÃO DIFERENCIAL PARA TESTE DE MODELOS
 
 pop_size    = 50                                                               # tamanho da populacao de individuos
 max_iter    = 50                                                               # quantidade maxima de iteracoes do DE 
-n_splits    = 5                                                                # 
+n_splits    = 5                                                                # número de divisões da base realizada no k-fold
 
 run0        = 0
 n_runs      = 1
 
 ml_methods  = ['XGB', 'ELM']                                                   # métodos de aprendisado de máquina utilizados
 
-lr          = mll.regressions(datasets, ml_methods, \
-                              path='./pkl/', basename='host_guest_ml___')      # porra toda
+
+lr          = mll.run_DE_optmization_train_ml_methods(datasets, ml_methods, \
+                                                      de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=50, \
+                                                      kf_n_splits=5, \
+                                                      save_path='./pkl/', save_basename='host_guest_ml___')    
+
+# porra toda
 
