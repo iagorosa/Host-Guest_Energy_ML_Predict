@@ -2,18 +2,22 @@
 # -*- coding: utf-8 -*-    
 
 ## IMPORT DE BIBLIOTECAS PARA FUNÇÕES GLOBAIS
-import glob        as gl
-import pandas      as pd
-import time        as tm
+import glob            as gl
+import pandas          as pd
+import time            as tm
 
 ## ADICIONAR PASTA DE BIBLIOTECAS CRIADAS NA VARIÁVEL DE CAMINHOS RECONHECIDOS NA EXECUÇÃO
 import sys
-sys.path.append('/home/medina/Documentos/UFJF/PGMC/Ciencia_de_Dados/Host-Guest_Energy_ML_Predict')
+#sys.path.append('/home/medina/Documentos/UFJF/PGMC/Ciencia_de_Dados/Host-Guest_Energy_ML_Predict')
+sys.path.append('/home/medina/Documentos/UFJF/PGMC/Ciencia_de_Dados/Host-Guest_Energy_ML_Predict/util')
 
 ## IMPORT DE BIBLIOTECAS CRIADAS
-import   ml_lib      as mll
-import   exp_data    as edl
-import   clust_lib   as cll
+import   exp_dt_lib    as edl
+import   clust_lib     as cll
+import   ml_lib        as mll
+
+
+#%%
 
 ## CRIAR PASTA DE IMAGENS
 import os
@@ -21,6 +25,13 @@ try:
     os.mkdir('./imgs')
 except:
     pass
+
+try:
+    path='./pkl/'
+    os.mkdir(path)
+except:
+    pass
+
 #%%
 ### LEITURA DOS DATASETS
 
@@ -89,8 +100,8 @@ for dataset in datasets:
     ## ANALISE DE ATRIBUTOS DO LIGANTE
     
     edl.correlacoes(X_, col_lig, "ligante", matrix = True, grafic = True, ext = 'png', save = True, show = True, file_name = dataset_name)   
-    edl.boxplots(X_, col_lig, "ligante", file_name = dataset_name)
     edl.boxplots(X_, col_lig, "ligante", complete = False, file_name = dataset_name)
+    edl.boxplots(X_, col_lig, "ligante", file_name = dataset_name)
     
     
     ## ANALISE DE OUTLIERS
@@ -150,6 +161,45 @@ print(X_.T[qtd.index].T)
 
 #%%
 
+min_dim = 1
+max_dim = 3
+
+for dataset in datasets:
+
+    X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
+    dataset_name = datasets[0]['name'].split('.')[0]
+    
+    ## ATRIBUTOS DO MEIO - ENVIRONMENT     
+    col_env = ['pH', 'Temp (C)']
+    
+    ## ATRIBUTOS DO HOSPEDEIRO - HOST 
+    col_host = [ i for i in dataset['var_names'] if "host" in str.lower(i)]    # colunas do host: colunas que contem 'host' no nome 
+    
+    ## ATRIBUTOS DO LIGANTE - LIGANT
+    col_lig = []
+    col_lig = dataset['var_names'].drop(col_host)                              # colunas do ligante: colunas que sobraram do meio e do host 
+    col_lig = list(col_lig.drop(col_env))
+    
+    opt_sel_col = {'col_env': col_env,
+               'col_host': col_host,
+               'col_lig': col_lig,
+               'all_atr': col_env + col_lig + col_host}
+    
+    for atrs in opt_sel_col:
+    
+        for d in range(min_dim, min(max_dim+1, len(opt_sel_col[atrs]))):
+            
+            file_name = dataset_name+'_dim_'+str(d)
+            
+            red_x, results, covm = cll.run_pca(X_, opt_sel_col[atrs], str(atrs), newDim=d, save_txt=True, file_name=file_name, folder_name=dataset_name)
+            
+            if d==2:
+                cll.run_clust(red_x, clustering_names=['DBSCAN', 'KMeans', 'Ward'], file_name=file_name+'_'+atrs, folder_name=dataset_name)
+            
+
+
+#%%
+
 ### DEFINIÇÃO DE HIPERPARÂMETROS LEVES DA EXECUÇÃO DA EVOLUÇÃO DIFERENCIAL PARA TESTE DE MODELOS
 
 pop_size    = 50                                                               # tamanho da populacao de individuos
@@ -161,15 +211,6 @@ n_runs      = 1
 
 ml_methods  = ['XGB', 'ELM']                                                   # métodos de aprendisado de máquina utilizados
 
-lr          = mll.regressions(datasets, ml_methods)                            # porra toda
+lr          = mll.regressions(datasets, ml_methods, \
+                              path='./pkl/', basename='host_guest_ml___')      # porra toda
 
-
-#%%
-
-red_x, _, _ = run_pca(X, col_lig, 'lig', newDim=2)
-
-#%%
-
-run_clust(red_x, clustering_names=['DBSCAN', 'KMeans', 'Ward'])
-
-#%%
