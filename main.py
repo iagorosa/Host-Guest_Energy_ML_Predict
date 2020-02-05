@@ -9,7 +9,9 @@ import time            as tm
 ## ADICIONAR PASTA DE BIBLIOTECAS CRIADAS NA VARIÁVEL DE CAMINHOS RECONHECIDOS NA EXECUÇÃO
 import sys
 #sys.path.append('/home/medina/Documentos/UFJF/PGMC/Ciencia_de_Dados/Host-Guest_Energy_ML_Predict')
-sys.path.append('/home/medina/Documentos/UFJF/PGMC/Ciencia_de_Dados/Host-Guest_Energy_ML_Predict/util')
+#sys.path.append('/home/medina/Documentos/UFJF/PGMC/Ciencia_de_Dados/Host-Guest_Energy_ML_Predict/util')
+
+sys.path.append(os.getcwd()+'/util')
 
 ## IMPORT DE BIBLIOTECAS CRIADAS
 import   exp_dt_lib    as edl
@@ -202,6 +204,26 @@ for dataset in datasets:
 
 ### DEFINIÇÃO DE CONJUNTO DE TREINO E TESTE ENTRE AS BASES DE DADOS A SEREM UTILIZADAS
 #\TODO ALL OF IT
+
+for dataset in datasets:
+
+    X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
+    dataset_name = datasets[0]['name'].split('.')[0]
+    
+    ## ATRIBUTOS DO MEIO - ENVIRONMENT     
+    col_env = ['pH', 'Temp (C)']
+    
+    ## ATRIBUTOS DO HOSPEDEIRO - HOST 
+    col_host = [ i for i in dataset['var_names'] if "host" in str.lower(i)]    # colunas do host: colunas que contem 'host' no nome 
+    
+    ## ATRIBUTOS DO LIGANTE - LIGANT
+    col_lig = []
+    col_lig = dataset['var_names'].drop(col_host)                              # colunas do ligante: colunas que sobraram do meio e do host 
+    col_lig = list(col_lig.drop(col_env))
+
+    # X_treino,X_teste,y_treino,y_teste=train_test_split(X_, dataset['y_train'], test_size=0.20, random_state=50)
+
+    dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = train_test_split(X_, dataset['y_train'], test_size=0.20, random_state=50)
 
 
 #%%

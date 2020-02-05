@@ -21,6 +21,25 @@ from ELM import  ELMRegressor, ELMRegressor
 from xgboost import  XGBRegressor
 
 
+from sklearn.model_selection import train_test_split
+
+#%%
+
+def RMSE(y, y_pred):
+    y, y_pred = np.array(y).ravel(), np.array(y_pred).ravel()
+    error = y -  y_pred    
+    return np.sqrt(np.mean(np.power(error, 2)))
+
+def RRMSE(y, y_pred):
+    y, y_pred = np.array(y).ravel(), np.array(y_pred).ravel()
+    return RMSE(y, y_pred)*100/np.mean(y)
+
+def MAPE(y_true, y_pred):    
+  y_true, y_pred = np.array(y_true).ravel(), np.array(y_pred).ravel()
+  return np.mean(np.abs(y_pred - y_true)/np.abs(y_true))*100
+  #return RMSE(y, y_pred)
+
+
 #%%
 class evoML:
     def __init__(self, args, fun, lb, ub):
@@ -345,11 +364,6 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                     pickle.dump(sim['ESTIMATOR'], open(pm, "wb"))
 
     return list_results
-
-
-
-
-
 
 
 #%%
