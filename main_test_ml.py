@@ -155,7 +155,9 @@ def fun_xgb_fs(x,*args):
       
   
   try:
+    print('Começando KFold', flag)
     cv=KFold(n_splits=n_splits, shuffle=True, random_state=int(random_seed))
+    print('Terminando KFold', flag)
     y_p  = cross_val_predict(clf,X, np.ravel(y),cv=cv,n_jobs=1)
     #r = -r2_score(y_p,y)
     r = RMSE(y_p,y)
@@ -176,7 +178,7 @@ def fun_xgb_fs(x,*args):
   else:
          clf.fit(X[:,ft].squeeze(), y)
          return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'XGB',
-              'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed}
+              'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'RMSE': r}
 
 def get_parameters(opt, flb=[], fub=[]):
 
@@ -287,8 +289,11 @@ for f in xls:
     dataset['n_samples'], dataset['n_features']   = X_train.shape
     dataset['task']                               = 'regression'
     
-    datasets.append(dataset)
 
+    dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = mll.train_test_split(X_, dataset['y_train'][0], test_size=0.20, random_state=50)
+
+    datasets.append(dataset)
+    
 dataset = datasets[0]
 
 #%%

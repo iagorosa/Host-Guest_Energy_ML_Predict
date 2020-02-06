@@ -97,11 +97,14 @@ def fun_xgb_fs(x,*args):
       
   
   try:
+    print('Começando KFold', flag)
     cv=KFold(n_splits=n_splits, shuffle=True, random_state=int(random_seed))
+    print('Terminando KFold', flag)
     y_p  = cross_val_predict(clf,X, np.ravel(y),cv=cv,n_jobs=1)
     #r = -r2_score(y_p,y)
-    r = RMSE(y_p,y)
-    #r = MAPE(y_p,y)
+    r = RMSE(y_p, y)
+    r2 = MAPE(y_p, y)
+    r3 = RRMSE(y_p, y)
     #r =  mean_squared_error(y,y_p)**0.5
     #r =  -accuracy_score(y,y_p)    
     #r =  -f1_score(y,y_p,average='weighted')
@@ -117,8 +120,7 @@ def fun_xgb_fs(x,*args):
       return r
   else:
          clf.fit(X[:,ft].squeeze(), y)
-         return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'XGB',
-              'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed}
+         return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'XGB', 'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3}}
 
 
 # %%
@@ -261,12 +263,13 @@ def get_parameters(opt, flb=[], fub=[]):
 
     return lb, ub, fun
 
+
 #%%
 
 def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                                         de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=50, \
                                         kf_n_splits=5, \
-                                        save_path='./pkl/', save_basename='host_guest_ml___'):
+                                        save_path='./pkl/', save_basename='host_guest_ml___', save_test_size = ''):
     '''
     # lista com todos os possiveis algoritmos otmizadores para o DE
     list_opt_name = ['EN', 'XGB', 'DTC', 'VC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'MLP', 'GB', 'KRR', 'CAT']
@@ -292,7 +295,7 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
             n_samples, n_features   = dataset['n_samples'], dataset['n_features']
             task                    = dataset['task']
 
-            list_results = []
+            list_results_all = []
             
             print('='*80+'\n'+dataset_name+': '+target+'\n'+'='*80+'\n')
             
@@ -303,8 +306,8 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                 le.fit(y_)
                 y=le.transform(y_)
             else:
-                y=y_.copy()[0] #TODO: precisei pegar o indice 0 para funcionar
-            
+                y=y_.copy() #TODO: precisei pegar o indice 0 para funcionar
+                
             X=X_.copy()
             ##scale_X = MinMaxScaler(feature_range=(0.15,0.85)).fit(X_)
             #scale_X = MinMaxScaler(feature_range=(0,1)).fit(X_)
@@ -321,6 +324,8 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                 ]
 
             for (clf_name, lb, ub, fun, args, random_seed) in optimizers:
+                    list_results = []
+                    
                     #print(clf_name, random_seed)
                     #print(clf_name, fun, random_seed)
                     np.random.seed(random_seed)
@@ -346,9 +351,15 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
 
                     sim['RUN']=run; #sim['Y_NAME']=yc
                     sim['DATASET_NAME']=dataset_name; 
-                    list_results.append(sim)
-            
-                    data = pd.DataFrame(list_results)
+
+                    # Erros no teste
+                    y_p = sim['ESTIMATOR']
+                    r  = mll.RMSE(dataset['y_test'], y_p)
+                    r2 = mll.MAPE(dataset['y_test'], y_p)
+                    r3 = mll.RRMSE(dataset['y_test'], y_p)
+
+                    sim['ERROR_TEST'] = {'RMSE': r, 'MAPE': r2. 'RRMSE': r3}
+
                     pk=(save_path+'__'+save_basename+
                                 '_run_'+str("{:02d}".format(run))+'_'+dataset_name+'_'+
                                 os.uname()[1]+'__'+ str.lower(sim['EST_NAME'])+'__'+
@@ -358,17 +369,41 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                                 '.pkl') 
 
                     pk=pk[0].replace(' ','_').replace("'","").lower() #TODO: precisei pegar o indice 0 para funcionar
-                    data.to_pickle(pk)
+                    
+                    sim['name_pickle'] = pk
+                    
+                    
+                    list_results.append(sim)
+                    list_results_all.append(sim)
+            
+                    # data = pd.DataFrame(list_results)
+                    # data.to_pickle(pk)
+
                     
                     pm = pk.replace('.pkl', '.dat')
                     pickle.dump(sim['ESTIMATOR'], open(pm, "wb"))
+                    
 
-    return list_results
+    return list_results_all
 
 
 #%%
 
+def evaluate(estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score']):
+
+    y_pred = estimator.predict(X_test)
+    error_dict = {}
+        
+    if 'RMSE' in metrics:
+        error_dict['RMSE'] = RMSE(y_test, y_pred)
+    if 'MAPE' in metrics: 
+        error_dict['MAPE'] = MAPE(y_test, y_pred)
+    if 'RRMSE' in metrics: 
+        error_dict['RRMSE'] = RRMSE(y_test, y_pred) 
+    if 'score' in metrics:
+        error_dict['score'] = estimator.score(X_test, y_test)
+
+    return error_dict
 
 
-
-
+# %%

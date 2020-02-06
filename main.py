@@ -11,6 +11,7 @@ import sys
 #sys.path.append('/home/medina/Documentos/UFJF/PGMC/Ciencia_de_Dados/Host-Guest_Energy_ML_Predict')
 #sys.path.append('/home/medina/Documentos/UFJF/PGMC/Ciencia_de_Dados/Host-Guest_Energy_ML_Predict/util')
 
+import os
 sys.path.append(os.getcwd()+'/util')
 
 ## IMPORT DE BIBLIOTECAS CRIADAS
@@ -22,7 +23,6 @@ import   ml_lib        as mll
 #%%
 
 ## CRIAR PASTA DE IMAGENS
-import os
 try:
     os.mkdir('./imgs')
 except:
@@ -113,6 +113,11 @@ for dataset in datasets:
     out         = edl.outlier_identifier(X_, list(col_lig)+col_host)
     
     df_out, qtd = edl.df_outliers(X_, out, folder_name = dataset_name)
+
+    ## ANÁLISE DE DISTRIBUIÇÃO DE ATRIBUTOS E HISTOGRAMAS
+   
+    edl.histogramas(X_, ini=True, trat=False, folder_name=dataset_name)
+    edl.histogramas(X_, ini=True, trat=True, folder_name=dataset_name)
     
     
      ## ANALISE DE CORRELAÇÃO CRUZADA E NÃO LINEAR
@@ -209,6 +214,8 @@ for dataset in datasets:
 
     X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
     dataset_name = datasets[0]['name'].split('.')[0]
+
+    y_ = dataset['y_train'][0]
     
     ## ATRIBUTOS DO MEIO - ENVIRONMENT     
     col_env = ['pH', 'Temp (C)']
@@ -223,7 +230,8 @@ for dataset in datasets:
 
     # X_treino,X_teste,y_treino,y_teste=train_test_split(X_, dataset['y_train'], test_size=0.20, random_state=50)
 
-    dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = train_test_split(X_, dataset['y_train'], test_size=0.20, random_state=50)
+    dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = mll.train_test_split(X_, dataset['y_train'][0], test_size=0.20, random_state=50)
+    # dataset['n_samples'] = len(dataset['X_train'])
 
 
 #%%
@@ -239,11 +247,39 @@ n_runs      = 1
 
 ml_methods  = ['XGB', 'ELM']                                                   # métodos de aprendisado de máquina utilizados
 
+test_size = [0.1, 0.7, 0.1]
 
-lr          = mll.run_DE_optmization_train_ml_methods(datasets, ml_methods, \
+
+for ts in np.arange(*test_size):
+
+    dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = mll.train_test_split(X_, y_, test_size=ts, random_state=50)
+    dataset['n_sample_train'] = len(dataset['X_train'])
+
+
+
+    lr          = mll.run_DE_optmization_train_ml_methods(datasets, ml_methods, \
                                                       de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=50, \
                                                       kf_n_splits=5, \
-                                                      save_path='./pkl/', save_basename='host_guest_ml___')    
+                                                      save_path='./pkl/', save_basename='host_guest_ml___', save_test_sizes = str(ts))    
+    for res in lr:
+        
+        res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], dataset['X_test'], dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'])
+
+        pk = res['name_pickle']
+
+        data = pd.DataFrame(res)
+        data.to_pickle(pk)
+
+
+    data = pd.DataFrame(lr)
+    data.to_pickle('all_data_test_size_'+str(ts)+'.pkl')
 
 # porra toda
+
+
+
+# %%
+
+
+
 
