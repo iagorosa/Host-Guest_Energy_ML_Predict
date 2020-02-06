@@ -250,7 +250,7 @@ ml_methods  = ['XGB', 'ELM']                                                   #
 test_size = [0.1, 0.7, 0.1]
 
 
-for ts in np.arange(*test_size):
+for ts in mll.np.arange(*test_size):
 
     dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = mll.train_test_split(X_, y_, test_size=ts, random_state=50)
     dataset['n_sample_train'] = len(dataset['X_train'])
