@@ -2,6 +2,7 @@
 
 
 Atributos da base: ['HOST_SlogP', 'HOST_SMR', 'HOST_LabuteASA', 'HOST_TPSA', 'HOST_AMW', 'HOST_NumLipinskiHBA', 'HOST_NumLipinskiHBD', 'HOST_NumRotatableBonds']
+
 Resultados PCA: [[0.45603647 0.43785107 0.4443572  0.27280201 0.40406509 0.15652222
   0.24833155 0.28108106]]
 

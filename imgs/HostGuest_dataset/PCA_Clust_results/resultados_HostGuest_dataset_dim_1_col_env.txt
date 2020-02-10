@@ -2,6 +2,7 @@
 
 
 Atributos da base: ['pH', 'Temp (C)']
+
 Resultados PCA: [[-0.16186148  0.98681349]]
 
 Variance PCA: [0.64576842]

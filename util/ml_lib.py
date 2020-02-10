@@ -358,7 +358,7 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                     r2 = mll.MAPE(dataset['y_test'], y_p)
                     r3 = mll.RRMSE(dataset['y_test'], y_p)
 
-                    sim['ERROR_TEST'] = {'RMSE': r, 'MAPE': r2. 'RRMSE': r3}
+                    sim['ERROR_TEST'] = {'RMSE': r, 'MAPE': r2, 'RRMSE': r3}
 
                     pk=(save_path+'__'+save_basename+
                                 '_run_'+str("{:02d}".format(run))+'_'+dataset_name+'_'+

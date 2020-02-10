@@ -2,6 +2,7 @@
 
 
 Atributos da base: ['SlogP', 'SMR', 'LabuteASA', 'TPSA', 'AMW', 'NumLipinskiHBA', 'NumLipinskiHBD', 'NumRotatableBonds']
+
 Resultados PCA: [[ 0.33600311  0.3855338   0.38536879  0.37926862  0.38481174  0.3817693
   -0.01573201  0.38991849]
  [ 0.94173847 -0.13332741 -0.13531432 -0.13964031 -0.1359509  -0.1383916

@@ -2,6 +2,7 @@
 
 
 Atributos da base: ['pH', 'Temp (C)', 'SlogP', 'SMR', 'LabuteASA', 'TPSA', 'AMW', 'NumLipinskiHBA', 'NumLipinskiHBD', 'NumRotatableBonds', 'HOST_SlogP', 'HOST_SMR', 'HOST_LabuteASA', 'HOST_TPSA', 'HOST_AMW', 'HOST_NumLipinskiHBA', 'HOST_NumLipinskiHBD', 'HOST_NumRotatableBonds']
+
 Resultados PCA: [[ 0.18197549 -0.06556155  0.02724708 -0.04982833 -0.04989457 -0.04910066
   -0.04986144 -0.04980693 -0.01732043 -0.05081007  0.44000014  0.43908626
    0.43768162  0.24585042  0.39319925  0.12981355  0.21433535  0.30134878]
