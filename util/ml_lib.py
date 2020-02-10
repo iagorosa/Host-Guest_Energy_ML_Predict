@@ -97,9 +97,9 @@ def fun_xgb_fs(x,*args):
       
   
   try:
-    print('Começando KFold', flag)
+   # print('Começando KFold', flag)
     cv=KFold(n_splits=n_splits, shuffle=True, random_state=int(random_seed))
-    print('Terminando KFold', flag)
+    #print('Terminando KFold', flag)
     y_p  = cross_val_predict(clf,X, np.ravel(y),cv=cv,n_jobs=1)
     #r = -r2_score(y_p,y)
     r = RMSE(y_p, y)
@@ -119,8 +119,8 @@ def fun_xgb_fs(x,*args):
   if flag=='eval':
       return r
   else:
-         clf.fit(X[:,ft].squeeze(), y)
-         return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'XGB', 'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3}}
+        clf.fit(X[:,ft].squeeze(), y)
+        return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'XGB', 'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3}}
 
 
 # %%
@@ -338,27 +338,32 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                     pop = algo.evolve(pop)
                     
                     xopt = pop.champion_x
-                    sim = fun(xopt, *(X,y,'run',kf_n_splits,random_seed))
+                    sim = fun(xopt, *(X.to_numpy(),y,'run',kf_n_splits,random_seed)) #TODO: verificar inserção do to_numpy()
                     sim['ALGO'] = algo.get_name()
 
                     sim['ACTIVE_VAR_NAMES']=dataset['var_names'][sim['ACTIVE_VAR']]
                     if task=='classification':
                         sim['Y_TRAIN_TRUE'] = le.inverse_transform(sim['Y_TRUE'])
                         sim['Y_TRAIN_PRED'] = le.inverse_transform(sim['Y_PRED'])
-                    else:
+                    else: # TODO: pq isso mds?
                         sim['Y_TRAIN_TRUE'] = sim['Y_TRUE']
                         sim['Y_TRAIN_PRED'] = sim['Y_PRED']
 
                     sim['RUN']=run; #sim['Y_NAME']=yc
                     sim['DATASET_NAME']=dataset_name; 
 
-                    # Erros no teste
-                    y_p = sim['ESTIMATOR']
-                    r  = mll.RMSE(dataset['y_test'], y_p)
-                    r2 = mll.MAPE(dataset['y_test'], y_p)
-                    r3 = mll.RRMSE(dataset['y_test'], y_p)
+                    # Erros no teste #TODO: precisei converter pra numpy pra dar certo. Conferir
+                    # erros no teste no evaluate?
+                    # mach = sim['ESTIMATOR'] 
+                    # y_p = mach.predict(dataset['X_test'].to_numpy())
+                    # y_t = dataset['y_test']
 
-                    sim['ERROR_TEST'] = {'RMSE': r, 'MAPE': r2, 'RRMSE': r3}
+                    # r  = RMSE(y_t, y_p)
+                    # r2 = MAPE(y_t, y_p)
+                    # r3 = RRMSE(y_t, y_p)
+
+                    # sim['ERROR_TEST'] = {'RMSE': r, 'MAPE': r2, 'RRMSE': r3}
+    
 
                     pk=(save_path+'__'+save_basename+
                                 '_run_'+str("{:02d}".format(run))+'_'+dataset_name+'_'+
@@ -389,7 +394,7 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
 
 #%%
 
-def evaluate(estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score']):
+def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'], save_file_error = True):
 
     y_pred = estimator.predict(X_test)
     error_dict = {}
@@ -402,6 +407,11 @@ def evaluate(estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'sco
         error_dict['RRMSE'] = RRMSE(y_test, y_pred) 
     if 'score' in metrics:
         error_dict['score'] = estimator.score(X_test, y_test)
+
+    if save_file_error:
+        edd = pd.Series(error_dict)
+        edd.to_csv("csv/error_test_"+name_estimator+".csv")
+    #TODO: um try para criação de pasta csv? ela eh chamada em outros lugar tbm
 
     return error_dict
 

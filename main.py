@@ -261,14 +261,14 @@ for dataset in datasets:
         lr          = mll.run_DE_optmization_train_ml_methods(datasets, ml_methods, \
                                                           de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=50, \
                                                           kf_n_splits=5, \
-                                                          save_path='./pkl/', save_basename='host_guest_ml___', save_test_sizes = str(ts))    
+                                                          save_path='./pkl/', save_basename='host_guest_ml___', save_test_size = str(ts))    
         for res in lr:
             
-            res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], dataset['X_test'], dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'])
+            res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], res['EST_NAME'], dataset['X_test'].to_numpy(), dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'])
     
             pk = res['name_pickle']
     
-            data = pd.DataFrame(res)
+            data = pd.DataFrame([res])
             data.to_pickle(pk)
     
     

@@ -157,14 +157,31 @@ def polynomial_features(X, col, degree):
     return df_pf
 
 #%%
-def histogramas(X, ini=True, trat=False):
+def histogramas(X, ini=True, trat=False, folder_name=''):
     '''
         histogramas com ajuste de um modelo normal
         trat: se berdadeiro, ativa o tratamento dos outliers e elima-os dos histogramas
     '''
-
+       
+    if folder_name != '':
+        try:
+            os.mkdir('./imgs/'+folder_name)
+        except:
+            pass
+   
+        try:
+            os.mkdir('./imgs/'+folder_name+'/csv')
+        except:
+            pass
+       
+        try:
+            os.mkdir('./imgs/'+folder_name+'/hists')
+        except:
+            pass
+   
+   
     val_trat = {'AMW': 4000, 'LabuteASA':1500, 'NumLipinskiHBA': 100, 'NumRotableBonds': 280, 'HOST_SlogP': 15, 'HOST_SMR': 350, 'TPSA': 1000, 'HOST_AMW': 1600, 'HOST_LabuteASA': 650, }
-    ini = True 
+    ini = True
 
     for atr in X.columns[2:]:
 
@@ -181,7 +198,7 @@ def histogramas(X, ini=True, trat=False):
             try:
                 Y = X[atr][X[atr] < val_trat[atr]]
                 aux = X[atr][X[atr] > val_trat[atr]]
-                aux.to_csv("./csv/outliers_"+atr_name+"_"+atr_type+"_"+str(val_trat[atr])+".csv")
+                aux.to_csv("./imgs/"+folder_name+"/csv/outliers_"+atr_name+"_"+atr_type+"_"+str(val_trat[atr])+".csv")
             except:
                 Y = X[atr]
             trat_tex = '_trat'
@@ -194,14 +211,14 @@ def histogramas(X, ini=True, trat=False):
         min_ = int(round(Y.min()-0.5))
         max_ = int(round(Y.max()+0.5))
 
-        print(min_)
-        print(max_)
+        #print(min_)
+        #print(max_)
 
         pl.xticks(range(min_, max_, round((max_-min_)/10+0.5)))
-        
+       
         pl.xlabel(atr)
         pl.ylabel("Frequência")
-        
+       
         pl.title("Histograma " + atr_name + " " + str.capitalize(atr_type) )
         pl.grid(axis='x')
 
@@ -214,14 +231,14 @@ def histogramas(X, ini=True, trat=False):
         p = scs.norm.pdf(x, mu, std)
         pl.plot(x, p, 'r--', linewidth=2)
 
-        print(mu, std)
-        print(x)
+        #print(mu, std)
+        #print(x)
 
         # Teste de hipotese de normalidade com 5% de significancia:
         # H0: A amostra provem de uma população normal
         # H1: A amostra nao provem de uma distribuicao normal
 
-        # Testes de shapiro e lillefors: 
+        # Testes de shapiro e lillefors:
         s   = scs.shapiro(Y)
         lil = lilliefors(Y)
 
@@ -233,19 +250,18 @@ def histogramas(X, ini=True, trat=False):
             ini = False
         else:
             D.loc[list(Y.describe().index), atr] = Y.describe()
-            
+           
         D.loc['skewness', atr] = scs.skew(Y)
         D.loc['kurtosis', atr] = scs.kurtosis(Y, fisher=False)
 
 
         pl.tight_layout()
-        pl.savefig("imgs/hists/"+atr_name+"_"+atr_type+trat_tex+".png")
+        pl.savefig("imgs/"+folder_name+"/hists/"+atr_name+"_"+atr_type+trat_tex+".png")
         pl.show()
 
         pl.close()
 
-    D.to_csv('descricao_resumo'+trat_tex+'.csv')
-
+    D.to_csv('imgs/'+folder_name+'/hists/descricao_resumo'+trat_tex+'.csv')
 #%%
 
 def df_outliers(X, out, save=True, folder_name=''):
