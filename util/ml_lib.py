@@ -19,6 +19,12 @@ import pickle
 ## LISTA DE REGRESSOERES UTILIZADOS
 from ELM import  ELMRegressor, ELMRegressor
 from xgboost import  XGBRegressor
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import ElasticNet, Ridge
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.ensemble import BaggingRegressor
+
+
 
 
 from sklearn.model_selection import train_test_split
@@ -166,8 +172,8 @@ def fun_elm_fs(x,*args):
     #r = -r2_score(y_p,y)
     r = RMSE(y_p,y)
     #r = median_absolute_error(y_p,y)    
-    #r = MAPE(y_p,y)
-    #r = RMSE(y_p,y)
+    r2 = MAPE(y_p,y)
+    r3 = RMSE(y_p,y)
     #r =  mean_squared_error(y,y_p)**0.5
     #r =  -accuracy_score(y,y_p)
     #r =  -f1_score(y,y_p,average='weighted')
@@ -181,7 +187,202 @@ def fun_elm_fs(x,*args):
   else:
     clf.fit(X[:,ft].squeeze(), y)
     return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'ELM',
-              'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed}
+              'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3}}
+
+#%%
+
+def fun_knn_fs(x,*args):
+  X, y, flag, n_splits, random_seed = args 
+  n_samples, n_var = X.shape
+  w = {0 :'uniform', 1 :'distance', }   
+  
+  p={
+      'p': int(round(x[2])), 
+      'n_neighbors': int(round(x[0])),
+      'weights':w[int(round(x[1]))],
+  }
+     
+  clf = KNeighborsRegressor()
+  clf.set_params(**p)
+  
+  if len(x)<=3:
+      ft = np.array([1 for i in range(n_var)])
+      ft = np.where(ft>0.5)
+  else:
+      ft = np.array([1 if k>0.5 else 0 for k in x[2::]])
+      ft = np.where(ft>0.5)
+
+  #x[4::] = [1 if k>0.5 else 0 for k in x[4::]]
+  #ft = np.array([1 if k>0.5 else 0 for k in x[4::]])
+  #ft = np.where(ft>0.5)
+  n_splits=n_splits
+  try:
+    #cv=KFold(n_splits=n_splits, shuffle=True, random_state=random_seed)
+    #cv=KFold(n=n_samples, n_folds=5, shuffle=True, random_state=int(random_seed))
+    cv=KFold(n_splits=n_splits, shuffle=True, random_state=int(random_seed))
+    y_p  = cross_val_predict(clf,X[:,ft].squeeze(), y, cv=cv, n_jobs=1)
+    #r = -r2_score(y_p,y)
+    r = RMSE(y_p, y)
+    r2 = MAPE(y_p, y)
+    r3 = RRMSE(y_p, y)
+    #r =  mean_squared_error(y,y_p)**0.5
+    #r =  -accuracy_score(y,y_p)
+    #r =  -f1_score(y,y_p,average='weighted')
+  except:
+    y_p=[None]
+    r=1e12
+    
+  #print(r,'\t',p)  
+  if flag=='eval':
+      return r
+  else:
+      clf.fit(X[:,ft].squeeze(), y)
+      return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'KNN',
+              'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3}}
+
+#%%
+
+def fun_en_fs(x,*args):
+  X, y, flag, n_splits, random_seed = args 
+  n_samples, n_var = X.shape
+  clf = ElasticNet(random_state=random_seed,)
+  p={
+     'alpha': x[0],
+     'l1_ratio': x[1],
+     'positive': x[2]<0.5
+    }
+  clf.set_params(**p)
+  
+  if len(x)<=3:
+      ft = np.array([1 for i in range(n_var)])
+      ft = np.where(ft>0.5)
+  else:
+      ft = np.array([1 if k>0.5 else 0 for k in x[2::]])
+      ft = np.where(ft>0.5)
+
+  #x[4::] = [1 if k>0.5 else 0 for k in x[4::]]
+  #ft = np.array([1 if k>0.5 else 0 for k in x[4::]])
+  #ft = np.where(ft>0.5)
+  try:
+    #cv=KFold(n_splits=n_splits, shuffle=True, random_state=random_seed)
+    #cv=KFold(n=n_samples, n_folds=5, shuffle=True, random_state=int(random_seed))
+    cv=KFold(n_splits=n_splits, shuffle=True, random_state=int(random_seed))
+    y_p  = cross_val_predict(clf,X[:,ft].squeeze(), y, cv=cv, n_jobs=1)
+    # r = -r2_score(y_p,y)
+    r = RMSE(y_p, y)
+    r2 = MAPE(y_p, y)
+    r3 = RRMSE(y_p, y)
+    #r =  mean_squared_error(y,y_p)**0.5
+    #r =  -accuracy_score(y,y_p)
+    #r =  -f1_score(y,y_p,average='weighted')
+  except:
+    y_p=[None]
+    r=1e12
+    
+  #print(r,'\t',p)  
+  if flag=='eval':
+      return r
+  else:
+      clf.fit(X[:,ft].squeeze(), y)
+      return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'DT',
+              'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3}}
+
+#%%----------------------------------------------------------------------------   
+def fun_dtc_fs(x,*args):
+  X, y, flag, n_splits, random_seed = args 
+  n_samples, n_var = X.shape
+  clf = DecisionTreeRegressor(random_state=random_seed,)
+  #clf = RandomForestRegressor(random_state=random_seed, n_estimators=100)
+  p={
+    #  'criterion': 'gini' if x[0] < 0.5 else 'entropy', #TODO: gini e entropy nao sao opcoes de criterion, segundo a documentacao
+    'criterion': 'mse',
+     'min_samples_split': int(x[1]),
+    }
+  clf.set_params(**p)
+  
+  if len(x)<=2:
+      ft = np.array([1 for i in range(n_var)])
+      ft = np.where(ft>0.5)
+  else:
+      ft = np.array([1 if k>0.5 else 0 for k in x[2::]])
+      ft = np.where(ft>0.5)
+
+  #x[4::] = [1 if k>0.5 else 0 for k in x[4::]]
+  #ft = np.array([1 if k>0.5 else 0 for k in x[4::]])
+  #ft = np.where(ft>0.5)
+  try:
+    #cv=KFold(n_splits=n_splits, shuffle=True, random_state=random_seed)
+    #cv=KFold(n=n_samples, n_folds=5, shuffle=True, random_state=int(random_seed))
+    cv=KFold(n_splits=n_splits, shuffle=True, random_state=int(random_seed))
+    y_p  = cross_val_predict(clf,X[:,ft].squeeze(), y.ravel(), cv=cv, n_jobs=1)
+    #r = r2_score(y_p,y)
+    #r =  mean_squared_error(y,y_p)**0.5
+    r = RMSE(y_p, y)
+    r2 = MAPE(y_p, y)
+    r3 = RRMSE(y_p, y)
+    #r =  -accuracy_score(y,y_p)
+    #r =  -f1_score(y,y_p,average='weighted')
+  except:
+    y_p=[None]
+    r=1e12
+    
+  #print(r,'\t',p)  
+  if flag=='eval':
+      return r
+  else:
+    clf.fit(X[:,ft].squeeze(), y)
+    return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'DT',
+              'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3}}
+
+#%%
+
+def fun_bag_fs(x,*args):
+  X, y, flag, n_splits, random_seed = args 
+  n_samples, n_var = X.shape
+  _estimator=[None,None]
+  base_estimator=_estimator[int(round(x[0]))]
+  n_estimators=int(round(x[1]))
+  clf = BaggingRegressor(random_state=random_seed,)
+  p={
+     'base_estimator':base_estimator, 
+     'n_estimators':n_estimators,
+    }
+  clf.set_params(**p)
+  
+  if len(x)<=2:
+      ft = np.array([1 for i in range(n_var)])
+      ft = np.where(ft>0.5)
+  else:
+      ft = np.array([1 if k>0.5 else 0 for k in x[2::]])
+      ft = np.where(ft>0.5)
+
+  #x[4::] = [1 if k>0.5 else 0 for k in x[4::]]
+  #ft = np.array([1 if k>0.5 else 0 for k in x[4::]])
+  #ft = np.where(ft>0.5)
+  try:
+    #cv=KFold(n_splits=n_splits, shuffle=True, random_state=random_seed)
+    #cv=KFold(n=n_samples, n_folds=5, shuffle=True, random_state=int(random_seed))
+    cv=KFold(n_splits=n_splits, shuffle=True, random_state=int(random_seed))
+    y_p  = cross_val_predict(clf,X[:,ft].squeeze(), y, cv=cv, n_jobs=1)
+    #r = r2_score(y_p,y)
+    #r =  mean_squared_error(y,y_p)**0.5
+    #r =  -accuracy_score(y,y_p)
+    #r =  -f1_score(y,y_p,average='weighted')
+    r = RMSE(y_p, y)
+    r2 = MAPE(y_p, y)
+    r3 = RRMSE(y_p, y)
+  except:
+    y_p=[None]
+    r=1e12
+    
+  #print(r,'\t',p)  
+  if flag=='eval':
+      return r
+  else:
+      clf.fit(X[:,ft].squeeze(), y)
+      return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'BAG',
+              'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3}}
+
 
 
 # %%
@@ -349,8 +550,8 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                         sim['Y_TRAIN_TRUE'] = sim['Y_TRUE']
                         sim['Y_TRAIN_PRED'] = sim['Y_PRED']
 
-                    sim['RUN']=run; #sim['Y_NAME']=yc
-                    sim['DATASET_NAME']=dataset_name; 
+                    sim['RUN']=run #sim['Y_NAME']=yc
+                    sim['DATASET_NAME']=dataset_name
 
                     # Erros no teste #TODO: precisei converter pra numpy pra dar certo. Conferir
                     # erros no teste no evaluate?
