@@ -1,0 +1,2809 @@
+
+  Mrv0541 12051808002D          
+
+  8  7  0  0  0  0            999 V2000
+   -4.1839    0.4125    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.3870    0.1990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8037    0.7823    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0068    0.5688    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.4234    1.1522    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6265    0.9386    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+   -4.9808    0.6260    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6370    1.9491    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  1  7  3  0  0  0  0
+  5  8  2  0  0  0  0
+M  CHG  1   6  -1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197311
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197311
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197311
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O
+
+> <BindingDB monomerid Host>
+197287
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197287
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197287
+
+> <ITC: Delta_G0 kJ/mole>
+-21.1
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+14552782
+
+> <Authors>
+Boschelli, DH; Ye, F; Wu, B; Wang, YD; Barrios Sosa, AC; Yaczko, D; Powell, D; Golas, JM; Lucas, J; Boschelli, F
+
+> <Institution>
+Wyeth Research
+
+> <pH>
+11.3
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051811502D          
+
+ 11 11  0  0  0  0            999 V2000
+   15.5777  -11.7333    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   15.5766  -12.5607    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   16.2914  -12.9735    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   17.0078  -12.5602    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   17.0050  -11.7297    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   16.2896  -11.3205    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   16.2871  -10.4955    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   17.0004  -10.0809    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+   15.5714  -10.0852    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   16.2942  -13.7945    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   16.2940  -14.6195    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+  5  6  1  0  0  0  0
+  6  1  2  0  0  0  0
+  2  3  2  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  3  4  1  0  0  0  0
+  7  9  2  0  0  0  0
+  1  2  1  0  0  0  0
+  4  5  2  0  0  0  0
+ 10 11  3  0  0  0  0
+  3 10  1  0  0  0  0
+M  CHG  1   8  -1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+50340078
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=50340078
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM50340078
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O
+
+> <BindingDB monomerid Host>
+197287
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197287
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197287
+
+> <ITC: Delta_G0 kJ/mole>
+-17.8
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+16125383
+
+> <Authors>
+Boschelli, DH; Wu, B; Barrios Sosa, AC; Chen, JJ; Golas, JM; Boschelli, F
+
+> <Institution>
+Wyeth Research
+
+> <pH>
+11.3
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808552D          
+
+ 10  9  0  0  0  0            999 V2000
+    5.8595   -8.9068    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+    6.5653   -9.3143    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1477   -9.3201    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1363   -8.4936    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.8537   -8.0804    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    7.2827   -8.9068    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    9.4233   -9.3201    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    8.7174   -8.9068    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    7.9943   -9.3201    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   10.1464   -8.9068    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  2  1  1  0  0  0  0
+  3  1  1  0  0  0  0
+  1  4  1  0  0  0  0
+  1  5  1  0  0  0  0
+  6  2  1  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  9  6  1  0  0  0  0
+ 10  7  1  0  0  0  0
+M  CHG  1   1   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+50055166
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=50055166
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM50055166
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O
+
+> <BindingDB monomerid Host>
+197287
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197287
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197287
+
+> <ITC: Delta_G0 kJ/mole>
+-21.2
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+10406636
+
+> <Authors>
+Zhang, L; Williams, MA; Mendel, DB; Escarpe, PA; Chen, X; Wang, KY; Graves, BJ; Lawton, G; Kim, CU
+
+> <Institution>
+Gilead Sciences Inc.
+
+> <pH>
+11.3
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 14 16  0  0  0  0            999 V2000
+   -5.7161    0.7661    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.9192    0.5525    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2047    0.9650    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2047    1.7900    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.7161    1.5911    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.8911    2.0625    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.8911    2.8875    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.4744    3.4709    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1766    3.3000    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+   -6.2994    0.1827    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.5025    0.3962    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.4491    0.1179    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -3.6522    0.3314    0.0000 Br  0  0  0  0  0  0  0  0  0  0  0  0
+   -5.5025    1.2212    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  1  5  1  0  0  0  0
+  6  5  1  0  0  0  0
+  6  4  1  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  2  0  0  0  0
+  7  9  1  0  0  0  0
+  1 10  1  0  0  0  0
+ 10 11  1  0  0  0  0
+ 12 11  1  0  0  0  0
+ 12  3  1  0  0  0  0
+ 12 13  1  1  0  0  0
+ 11 14  1  0  0  0  0
+  6 14  1  0  0  0  0
+M  CHG  1   9  -1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197312
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197312
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197312
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O
+
+> <BindingDB monomerid Host>
+197287
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197287
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197287
+
+> <ITC: Delta_G0 kJ/mole>
+-39.2
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+2877462
+
+> <Authors>
+Weber, E; Sonders, M; Quarum, M; McLean, S; Pou, S; Keana, JF
+
+> <Institution>
+The Oregon Health Sciences University<span class="m1fontSize">Curated by</span> <a href="http://pdsp.med.unc.edu/kidb.php">PDSP K<sub>i</sub> Database</a>
+
+> <pH>
+11.5
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 12 12  0  0  0  0            999 V2000
+   -3.8598    1.8563    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.5743    1.4438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.5743    0.6187    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8598    0.2062    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    0.6187    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    1.4438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8598    2.6813    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    3.0938    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    3.9188    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   -3.1454    4.7438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.9704    3.9188    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.3204    3.9188    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  4  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  5  6  4  0  0  0  0
+  1  6  4  0  0  0  0
+  1  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+  9 11  1  0  0  0  0
+  9 12  1  0  0  0  0
+M  CHG  1   9   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197313
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197313
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197313
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O
+
+> <BindingDB monomerid Host>
+197287
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197287
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197287
+
+> <ITC: Delta_G0 kJ/mole>
+-18.8
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+10698447
+
+> <Authors>
+Silvestri, R; Artico, M; Massa, S; Marceddu, T; De Montis, F; La Colla, P
+
+> <Institution>
+Universita degli Studi di Roma La Sapienza
+
+> <pH>
+11.3
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 12 12  0  0  0  0            999 V2000
+   -3.8598    1.8563    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.5743    1.4438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.5743    0.6187    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8598    0.2062    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    0.6187    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    1.4438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8598    2.6813    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    3.0938    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+   -4.5743    3.0938    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4309    0.2062    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   -2.4309   -0.6188    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.7165    0.6187    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+  1  2  4  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  5  6  4  0  0  0  0
+  1  6  4  0  0  0  0
+  1  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  7  9  2  0  0  0  0
+  5 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 10 12  1  0  0  0  0
+M  CHG  3   8  -1  10   1  12  -1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197314
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197314
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197314
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O	OC(=O)CC[C@H]1c2cc3[C@@H](CCC(O)=O)c4cc5[C@@H](CCC(O)=O)c6cc7[C@@H](CCC(O)=O)c8cc1c1O[C@@H]9Oc2cc3O[C@@H]2Oc4cc5O[C@@H]3Oc6cc7O[C@H](Oc8c1)c1cc4Oc5cc(Oc6cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c4)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc2c8)cc(c7)C(O)=O)cc9c6)cc(c5)C(O)=O
+
+> <BindingDB monomerid Host>
+197287
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197287
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197287
+
+> <ITC: Delta_G0 kJ/mole>
+-22.3
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+n/a
+
+> <Authors>
+Rekharsky, MV; Schwarz, FP; Tewari, YD; Goldberg, RN; Tanaka, M; Yamashoji, Y
+
+> <Institution>
+National Institute of Standards and Technology
+
+> <pH>
+11.5
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+  8  7  0  0  0  0            999 V2000
+   -4.1839    0.4125    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.3870    0.1990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8037    0.7823    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0068    0.5688    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.4234    1.1522    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6265    0.9386    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+   -4.9808    0.6260    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6370    1.9491    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  1  7  3  0  0  0  0
+  5  8  2  0  0  0  0
+M  CHG  1   6  -1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197311
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197311
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197311
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O
+
+> <BindingDB monomerid Host>
+197309
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197309
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197309
+
+> <ITC: Delta_G0 kJ/mole>
+-21.9
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+7932546
+
+> <Authors>
+Thaisrivongs, S; Tomich, PK; Watenpaugh, KD; Chong, KT; Howe, WJ; Yang, CP; Strohbach, JW; Turner, SR; McGrath, JP; Bohanon, MJ
+
+> <Institution>
+Upjohn
+
+> <pH>
+11.3
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051811502D          
+
+ 11 11  0  0  0  0            999 V2000
+   15.5777  -11.7333    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   15.5766  -12.5607    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   16.2914  -12.9735    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   17.0078  -12.5602    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   17.0050  -11.7297    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   16.2896  -11.3205    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   16.2871  -10.4955    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   17.0004  -10.0809    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+   15.5714  -10.0852    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   16.2942  -13.7945    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   16.2940  -14.6195    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+  5  6  1  0  0  0  0
+  6  1  2  0  0  0  0
+  2  3  2  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  3  4  1  0  0  0  0
+  7  9  2  0  0  0  0
+  1  2  1  0  0  0  0
+  4  5  2  0  0  0  0
+ 10 11  3  0  0  0  0
+  3 10  1  0  0  0  0
+M  CHG  1   8  -1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+50340078
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=50340078
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM50340078
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O
+
+> <BindingDB monomerid Host>
+197309
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197309
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197309
+
+> <ITC: Delta_G0 kJ/mole>
+-21.1
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+15784656
+
+> <Authors>
+Jacobson, PB; von Geldern, TW; Ohman, L; Osterland, M; Wang, J; Zinker, B; Wilcox, D; Nguyen, PT; Mika, A; Fung, S; Fey, T; Goos-Nilsson, A; Grynfarb, M; Barkhem, T; Marsh, K; Beno, DW; Nga-Nguyen, B; Kym, PR; Link, JT; Tu, N; Edgerton, DS; Cherrington, A; Efendic, S; Lane, BC; Opgenorth, TJ
+
+> <Institution>
+Abbott Laboratories<span class="m1fontSize">Curated by</span> <a href="http://pdsp.med.unc.edu/kidb.php">PDSP K<sub>i</sub> Database</a>
+
+> <pH>
+11.3
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808552D          
+
+ 10  9  0  0  0  0            999 V2000
+    5.8595   -8.9068    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+    6.5653   -9.3143    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1477   -9.3201    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1363   -8.4936    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.8537   -8.0804    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    7.2827   -8.9068    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    9.4233   -9.3201    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    8.7174   -8.9068    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    7.9943   -9.3201    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   10.1464   -8.9068    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  2  1  1  0  0  0  0
+  3  1  1  0  0  0  0
+  1  4  1  0  0  0  0
+  1  5  1  0  0  0  0
+  6  2  1  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  9  6  1  0  0  0  0
+ 10  7  1  0  0  0  0
+M  CHG  1   1   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+50055166
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=50055166
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM50055166
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O
+
+> <BindingDB monomerid Host>
+197309
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197309
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197309
+
+> <ITC: Delta_G0 kJ/mole>
+-24.9
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+12419377
+
+> <Authors>
+Kazmierski, WM; Furfine, E; Spaltenstein, A; Wright, LL
+
+> <Institution>
+GlaxoSmithKline
+
+> <pH>
+11.3
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 14 16  0  0  0  0            999 V2000
+   -5.7161    0.7661    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.9192    0.5525    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2047    0.9650    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2047    1.7900    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.7161    1.5911    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.8911    2.0625    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.8911    2.8875    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.4744    3.4709    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1766    3.3000    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+   -6.2994    0.1827    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.5025    0.3962    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.4491    0.1179    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -3.6522    0.3314    0.0000 Br  0  0  0  0  0  0  0  0  0  0  0  0
+   -5.5025    1.2212    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  1  5  1  0  0  0  0
+  6  5  1  0  0  0  0
+  6  4  1  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  2  0  0  0  0
+  7  9  1  0  0  0  0
+  1 10  1  0  0  0  0
+ 10 11  1  0  0  0  0
+ 12 11  1  0  0  0  0
+ 12  3  1  0  0  0  0
+ 12 13  1  1  0  0  0
+ 11 14  1  0  0  0  0
+  6 14  1  0  0  0  0
+M  CHG  1   9  -1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197312
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197312
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197312
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O
+
+> <BindingDB monomerid Host>
+197309
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197309
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197309
+
+> <ITC: Delta_G0 kJ/mole>
+-9.96
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+22552008
+
+> <Authors>
+Lopez-Girona, A; Mendy, D; Ito, T; Miller, K; Gandhi, AK; Kang, J; Karasawa, S; Carmel, G; Jackson, P; Abbasian, M; Mahmoudi, A; Cathers, B; Rychak, E; Gaidarova, S; Chen, R; Schafer, PH; Handa, H; Daniel, TO; Evans, JF; Chopra, R
+
+> <Institution>
+Celgene
+
+> <pH>
+11.3
+
+> <temp C>
+4.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 12 12  0  0  0  0            999 V2000
+   -3.8598    1.8563    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.5743    1.4438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.5743    0.6187    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8598    0.2062    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    0.6187    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    1.4438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8598    2.6813    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    3.0938    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    3.9188    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   -3.1454    4.7438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.9704    3.9188    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.3204    3.9188    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  4  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  5  6  4  0  0  0  0
+  1  6  4  0  0  0  0
+  1  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+  9 11  1  0  0  0  0
+  9 12  1  0  0  0  0
+M  CHG  1   9   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197313
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197313
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197313
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O
+
+> <BindingDB monomerid Host>
+197309
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197309
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197309
+
+> <ITC: Delta_G0 kJ/mole>
+-16.3
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+25019596
+
+> <Authors>
+Balasubramanian, G; Kilambi, N; Rathinasamy, S; Rajendran, P; Narayanan, S; Rajagopal, S
+
+> <Institution>
+Orchid Chemicals & Pharmaceuticals Limited
+
+> <pH>
+11.3
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 12 12  0  0  0  0            999 V2000
+   -3.8598    1.8563    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.5743    1.4438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.5743    0.6187    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8598    0.2062    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    0.6187    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    1.4438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8598    2.6813    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1454    3.0938    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+   -4.5743    3.0938    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4309    0.2062    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   -2.4309   -0.6188    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.7165    0.6187    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+  1  2  4  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  5  6  4  0  0  0  0
+  1  6  4  0  0  0  0
+  1  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  7  9  2  0  0  0  0
+  5 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 10 12  1  0  0  0  0
+M  CHG  3   8  -1  10   1  12  -1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197314
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197314
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197314
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O	Cc1c2O[C@H]3Oc4c(C)c5O[C@H]6Oc7c(C)c8O[C@H]9Oc%10c(C)c%11O[C@@H](Oc1c1cc2[C@H](CCC(O)=O)c4cc5[C@H](CCC(O)=O)c7cc8[C@H](CCC(O)=O)c%10cc%11[C@@H]1CCC(O)=O)c1cc2Oc4cc(Oc5cc(Oc7cc(Oc8cc(Oc%10cc(Oc%11cc(Oc%12cc(Oc(c2)c1)cc(c%12)C(O)=O)cc3c%11)cc(c%10)C(O)=O)cc6c8)cc(c7)C(O)=O)cc9c5)cc(c4)C(O)=O
+
+> <BindingDB monomerid Host>
+197309
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197309
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197309
+
+> <ITC: Delta_G0 kJ/mole>
+-18.9
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+28406289
+
+> <Authors>
+Ahmed, MN; Reyna-González, E; Schmid, B; Wiebach, V; Süssmuth, RD; Dittmann, E; Fewer, DP
+
+> <Institution>
+University of Helsinki
+
+> <pH>
+11.5
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 10 10  0  0  0  0            999 V2000
+   -0.3830    0.1179    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0975   -0.2946    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0975   -1.1197    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3830   -1.5322    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3314   -1.1197    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3314   -0.2946    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3830    0.9429    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3830   -2.3572    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0975    1.3554    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+    0.3314   -2.7697    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+  1  2  4  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  5  6  4  0  0  0  0
+  1  6  4  0  0  0  0
+  1  7  1  0  0  0  0
+  4  8  1  0  0  0  0
+  7  9  1  0  0  0  0
+  8 10  1  0  0  0  0
+M  CHG  2   9   1  10   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197288
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197288
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197288
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+C[C@@]12N3Cc4cc5c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c5cc4CN1C(=O)N1CN4C(=O)N5Cc6cc7c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c7cc6CN6C(=O)N(CN(C3=O)[C@]21C)[C@@]4(C)[C@]56C |r
+
+> <BindingDB monomerid Host>
+197310
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197310
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197310
+
+> <ITC: Delta_G0 kJ/mole>
+-24.4
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+28440616
+
+> <Authors>
+Iwatani-Yoshihara, M; Ito, M; Ishibashi, Y; Oki, H; Tanaka, T; Morishita, D; Ito, T; Kimura, H; Imaeda, Y; Aparicio, S; Nakanishi, A; Kawamoto, T
+
+> <Institution>
+BC Cancer Agency
+
+> <pH>
+7.4
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+  6  5  0  0  0  0            999 V2000
+   -3.7420    3.5063    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   -4.1545    2.7918    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7420    2.0773    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1545    1.3628    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7420    0.6484    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1545   -0.0661    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+M  CHG  2   1   1   6   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197315
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197315
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197315
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+C[C@@]12N3Cc4cc5c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c5cc4CN1C(=O)N1CN4C(=O)N5Cc6cc7c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c7cc6CN6C(=O)N(CN(C3=O)[C@]21C)[C@@]4(C)[C@]56C |r
+
+> <BindingDB monomerid Host>
+197310
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197310
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197310
+
+> <ITC: Delta_G0 kJ/mole>
+-10.5
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+28425720
+
+> <Authors>
+Matyskiela, ME; Zhang, W; Man, HW; Muller, G; Khambatta, G; Baculi, F; Hickman, M; LeBrun, L; Pagarigan, B; Carmel, G; Lu, CC; Lu, G; Riley, M; Satoh, Y; Schafer, P; Daniel, TO; Carmichael, J; Cathers, BE; Chamberlain, PP
+
+> <Institution>
+Celgene Corporation
+
+> <pH>
+7.4
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 14 13  0  0  0  0            999 V2000
+   -3.7420    3.5063    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   -4.1545    2.7918    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7420    2.0773    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1545    1.3628    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7420    0.6484    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1545   -0.0661    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   -3.7420   -0.7806    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1545   -1.4950    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7420   -2.2095    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1545   -2.9240    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   -4.1545    4.2207    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7420    4.9352    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1545    5.6497    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7420    6.3641    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+  1 11  1  0  0  0  0
+ 11 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+M  CHG  4   1   1   6   1  10   1  14   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197316
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197316
+
+> <HET ID Guest>
+SPK
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197316
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+C[C@@]12N3Cc4cc5c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c5cc4CN1C(=O)N1CN4C(=O)N5Cc6cc7c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c7cc6CN6C(=O)N(CN(C3=O)[C@]21C)[C@@]4(C)[C@]56C |r
+
+> <BindingDB monomerid Host>
+197310
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197310
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197310
+
+> <ITC: Delta_G0 kJ/mole>
+-16.8
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+28481502
+
+> <Authors>
+Muller-Steffner, H; Jacques, SA; Kuhn, I; Schultz, MD; Botta, D; Osswald, P; Maechling, C; Lund, FE; Kellenberger, E
+
+> <Institution>
+CAMB UMR 7199 CNRS-Universite de Strasbourg
+
+> <pH>
+7.4
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 16 18  0  0  0  0            999 V2000
+   -1.3848   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -1.4732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8138   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8138   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -3.1232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3848   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704   -3.1232    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+    0.0442   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0442   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704   -1.4732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7586   -1.4732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7586   -3.1232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4731   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4731   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.1876   -3.1232    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.5283   -3.1232    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  4  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  5  6  4  0  0  0  0
+  7  8  4  0  0  0  0
+  9 10  4  0  0  0  0
+  1  6  4  0  0  0  0
+  1 10  4  0  0  0  0
+  6  7  4  0  0  0  0
+  8 12  4  0  0  0  0
+  8  9  4  0  0  0  0
+ 11  9  4  0  0  0  0
+ 12 13  4  0  0  0  0
+ 13 14  4  0  0  0  0
+ 11 14  4  0  0  0  0
+ 13 15  1  0  0  0  0
+  4 16  1  0  0  0  0
+M  CHG  1   7   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197317
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197317
+
+> <HET ID Guest>
+PF 
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197317
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+C[C@@]12N3Cc4cc5c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c5cc4CN1C(=O)N1CN4C(=O)N5Cc6cc7c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c7cc6CN6C(=O)N(CN(C3=O)[C@]21C)[C@@]4(C)[C@]56C |r
+
+> <BindingDB monomerid Host>
+197310
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197310
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197310
+
+> <ITC: Delta_G0 kJ/mole>
+-30.3
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+28719185
+
+> <Authors>
+Jones, CL; Njomen, E; Sjögren, B; Dexheimer, TS; Tepe, JJ
+
+> <Institution>
+Michigan State University 
+
+> <pH>
+7.4
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 20 22  0  0  0  0            999 V2000
+   -1.3848   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -1.4732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8138   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8138   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -3.1232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3848   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704   -3.1232    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+    0.0442   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0442   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704   -1.4732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7586   -1.4732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7586   -3.1232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4731   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4731   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.1876   -3.1232    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.5283   -3.1232    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    2.9020   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.1876   -3.9482    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.5283   -3.9482    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2427   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  4  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  5  6  4  0  0  0  0
+  7  8  4  0  0  0  0
+  9 10  4  0  0  0  0
+  1  6  4  0  0  0  0
+  1 10  4  0  0  0  0
+  6  7  4  0  0  0  0
+  8 12  4  0  0  0  0
+  8  9  4  0  0  0  0
+ 11  9  4  0  0  0  0
+ 12 13  4  0  0  0  0
+ 13 14  4  0  0  0  0
+ 11 14  4  0  0  0  0
+ 13 15  1  0  0  0  0
+  4 16  1  0  0  0  0
+ 15 17  1  0  0  0  0
+ 15 18  1  0  0  0  0
+ 16 19  1  0  0  0  0
+ 16 20  1  0  0  0  0
+M  CHG  1   7   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197318
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197318
+
+> <HET ID Guest>
+AO 
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197318
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+C[C@@]12N3Cc4cc5c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c5cc4CN1C(=O)N1CN4C(=O)N5Cc6cc7c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c7cc6CN6C(=O)N(CN(C3=O)[C@]21C)[C@@]4(C)[C@]56C |r
+
+> <BindingDB monomerid Host>
+197310
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197310
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197310
+
+> <ITC: Delta_G0 kJ/mole>
+-35.7
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+28793191
+
+> <Authors>
+Campbell, JC; Henning, P; Franz, E; Sankaran, B; Herberg, FW; Kim, C
+
+> <Institution>
+Baylor College of Medicine
+
+> <pH>
+7.4
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 30 33  0  0  0  0            999 V2000
+   -1.3848   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -1.4732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8138   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8138   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -3.1232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3848   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704   -3.1232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0442   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0442   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704   -1.4732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -3.9482    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3848   -4.3607    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6703   -3.9482    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3849   -0.2357    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -0.6482    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704   -0.6482    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8137   -4.3607    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0441   -4.3607    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0441   -0.2357    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8138   -0.2357    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3848   -5.1857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -5.5982    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -6.4232    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   -2.9243   -6.4232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2743   -6.4232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3849    0.5893    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704    1.0018    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704    1.8268    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+    0.1546    1.8268    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.4954    1.8268    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  7  8  4  0  0  0  0
+  9 10  4  0  0  0  0
+  1  6  4  0  0  0  0
+  8  9  4  0  0  0  0
+  5  6  4  0  0  0  0
+  5 11  4  0  0  0  0
+  6  7  4  0  0  0  0
+ 13  7  4  0  0  0  0
+ 11 12  4  0  0  0  0
+ 12 13  4  0  0  0  0
+ 10 16  4  0  0  0  0
+ 15  2  4  0  0  0  0
+  1 10  4  0  0  0  0
+  1  2  4  0  0  0  0
+ 14 15  4  0  0  0  0
+ 14 16  4  0  0  0  0
+ 11 17  2  0  0  0  0
+ 13 18  2  0  0  0  0
+ 16 19  2  0  0  0  0
+ 15 20  2  0  0  0  0
+ 12 21  1  0  0  0  0
+ 21 22  1  0  0  0  0
+ 22 23  1  0  0  0  0
+ 23 24  1  0  0  0  0
+ 23 25  1  0  0  0  0
+ 14 26  1  0  0  0  0
+ 26 27  1  0  0  0  0
+ 27 28  1  0  0  0  0
+ 28 29  1  0  0  0  0
+ 28 30  1  0  0  0  0
+M  CHG  2  23   1  28   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197319
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197319
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197319
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+C[C@@]12N3Cc4cc5c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c5cc4CN1C(=O)N1CN4C(=O)N5Cc6cc7c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c7cc6CN6C(=O)N(CN(C3=O)[C@]21C)[C@@]4(C)[C@]56C |r
+
+> <BindingDB monomerid Host>
+197310
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197310
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197310
+
+> <ITC: Delta_G0 kJ/mole>
+-36.2
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+28796488
+
+> <Authors>
+Filipuzzi, I; Thomas, JR; Pries, V; Estoppey, D; Salcius, M; Studer, C; Schirle, M; Hoepfner, D
+
+> <Institution>
+Novartis Pharma AG
+
+> <pH>
+7.4
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 30 33  0  0  0  0            999 V2000
+   -1.3848   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -1.4732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8138   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8138   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -3.1232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3848   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704   -3.1232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0442   -2.7107    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0442   -1.8857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704   -1.4732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -3.9482    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3848   -4.3607    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6703   -3.9482    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3849   -0.2357    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -0.6482    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704   -0.6482    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8137   -4.3607    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0441   -4.3607    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0441   -0.2357    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8138   -0.2357    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3848   -5.1857    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -5.5982    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0993   -6.4232    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3849    0.5893    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704    1.0018    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6704    1.8268    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0441    2.2393    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2538    2.4102    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+   -2.8137   -6.8357    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3848   -6.8357    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  7  8  4  0  0  0  0
+  9 10  4  0  0  0  0
+  1  6  4  0  0  0  0
+  8  9  4  0  0  0  0
+  5  6  4  0  0  0  0
+  5 11  4  0  0  0  0
+  6  7  4  0  0  0  0
+ 13  7  4  0  0  0  0
+ 11 12  4  0  0  0  0
+ 12 13  4  0  0  0  0
+ 10 16  4  0  0  0  0
+ 15  2  4  0  0  0  0
+  1 10  4  0  0  0  0
+  1  2  4  0  0  0  0
+ 14 15  4  0  0  0  0
+ 14 16  4  0  0  0  0
+ 11 17  2  0  0  0  0
+ 13 18  2  0  0  0  0
+ 16 19  2  0  0  0  0
+ 15 20  2  0  0  0  0
+ 12 21  1  0  0  0  0
+ 21 22  1  0  0  0  0
+ 22 23  1  0  0  0  0
+ 14 24  1  0  0  0  0
+ 24 25  1  0  0  0  0
+ 25 26  1  0  0  0  0
+ 26 27  2  0  0  0  0
+ 26 28  1  0  0  0  0
+ 23 29  2  0  0  0  0
+ 23 30  1  0  0  0  0
+M  CHG  2  28  -1  30  -1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197320
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197320
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197320
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+C[C@@]12N3Cc4cc5c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c5cc4CN1C(=O)N1CN4C(=O)N5Cc6cc7c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c7cc6CN6C(=O)N(CN(C3=O)[C@]21C)[C@@]4(C)[C@]56C |r
+
+> <BindingDB monomerid Host>
+197310
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197310
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197310
+
+> <ITC: Delta_G0 kJ/mole>
+-21.6
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+28836754
+
+> <Authors>
+Ott, CA; Baljinnyam, B; Zakharov, AV; Jadhav, A; Simeonov, A; Zhuang, Z
+
+> <Institution>
+University of Delaware
+
+> <pH>
+7.4
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 29 31  0  0  0  0            999 V2000
+   -0.5893    2.9464    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3038    2.5339    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3038    1.7089    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.5893    1.2964    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1252    1.7089    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1252    2.5339    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.5893    0.4714    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3038    0.0589    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1252    0.0589    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0182    0.4714    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.7327    0.0589    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.7327   -0.7661    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0182   -1.1786    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3038   -0.7661    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.8397    0.4714    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1252   -0.7661    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.8397   -1.1786    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5541   -0.7661    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5541    0.0589    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.2686   -1.1786    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   -0.5893    3.7714    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    2.9831   -0.7661    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.2686   -2.0036    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6975   -1.1786    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.8520   -2.5870    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1252    4.1839    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.8397    3.7714    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3038    4.1839    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0182    3.7714    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  4  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  5  6  4  0  0  0  0
+  1  6  4  0  0  0  0
+  4  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  7  9  2  0  0  0  0
+ 14  8  4  0  0  0  0
+ 10  8  4  0  0  0  0
+ 10 11  4  0  0  0  0
+ 11 12  4  0  0  0  0
+ 12 13  4  0  0  0  0
+ 13 14  4  0  0  0  0
+ 15  9  1  0  0  0  0
+  9 16  1  0  0  0  0
+ 16 17  2  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 19  1  0  0  0  0
+ 15 19  2  0  0  0  0
+ 18 20  2  0  0  0  0
+  1 21  1  0  0  0  0
+ 20 22  1  0  0  0  0
+ 20 23  1  0  0  0  0
+ 22 24  1  0  0  0  0
+ 23 25  1  0  0  0  0
+ 21 26  1  0  0  0  0
+ 26 27  1  0  0  0  0
+ 21 28  1  0  0  0  0
+ 28 29  1  0  0  0  0
+M  CHG  1  20   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197321
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197321
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197321
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+C[C@@]12N3Cc4cc5c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c5cc4CN1C(=O)N1CN4C(=O)N5Cc6cc7c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c7cc6CN6C(=O)N(CN(C3=O)[C@]21C)[C@@]4(C)[C@]56C |r
+
+> <BindingDB monomerid Host>
+197310
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197310
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197310
+
+> <ITC: Delta_G0 kJ/mole>
+-25.8
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+28841282
+
+> <Authors>
+Falchi, F; Giacomini, E; Masini, T; Boutard, N; Di Ianni, L; Manerba, M; Farabegoli, F; Rossini, L; Robertson, J; Minucci, S; Pallavicini, I; Di Stefano, G; Roberti, M; Pellicciari, R; Cavalli, A
+
+> <Institution>
+Istituto Italiano di Tecnologia
+
+> <pH>
+7.4
+
+> <temp C>
+24.85
+
+$$$$
+
+  Mrv0541 12051808002D          
+
+ 19 21  0  0  0  0            999 V2000
+   -2.4750   -0.3830    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1894    0.0295    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.9040   -0.3830    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.9040   -1.2080    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1894   -1.6205    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4750   -1.2080    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.7605   -1.6205    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0460   -1.2080    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0460   -0.3830    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.7605    0.0295    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3316    0.0295    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3316   -1.6206    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3829   -1.2081    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3829   -0.3830    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.6185   -1.6205    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.6185    0.0295    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0974   -1.6206    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+    1.0974   -2.4456    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.8119   -1.2081    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  4  0  0  0  0
+  2  3  4  0  0  0  0
+  3  4  4  0  0  0  0
+  4  5  4  0  0  0  0
+  5  6  4  0  0  0  0
+  7  8  4  0  0  0  0
+  9 10  4  0  0  0  0
+  1  6  4  0  0  0  0
+  1 10  4  0  0  0  0
+  6  7  4  0  0  0  0
+ 11  9  4  0  0  0  0
+  8  9  4  0  0  0  0
+  8 12  4  0  0  0  0
+ 12 13  4  0  0  0  0
+ 13 14  4  0  0  0  0
+ 11 14  4  0  0  0  0
+  4 15  1  0  0  0  0
+  3 16  1  0  0  0  0
+ 13 17  2  0  0  0  0
+ 17 18  1  0  0  0  0
+ 17 19  1  0  0  0  0
+M  CHG  1  17   1
+M  STY  1   1 DAT
+M  SAL   1  1   7
+M  SDT   1 MRV_IMPLICIT_H                                        
+M  SDD   1     0.0000    0.0000    DR    ALL  0       0  
+M  SED   1 IMPL_H1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+197322
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197322
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM197322
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+C[C@@]12N3Cc4cc5c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c5cc4CN1C(=O)N1CN4C(=O)N5Cc6cc7c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c7cc6CN6C(=O)N(CN(C3=O)[C@]21C)[C@@]4(C)[C@]56C |r
+
+> <BindingDB monomerid Host>
+197310
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197310
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197310
+
+> <ITC: Delta_G0 kJ/mole>
+-30.9
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+24059701
+
+> <Authors>
+Zhang, L; Wang, X; Li, X; Zhang, L; Xu, W
+
+> <Institution>
+Qingdao University
+
+> <pH>
+7.4
+
+> <temp C>
+24.85
+
+$$$$
+ 
+  Mrv0541 12051811162D          
+
+ 20 22  0  0  0  0            999 V2000
+   10.9265  -20.7305    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   10.9253  -21.5580    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   11.6403  -21.9710    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   11.6385  -20.3175    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   12.3541  -20.7268    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   12.3529  -21.5555    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   13.0660  -21.9686    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+   13.0683  -20.3111    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   13.7860  -20.7288    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   13.7844  -21.5539    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   14.4969  -21.9660    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   15.2116  -21.5543    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   15.2093  -20.7261    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   14.4962  -20.3176    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   15.9267  -21.9663    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+   15.9274  -22.7915    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   16.6410  -21.5530    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   10.2103  -21.9701    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    9.4960  -21.5569    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   10.2097  -22.7953    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  5  4  2  0  0  0  0
+  9 10  1  0  0  0  0
+  4  1  1  0  0  0  0
+ 10 11  2  0  0  0  0
+  5  6  1  0  0  0  0
+ 11 12  1  0  0  0  0
+  1  2  2  0  0  0  0
+ 12 13  1  0  0  0  0
+ 13 14  2  0  0  0  0
+ 14  9  1  0  0  0  0
+  2  3  1  0  0  0  0
+ 12 15  2  0  0  0  0
+  3  6  2  0  0  0  0
+ 15 16  1  0  0  0  0
+  5  8  1  0  0  0  0
+ 15 17  1  0  0  0  0
+  6  7  1  0  0  0  0
+  2 18  1  0  0  0  0
+  7 10  1  0  0  0  0
+ 18 19  1  0  0  0  0
+  9  8  2  0  0  0  0
+ 18 20  1  0  0  0  0
+M  CHG  1  15   1
+M  END
+> <From> 
+www.bindingDB.org
+
+> <BindingDB monomerid Guest>
+50241461
+
+> <BindingDB monomer Link Guest>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=50241461
+
+> <HET ID Guest>
+n/a
+
+> <BindingMoad>
+na
+
+> <PC cid>
+na
+
+> <PC sid>
+na
+
+> <CHEBI>
+na
+
+> <CHEMBL>
+na
+
+> <DrugBank>
+na
+
+> <IUPHAR_GRAC>
+na
+
+> <KEGG>
+na
+
+> <MMDB>
+na
+
+> <ZINC>
+na
+
+> <BindingDB Display Name Guest>
+BDBM50241461
+
+> <data origin>
+Curated from the literature by BindingDB
+
+> <Host Guest System>
+Yes
+
+> <SMILES Host>
+C[C@@]12N3Cc4cc5c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c5cc4CN1C(=O)N1CN4C(=O)N5Cc6cc7c(OCCCS([O-])(=O)=O)ccc(OCCCS([O-])(=O)=O)c7cc6CN6C(=O)N(CN(C3=O)[C@]21C)[C@@]4(C)[C@]56C |r
+
+> <BindingDB monomerid Host>
+197310
+
+> <BindingDB monomer Link Host>
+http://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=197310
+
+> <HET ID Host>
+n/a
+
+> <BindingDB Display Name Host>
+BDBM197310
+
+> <ITC: Delta_G0 kJ/mole>
+-43.33
+
+> <ITC: Delta_H0 kJ/mole>
+n/a
+
+> <ITC: -T Delta_S0 kJ/mole>
+n/a
+
+> <PMID>
+24090419
+
+> <Authors>
+Sethi, KK; Verma, SM
+
+> <Institution>
+Birla Institute of Technology
+
+> <pH>
+7.4
+
+> <temp C>
+24.85
+
+$$$$
