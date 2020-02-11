@@ -363,7 +363,7 @@ def fun_bag_fs(x,*args):
     #cv=KFold(n_splits=n_splits, shuffle=True, random_state=random_seed)
     #cv=KFold(n=n_samples, n_folds=5, shuffle=True, random_state=int(random_seed))
     cv=KFold(n_splits=n_splits, shuffle=True, random_state=int(random_seed))
-    y_p  = cross_val_predict(clf,X[:,ft].squeeze(), y, cv=cv, n_jobs=1)
+    y_p  = cross_val_predict(clf,X[:,ft].squeeze(), y.ravel(), cv=cv, n_jobs=1)
     #r = r2_score(y_p,y)
     #r =  mean_squared_error(y,y_p)**0.5
     #r =  -accuracy_score(y,y_p)
@@ -379,7 +379,7 @@ def fun_bag_fs(x,*args):
   if flag=='eval':
       return r
   else:
-      clf.fit(X[:,ft].squeeze(), y)
+      clf.fit(X[:,ft].squeeze(), y.ravel())
       return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'BAG',
               'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3}}
 

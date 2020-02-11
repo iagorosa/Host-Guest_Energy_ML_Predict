@@ -268,7 +268,7 @@ if 'mach_learn' in run_options:
         n_runs      = 1
         
         # ml_methods  = ['XGB', 'ELM'] 
-        ml_methods = ['KNN', 'DTC', 'EN', 'BAG']                                                  # métodos de aprendisado de máquina utilizados
+        ml_methods = ['KNN', 'DTC', 'EN', 'BAG', 'ELM', 'XGB']                                                  # métodos de aprendisado de máquina utilizados
         
         test_size = [0.1, 0.7, 0.1]
         
