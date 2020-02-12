@@ -288,7 +288,7 @@ if 'mach_learn' in run_options:
                                                             save_path='./pkl/', save_basename='host_guest_ml___', save_test_size = str(ts))    
             for res in lr:
                 
-                res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], res['EST_NAME'], dataset['X_test'].to_numpy(), dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'])
+                res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], res['EST_NAME'], dataset['X_test'].to_numpy(), dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score', 'R2_SCORE'])
         
                 pk = res['name_pickle']
         

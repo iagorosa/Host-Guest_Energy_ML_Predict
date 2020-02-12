@@ -901,6 +901,10 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
 
             for (clf_name, lb, ub, fun, args, random_seed) in optimizers:
                     
+                    print()
+                    print(clf_name)
+                    print()                   
+
                     list_results = []
                     
                     #print(clf_name, random_seed)
@@ -990,6 +994,8 @@ def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE
         error_dict['RRMSE'] = RRMSE(y_test, y_pred) 
     if 'score' in metrics:
         error_dict['score'] = estimator.score(X_test, y_test)
+    if 'R2_SCORE' in metrics:
+        error_dict['score'] = -r2_score(y_test,y_pred)
 
     if save_file_error:
         edd = pd.Series(error_dict)

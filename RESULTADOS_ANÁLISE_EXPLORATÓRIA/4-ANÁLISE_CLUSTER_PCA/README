@@ -1,0 +1,18 @@
+
+A seguinte análise testou redução dimensional das instâncias de 1 a 3 dimensões utilizando o algoritmo PCA.
+Para rodar a redução de dimensionalidade, foi efetuada uma normalização min-max nos valores originais das instâncias.
+Os arquivos de saída mostram a variabilidade da variável mantida em cada redução dimensional. 
+
+As reduções foram efetuadas considerando:
+	- apenas os atributos relativos ao ligante
+	- apenas os atributos relativos ao hospedeiro
+	- todos os atributos da base
+
+O número de grupos dos métodos dependentes de k foi definido por busca exaustiva de 1 a 10 grupos considerando o valor de silhuetta apresentado pelo agrupamento.
+
+Os gráficos do agrupamento das instâncias em 2D foram salvos.
+
+Valores adicionais da qualidade dos agrupamentos podem ser calculados, porém ainda não foram apresentados.
+(Percebi escrevendo isso hehe)
+
+

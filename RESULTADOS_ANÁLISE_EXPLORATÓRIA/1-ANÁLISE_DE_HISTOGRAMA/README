@@ -1,0 +1,16 @@
+
+Estudo de distribuição das variáveis baseada na análise de histogramas
+	O estudo foi feito em dois cenários:
+	- Considerando os atributos originais
+	- Considerando um tratamento por análise visual
+
+
+TRATAMENTOS:
+Valores outliers foram definidos por inspeção visual e levou consideração de forma subjetiva valores de quartis
+
+-Os seguintes pontos de cortes superiores foram definidos para cada variável no tratamento   
+val_trat = {'AMW': 4000, 'LabuteASA':1500, 'NumLipinskiHBA': 100, 'NumRotableBonds': 280, 'HOST_SlogP': 15, 'HOST_SMR': 350, 'TPSA': 1000, 'HOST_AMW': 1600, 'HOST_LabuteASA': 650, }
+
+-Cortes inferiores não foram efetuados   
+
+
