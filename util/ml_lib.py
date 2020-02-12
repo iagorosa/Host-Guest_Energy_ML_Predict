@@ -845,7 +845,7 @@ def get_parameters(opt, flb=[], fub=[]):
 def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                                         de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=50, \
                                         kf_n_splits=5, \
-                                        save_path='./pkl/', save_basename='host_guest_ml___', save_test_size = ''):
+                                            save_basename='host_guest_ml___', save_test_size = ''):
     '''
     # lista com todos os possiveis algoritmos otmizadores para o DE
     list_opt_name = ['EN', 'XGB', 'DTC', 'VC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'MLP', 'GB', 'KRR', 'CAT']
@@ -857,6 +857,18 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
     de_run0:
     de_runf:
     '''
+
+    save_path = './RESULTADOS/MACHINE_LEARNING/PKL/'
+
+    try:
+        os.mkdir('./RESULTADOS/MACHINE_LEARNING')
+    except:
+        pass
+
+    try:
+        os.mkdir(save_path)
+    except:
+        pass
 
     for run in range(de_run0, de_runf):
         
@@ -955,12 +967,13 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                     pk=(save_path+'__'+save_basename+
                                 '_run_'+str("{:02d}".format(run))+'_'+dataset_name+'_'+
                                 os.uname()[1]+'__'+ str.lower(sim['EST_NAME'])+'__'+
-                                target+'__'+
+                                target+'__%test_size_'+save_test_size+
                                 #time.strftime("%Y_%m_%d_") + time.strftime("_%Hh_%Mm_%S")+
                                 #'_loo'+
                                 '.pkl') 
 
-                    pk=pk[0].replace(' ','_').replace("'","").lower() #TODO: precisei pegar o indice 0 para funcionar
+                    pk=pk[0].replace(' ','_').replace("'","")
+                    # pk=pk[0].replace(' ','_').replace("'","").lower() #TODO: precisei pegar o indice 0 para funcionar
                     
                     sim['name_pickle'] = pk
                     
@@ -983,6 +996,16 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
 
 def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'], save_file_error = True):
 
+    try:
+        os.mkdir('./RESULTADOS/MACHINE_LEARNING')
+    except:
+        pass
+
+    try:
+        os.mkdir('./RESULTADOS/MACHINE_LEARNING/CSV_ERROR')
+    except:
+        pass
+
     y_pred = estimator.predict(X_test)
     error_dict = {}
         
@@ -999,8 +1022,7 @@ def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE
 
     if save_file_error:
         edd = pd.Series(error_dict)
-        edd.to_csv("csv/error_test_"+name_estimator+".csv")
-    #TODO: um try para criação de pasta csv? ela eh chamada em outros lugar tbm
+        edd.to_csv("RESULTADOS/MACHINE_LEARNING/CSV_ERROR/error_test_"+name_estimator+".csv", header=False)
 
     return error_dict
 

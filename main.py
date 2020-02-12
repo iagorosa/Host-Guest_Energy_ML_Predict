@@ -29,6 +29,11 @@ except:
     pass
 
 try:
+    os.mkdir('./RESULTADOS')
+except:
+    pass
+
+try:
     path='./pkl/'
     os.mkdir(path)
 except:
@@ -38,7 +43,7 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['exp']
+run_options = ['mach_learn']
 
 # Possibilidades:
 # exp: analise exploratoria
@@ -265,7 +270,7 @@ if 'mach_learn' in run_options:
     # ml_methods = ['KNN', 'DTC', 'EN', 'BAG', 'ELM', 'XGB']
     # 'MLP' eh um problema
     # ml_methods = ['GB', 'SVM', 'KRR']
-    ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR', 'CAT'] 
+    ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR'] 
 
 
     ## PERCENTUAIS PARA TAMANHOS DE CONJUNTOS DE TESTES TESTADOS: [INICIAL, FINAL, PASSO]
@@ -298,7 +303,7 @@ if 'mach_learn' in run_options:
             lr = mll.run_DE_optmization_train_ml_methods(datasets, ml_methods, \
                                                          de_run0 = run0, de_runf = n_runs, de_pop_size=pop_size, de_max_iter=max_iter, \
                                                          kf_n_splits=n_splits, \
-                                                         save_path='./pkl/', save_basename='host_guest_ml___', save_test_size = str(ts))    
+                                                         save_basename='host_guest_ml___', save_test_size = str(ts))    
             
             ## ESTATÍSTICAS SOBRE OS DADOS DE TESTE
             for res in lr:
@@ -312,7 +317,7 @@ if 'mach_learn' in run_options:
         
         
             data = pd.DataFrame(lr)
-            data.to_pickle('pkl/all_data_test_size_'+str(ts)+'.pkl')
+            data.to_pickle('RESULTADOS/MACHINE_LEARN/all_data_test_size_'+str(ts)+'.pkl')
 
 
 # %%
