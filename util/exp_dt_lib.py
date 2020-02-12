@@ -157,10 +157,10 @@ def polynomial_features(X, col, degree):
     return df_pf
 
 #%%
-def histogramas(X, ini=True, trat=False, folder_name=''):
+def distribution_hist_outlier_trat(X, trat=False, val_trat='', folder_name=''):
     '''
         histogramas com ajuste de um modelo normal
-        trat: se berdadeiro, ativa o tratamento dos outliers e elima-os dos histogramas
+        trat: se verdadeiro, ativa o tratamento dos outliers e considera limiarespara os valores nos histogramas
     '''
        
     if folder_name != '':
@@ -168,37 +168,32 @@ def histogramas(X, ini=True, trat=False, folder_name=''):
             os.mkdir('./imgs/'+folder_name)
         except:
             pass
-   
-        try:
-            os.mkdir('./imgs/'+folder_name+'/csv')
-        except:
-            pass
-       
+
         try:
             os.mkdir('./imgs/'+folder_name+'/hists')
         except:
             pass
-   
-   
-    val_trat = {'AMW': 4000, 'LabuteASA':1500, 'NumLipinskiHBA': 100, 'NumRotableBonds': 280, 'HOST_SlogP': 15, 'HOST_SMR': 350, 'TPSA': 1000, 'HOST_AMW': 1600, 'HOST_LabuteASA': 650, }
+        
+        try:
+            os.mkdir('./imgs/'+folder_name+'/hists/csv_trat')
+        except:
+            pass     
+        
+    
     ini = True
 
-    for atr in X.columns[2:]:
-
-        if atr[:4] == 'HOST':
-            atr_name = atr[5:]
-            atr_type = 'host'
-        else:
-            atr_name = atr
-            atr_type = 'ligante'
+    for atr in X.columns:
+        
+        atr_name = ''.join('Temp (C)'.split())
 
         pl.figure()
 
         if trat == True:
             try:
-                Y = X[atr][X[atr] < val_trat[atr]]
-                aux = X[atr][X[atr] > val_trat[atr]]
-                aux.to_csv("./imgs/"+folder_name+"/csv/outliers_"+atr_name+"_"+atr_type+"_"+str(val_trat[atr])+".csv")
+                Y   = X[atr][X[atr] > val_trat[atr][0] and X[atr] < val_trat[atr][1]] 
+                
+                aux = X[atr][X[atr] < val_trat[atr][0] or X[atr] > val_trat[atr][1]]
+                aux.to_csv("./imgs/"+folder_name+"/hists/csv_trat/outliers_"+atr_name+"_"+str(val_trat[atr])+".csv")
             except:
                 Y = X[atr]
             trat_tex = '_trat'
@@ -219,7 +214,7 @@ def histogramas(X, ini=True, trat=False, folder_name=''):
         pl.xlabel(atr)
         pl.ylabel("Frequência")
        
-        pl.title("Histograma " + atr_name + " " + str.capitalize(atr_type) )
+        pl.title("Histograma " + atr)
         pl.grid(axis='x')
 
         # estatistica
@@ -256,12 +251,13 @@ def histogramas(X, ini=True, trat=False, folder_name=''):
 
 
         pl.tight_layout()
-        pl.savefig("imgs/"+folder_name+"/hists/"+atr_name+"_"+atr_type+trat_tex+".png")
+        pl.savefig("imgs/"+folder_name+"/hists/"+atr_name+"_"+trat_tex+".png")
         pl.show()
 
         pl.close()
 
     D.to_csv('imgs/'+folder_name+'/hists/descricao_resumo'+trat_tex+'.csv')
+    
 #%%
 
 def df_outliers(X, out, save=True, folder_name=''):

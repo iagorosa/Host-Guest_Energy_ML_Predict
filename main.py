@@ -38,7 +38,7 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['mach_learn']
+run_options = ['exp', 'mach_learn']
 
 # Possibilidades:
 # exp: analise exploratoria
@@ -81,13 +81,34 @@ for f in xls:
 
 #%%
 
-### ANÁLISE EXPLORATÓRIA
+### PRÉ-ANÁLISE EXPLORATÓRIA
     ##  DEFINIÇÃO DE CLASSES DE ATRIBUTOS - ATRIBUTOS RELATIVOS AO MEIO | LIGANTE | HOSPEDEIRO
-    ##  ANÁLISE DE CORRELAÇÃO ENTRE CLASSES DE ATRIBUTOS
-    ##  GRÁFICOS BOXPLOT DOS DADOS
-    
+
 ## ATRIBUTOS DO MEIO - ENVIRONMENT     
 col_env = ['pH', 'Temp (C)']
+
+## ATRIBUTOS DO HOSPEDEIRO - HOST 
+col_host = [ i for i in dataset['var_names'] if "host" in str.lower(i)]    # colunas do host: colunas que contem 'host' no nome 
+
+## ATRIBUTOS DO LIGANTE - LIGANT
+col_lig = []
+col_lig = dataset['var_names'].drop(col_host)                              # colunas do ligante: colunas que sobraram do meio e do host 
+col_lig = list(col_lig.drop(col_env))
+
+opt_sel_col = {'col_env': col_env,
+               'col_host': col_host,
+               'col_lig': col_lig,
+               'all_atr': col_env + col_lig + col_host}    
+ 
+#%%
+
+### ANÁLISE EXPLORATÓRIA
+    ##  ANÁLISE DE CORRELAÇÃO EM CADA CLASSE DE ATRIBUTOS
+    ##  GRÁFICOS BOXPLOT DA DISTRIBUIÇÃO DOS DADOS DE ENTRADA
+    ##  IDENTIFICAÇÃO DE OUTLIERS BASEADA EM QUARTIS
+    ##  TESTES DE NORMALIDADE E DISTRIBUIÇÃO DAS VARIÁVEIS
+    ##  ANALISE DE CORRELAÇÃO CRUZADA E NÃO LINEAR
+    
 
 if 'exp' in run_options:
 
@@ -96,14 +117,12 @@ if 'exp' in run_options:
         X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
         dataset_name = datasets[0]['name'].split('.')[0]
         
-        ## ATRIBUTOS DO HOSPEDEIRO - HOST 
-        col_lig = []
-        col_host = [ i for i in dataset['var_names'] if "host" in str.lower(i)]    # colunas do host: colunas que contem 'host' no nome 
         
-        
-        ## ATRIBUTOS DO LIGANTE - LIGANT
-        col_lig = dataset['var_names'].drop(col_host)                              # colunas do ligante: colunas que sobraram do meio e do host 
-        col_lig = col_lig.drop(col_env)
+        ## ANALISE DE ATRIBUTOS DO MEIO
+    
+        edl.correlacoes(X_, col_env, "env", matrix = True, grafic = True, ext = 'png', save = True, show = True, file_name = dataset_name)
+        edl.boxplots(X_, col_env, "env", complete = False, file_name = dataset_name)
+        edl.boxplots(X_, col_env, "env", file_name = dataset_name)
 
 
         ## ANALISE DE ATRIBUTOS DO HOSPEDEIRO
@@ -120,22 +139,33 @@ if 'exp' in run_options:
         edl.boxplots(X_, col_lig, "ligante", file_name = dataset_name)
         
         
+        ## ANALISE DE TODOS ATRIBUTOS
+    
+        edl.correlacoes(X_, opt_sel_col['all_atr'], "all", matrix = True, \
+                        grafic = True, ext = 'png', save = True, \
+                        show = False, file_name = dataset_name)   
+        
+        
         ## ANALISE DE OUTLIERS
         
         out_host    = edl.outlier_identifier(X_, col_host)
         out_lig     = edl.outlier_identifier(X_, col_lig)
-        out         = edl.outlier_identifier(X_, list(col_lig)+col_host)
+        out         = edl.outlier_identifier(X_, col_lig+col_host)
         
         df_out, qtd = edl.df_outliers(X_, out, folder_name = dataset_name)
 
+
         ## ANÁLISE DE DISTRIBUIÇÃO DE ATRIBUTOS E HISTOGRAMAS
-    
-        edl.histogramas(X_, ini=True, trat=False, folder_name=dataset_name)
-        edl.histogramas(X_, ini=True, trat=True, folder_name=dataset_name)
+        
+        # Tratamento visual de outliers - dicionário com chave sendo o nome do atributo e valor sendo tupla com patamar mínimo e maximo
+        val_trat = {'AMW': (0, 90), 'LabuteASA': (0, 1500), 'NumLipinskiHBA': (0, 100), 'NumRotableBonds': (0, 280),
+                    'HOST_SlogP': (-50, 15), 'HOST_SMR': (0, 350), 'TPSA': (0, 1000), 'HOST_AMW': (0, 1600), 'HOST_LabuteASA': (0, 650)}
+        
+        edl.distribution_hist_outlier_trat(X_, trat=False, folder_name=dataset_name)
+        edl.distribution_hist_outlier_trat(X_, trat=True, val_trat=val_trat, folder_name=dataset_name)
         
         
         ## ANALISE DE CORRELAÇÃO CRUZADA E NÃO LINEAR
-        
         
         df_pf_lig  = edl.polynomial_features(X_, col_lig, 2)
         df_pf_host = edl.polynomial_features(X_, col_host, 2)
@@ -153,7 +183,8 @@ if 'exp' in run_options:
 
 #%%
 
-### RESULTADOS DA ANÁLISE DE OUTLIERS 
+### ANÁLISE EXPLORATÓRIA OUTLIERS
+    ## RESULTADOS DA ANÁLISE DE OUTLIERS 
 
 if 'exp' in run_options and 'out_an' in run_options:
     
@@ -184,6 +215,11 @@ if 'exp' in run_options and 'out_an' in run_options:
 
 #%%
 
+### ANÁLISE EXPLORATÓRIA AGRUPAMENTO
+    ## ESTUDO DO AGRUPAMENTOS DOS DADOS DE ENTRADA 
+    ## ANÁLISE DIMENSIONAL E DE ESTRATÉGIA DE AGRUOAMENTO
+
+
 min_dim = 1
 max_dim = 3
 
@@ -194,21 +230,6 @@ if 'clust' in run_options:
         X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
         dataset_name = datasets[0]['name'].split('.')[0]
         
-        ## ATRIBUTOS DO MEIO - ENVIRONMENT     
-        col_env = ['pH', 'Temp (C)']
-        
-        ## ATRIBUTOS DO HOSPEDEIRO - HOST 
-        col_host = [ i for i in dataset['var_names'] if "host" in str.lower(i)]    # colunas do host: colunas que contem 'host' no nome 
-        
-        ## ATRIBUTOS DO LIGANTE - LIGANT
-        col_lig = []
-        col_lig = dataset['var_names'].drop(col_host)                              # colunas do ligante: colunas que sobraram do meio e do host 
-        col_lig = list(col_lig.drop(col_env))
-        
-        opt_sel_col = {'col_env': col_env,
-                'col_host': col_host,
-                'col_lig': col_lig,
-                'all_atr': col_env + col_lig + col_host}
         
         for atrs in opt_sel_col:
         
@@ -226,9 +247,30 @@ if 'clust' in run_options:
 #%%
 
 ### DEFINIÇÃO DE CONJUNTO DE TREINO E TESTE ENTRE AS BASES DE DADOS A SEREM UTILIZADAS
-#\TODO ALL OF IT
+### DEFINIÇÃO DE HIPERPARÂMETROS LEVES DA EXECUÇÃO DA EVOLUÇÃO DIFERENCIAL PARA TESTE DE MODELOS
+                    
 
 if 'mach_learn' in run_options: 
+    
+    pop_size    = 50                                                               # tamanho da populacao de individuos
+    max_iter    = 200                                                               # quantidade maxima de iteracoes do DE 
+    n_splits    = 5                                                                # número de divisões da base realizada no k-fold
+    
+    run0        = 0
+    n_runs      = 1
+    
+    ## MÉTODOS DE APRENDISADO DE MÁQUINA UTILIZADOS
+    
+    # ml_methods  = ['XGB', 'ELM'] 
+    # ml_methods = ['KNN', 'DTC', 'EN', 'BAG', 'ELM', 'XGB']
+    # 'MLP' eh um problema
+    # ml_methods = ['GB', 'SVM', 'KRR']
+    ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR', 'CAT'] 
+
+
+    ## PERCENTUAIS PARA TAMANHOS DE CONJUNTOS DE TESTES TESTADOS: [INICIAL, FINAL, PASSO]
+    test_size = [0.1, 0.7, 0.1]
+
 
     for dataset in datasets:
 
@@ -239,53 +281,26 @@ if 'mach_learn' in run_options:
             y_ = dataset['y_train'][0]
         else:
             y_ = dataset['y_train']
-        
-        ## ATRIBUTOS DO MEIO - ENVIRONMENT     
-        col_env = ['pH', 'Temp (C)']
-        
-        ## ATRIBUTOS DO HOSPEDEIRO - HOST 
-        col_host = [ i for i in dataset['var_names'] if "host" in str.lower(i)]    # colunas do host: colunas que contem 'host' no nome 
-        
-        ## ATRIBUTOS DO LIGANTE - LIGANT
-        col_lig = []
-        col_lig = dataset['var_names'].drop(col_host)                              # colunas do ligante: colunas que sobraram do meio e do host 
-        col_lig = list(col_lig.drop(col_env))
 
         # X_treino,X_teste,y_treino,y_teste=train_test_split(X_, dataset['y_train'], test_size=0.20, random_state=50)
 
-        dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = mll.train_test_split(X_, y_, test_size=0.20, random_state=50)
+        # dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = mll.train_test_split(X_, y_, test_size=0.20, random_state=50)
         # dataset['n_samples'] = len(dataset['X_train'])
-
-
-                    
-    ### DEFINIÇÃO DE HIPERPARÂMETROS LEVES DA EXECUÇÃO DA EVOLUÇÃO DIFERENCIAL PARA TESTE DE MODELOS
-
-        pop_size    = 50                                                               # tamanho da populacao de individuos
-        max_iter    = 50                                                               # quantidade maxima de iteracoes do DE 
-        n_splits    = 5                                                                # número de divisões da base realizada no k-fold
-        
-        run0        = 0
-        n_runs      = 1
-        
-        # ml_methods  = ['XGB', 'ELM'] 
-        # ml_methods = ['KNN', 'DTC', 'EN', 'BAG', 'ELM', 'XGB']
-        # 'MLP' eh um problema
-        # ml_methods = ['GB', 'SVM', 'KRR']
-        ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR', 'CAT'] 
-                                                         # métodos de aprendisado de máquina utilizados
-        
-        test_size = [0.1, 0.7, 0.1]
         
         
         for ts in mll.np.arange(*test_size):
-        
+            
+            ## DEFINIÇÃO DE CONJUNTOS DE TREINO E TESTE
             dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = mll.train_test_split(X_, y_, test_size=ts, random_state=50)
             dataset['n_sample_train'] = len(dataset['X_train'])
         
-            lr          = mll.run_DE_optmization_train_ml_methods(datasets, ml_methods, \
-                                                            de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=200, \
-                                                            kf_n_splits=5, \
-                                                            save_path='./pkl/', save_basename='host_guest_ml___', save_test_size = str(ts))    
+            ## TREINAMENTO E VALIDAÇÃO DAS MÁQUINAS
+            lr = mll.run_DE_optmization_train_ml_methods(datasets, ml_methods, \
+                                                         de_run0 = run0, de_runf = n_runs, de_pop_size=pop_size, de_max_iter=max_iter, \
+                                                         kf_n_splits=n_splits, \
+                                                         save_path='./pkl/', save_basename='host_guest_ml___', save_test_size = str(ts))    
+            
+            ## ESTATÍSTICAS SOBRE OS DADOS DE TESTE
             for res in lr:
                 
                 res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], res['EST_NAME'], dataset['X_test'].to_numpy(), dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score', 'R2_SCORE'])
@@ -298,9 +313,6 @@ if 'mach_learn' in run_options:
         
             data = pd.DataFrame(lr)
             data.to_pickle('pkl/all_data_test_size_'+str(ts)+'.pkl')
-
-# porra toda
-
 
 
 # %%
