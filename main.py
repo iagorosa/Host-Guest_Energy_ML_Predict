@@ -268,7 +268,11 @@ if 'mach_learn' in run_options:
         n_runs      = 1
         
         # ml_methods  = ['XGB', 'ELM'] 
-        ml_methods = ['KNN', 'DTC', 'EN', 'BAG', 'ELM', 'XGB']                                                  # métodos de aprendisado de máquina utilizados
+        # ml_methods = ['KNN', 'DTC', 'EN', 'BAG', 'ELM', 'XGB']
+        # 'MLP' eh um problema
+        # ml_methods = ['GB', 'SVM', 'KRR']
+        ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR', 'CAT'] 
+                                                         # métodos de aprendisado de máquina utilizados
         
         test_size = [0.1, 0.7, 0.1]
         
@@ -278,9 +282,8 @@ if 'mach_learn' in run_options:
             dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = mll.train_test_split(X_, y_, test_size=ts, random_state=50)
             dataset['n_sample_train'] = len(dataset['X_train'])
         
-        
             lr          = mll.run_DE_optmization_train_ml_methods(datasets, ml_methods, \
-                                                            de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=50, \
+                                                            de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=200, \
                                                             kf_n_splits=5, \
                                                             save_path='./pkl/', save_basename='host_guest_ml___', save_test_size = str(ts))    
             for res in lr:
@@ -294,7 +297,7 @@ if 'mach_learn' in run_options:
         
         
             data = pd.DataFrame(lr)
-            data.to_pickle('all_data_test_size_'+str(ts)+'.pkl')
+            data.to_pickle('pkl/all_data_test_size_'+str(ts)+'.pkl')
 
 # porra toda
 
