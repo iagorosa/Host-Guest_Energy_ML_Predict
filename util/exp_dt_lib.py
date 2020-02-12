@@ -137,7 +137,7 @@ def outlier_identifier(X, atributes):
     Q3 = X_.quantile(0.75)
     IQR = Q3 - Q1
     
-    print(IQR)
+    #rint(IQR)
 
     out = (X_ < (Q1 - 1.5 * IQR)) | (X_ > (Q3 + 1.5 * IQR))
     # print(type(out))
@@ -184,16 +184,16 @@ def distribution_hist_outlier_trat(X, trat=False, val_trat='', folder_name=''):
 
     for atr in X.columns:
         
-        atr_name = ''.join('Temp (C)'.split())
+        atr_name = ''.join(atr.split())
 
         pl.figure()
 
         if trat == True:
             try:
-                Y   = X[atr][X[atr] > val_trat[atr][0] and X[atr] < val_trat[atr][1]] 
+                Y   = X[atr][(X[atr] > val_trat[atr][0]) & (X[atr] < val_trat[atr][1])] 
                 
-                aux = X[atr][X[atr] < val_trat[atr][0] or X[atr] > val_trat[atr][1]]
-                aux.to_csv("./imgs/"+folder_name+"/hists/csv_trat/outliers_"+atr_name+"_"+str(val_trat[atr])+".csv")
+                aux = X[atr][(X[atr] < val_trat[atr][0]) | (X[atr] > val_trat[atr][1])]
+                aux.to_csv("./imgs/"+folder_name+"/hists/csv_trat/outliers_"+atr_name+"_"+str(val_trat[atr])+".csv", header=False)
             except:
                 Y = X[atr]
             trat_tex = '_trat'
@@ -282,7 +282,7 @@ def df_outliers(X, out, save=True, folder_name=''):
             except:
                 pass
         
-        df_out.to_csv('./imgs/'+folder_name+'/outliers.csv')
+        df_out.to_csv('./imgs/'+folder_name+'/outliers.csv', header=True)
 
     return df_out, qtd
     

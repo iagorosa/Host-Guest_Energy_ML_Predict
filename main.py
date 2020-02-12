@@ -38,7 +38,7 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['exp', 'mach_learn']
+run_options = ['exp']
 
 # Possibilidades:
 # exp: analise exploratoria
