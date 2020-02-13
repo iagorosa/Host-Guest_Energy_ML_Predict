@@ -19,6 +19,7 @@ import   exp_dt_lib    as edl
 import   clust_lib     as cll
 import   ml_lib        as mll
 
+import time
 
 #%%
 
@@ -275,7 +276,8 @@ if 'mach_learn' in run_options:
 
     ## PERCENTUAIS PARA TAMANHOS DE CONJUNTOS DE TESTES TESTADOS: [INICIAL, FINAL, PASSO]
     test_size = [0.1, 0.7, 0.1]
-
+    
+    t0 = time.time()
 
     for dataset in datasets:
 
@@ -317,7 +319,11 @@ if 'mach_learn' in run_options:
         
         
             data = pd.DataFrame(lr)
-            data.to_pickle('RESULTADOS/MACHINE_LEARN/all_data_test_size_'+str(ts)+'.pkl')
+            data.to_pickle('RESULTADOS/MACHINE_LEARNING/all_data_test_size_'+str(ts)+'.pkl')
+            
+    t1 = time.time()
+    
+    print(t1 - t0)
 
 
 # %%
