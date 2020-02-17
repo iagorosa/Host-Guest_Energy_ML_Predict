@@ -44,7 +44,7 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['mach_learn']
+run_options = ['clust']
 
 # Possibilidades:
 # exp: analise exploratoria
@@ -245,7 +245,7 @@ if 'clust' in run_options:
                 
                 red_x, results, covm = cll.run_pca(X_, opt_sel_col[atrs], str(atrs), newDim=d, save_txt=True, file_name=file_name, folder_name=dataset_name)
                 
-                if d==2:
+                if d==3:
                     cll.run_clust(red_x, clustering_names=['DBSCAN', 'KMeans', 'Ward'], file_name=file_name+'_'+atrs, folder_name=dataset_name)
             
 
