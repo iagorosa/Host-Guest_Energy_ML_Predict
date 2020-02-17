@@ -310,7 +310,7 @@ if 'mach_learn' in run_options:
             ## ESTATÍSTICAS SOBRE OS DADOS DE TESTE
             for res in lr:
                 
-                res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], res['EST_NAME'], dataset['X_test'].to_numpy(), dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score', 'R2_SCORE'])
+                res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], res['EST_NAME'], dataset['X_test'].to_numpy(), dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score', 'R2_SCORE'], save_test_size = str(ts))
         
                 pk = res['name_pickle']
         

@@ -914,7 +914,7 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
             for (clf_name, lb, ub, fun, args, random_seed) in optimizers:
                     
                     print()
-                    print(clf_name)
+                    print(clf_name, '%test_size:', save_test_size)
                     print()                   
 
                     list_results = []
@@ -994,7 +994,7 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
 
 #%%
 
-def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'], save_file_error = True):
+def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'], save_test_size='', save_file_error = True):
 
     try:
         os.mkdir('./RESULTADOS/MACHINE_LEARNING')
@@ -1022,7 +1022,8 @@ def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE
 
     if save_file_error:
         edd = pd.Series(error_dict)
-        edd.to_csv("RESULTADOS/MACHINE_LEARNING/CSV_ERROR/error_test_"+name_estimator+".csv", header=False)
+        edd.to_csv("RESULTADOS/MACHINE_LEARNING/CSV_ERROR/error_test_"+name_estimator+"_%test_size_"+save_test_size+".csv", header=False)
+
 
     return error_dict
 
