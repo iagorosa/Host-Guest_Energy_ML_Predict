@@ -258,9 +258,9 @@ if 'clust' in run_options:
 
 if 'mach_learn' in run_options: 
     
-    pop_size    = 50                                                               # tamanho da populacao de individuos
-    max_iter    = 200                                                               # quantidade maxima de iteracoes do DE 
-    n_splits    = 5                                                                # número de divisões da base realizada no k-fold
+    pop_size    = 5                                                               # tamanho da populacao de individuos
+    max_iter    = 5                                                               # quantidade maxima de iteracoes do DE 
+    n_splits    = 2                                                                # número de divisões da base realizada no k-fold
     
     run0        = 0
     n_runs      = 1
