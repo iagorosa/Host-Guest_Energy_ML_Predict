@@ -293,7 +293,7 @@ def fun_en_fs(x,*args):
       return r
   else:
       clf.fit(X[:,ft].squeeze(), y)
-      return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'DT',
+      return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'EN',
               'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3, 'R2_SCORE': r4}}
 
 #%%----------------------------------------------------------------------------   
@@ -340,7 +340,7 @@ def fun_dtc_fs(x,*args):
       return r
   else:
     clf.fit(X[:,ft].squeeze(), y)
-    return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'DT',
+    return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'DTC',
               'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3, 'R2_SCORE': r4}}
 
 #%%
@@ -703,7 +703,7 @@ def fun_svm_fs(x,*args):
       return r
   else:
          clf.fit(X[:,ft].squeeze(), y)
-         return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'SVR',
+         return {'Y_TRUE':y, 'Y_PRED':y_p, 'EST_PARAMS':p, 'PARAMS':x, 'EST_NAME':'SVM',
               'ESTIMATOR':clf, 'ACTIVE_VAR':ft, 'DATA':X, 'SEED':random_seed, 'ERROR_TRAIN': {'RMSE':r, 'MAPE': r2, 'RRMSE': r3, 'R2_SCORE': r4}}
 
 #%%
@@ -845,7 +845,7 @@ def get_parameters(opt, flb=[], fub=[]):
 def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                                         de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=50, \
                                         kf_n_splits=5, \
-                                            save_basename='host_guest_ml___', save_test_size = ''):
+                                            save_basename='host_guest_ml___', save_test_size = '', save_file_erro_train = True):
     '''
     # lista com todos os possiveis algoritmos otmizadores para o DE
     list_opt_name = ['EN', 'XGB', 'DTC', 'VC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'MLP', 'GB', 'KRR', 'CAT']
@@ -858,17 +858,17 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
     de_runf:
     '''
 
-    save_path = './RESULTADOS/MACHINE_LEARNING/PKL/'
+    # save_path = './RESULTADOS/MACHINE_LEARNING/PKL/'
 
     try:
-        os.mkdir('./RESULTADOS/MACHINE_LEARNING')
+        os.mkdir('./RESULTADOS/MACHINE_LEARNING/')
     except:
         pass
 
-    try:
-        os.mkdir(save_path)
-    except:
-        pass
+    # try:
+    #     os.mkdir(save_path)
+    # except:
+    #     pass
 
     for run in range(de_run0, de_runf):
         
@@ -914,8 +914,25 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
             for (clf_name, lb, ub, fun, args, random_seed) in optimizers:
                     
                     print()
-                    print(clf_name)
-                    print()                   
+                    print(clf_name, '%test_size:', save_test_size)
+                    print()              
+                    
+                    PATH = './RESULTADOS/MACHINE_LEARNING/'+str.upper(clf_name)+'/'
+
+                    try:
+                        os.mkdir(PATH)
+                    except:
+                        pass
+                    
+                    try:
+                        os.mkdir(PATH+'CSV_ERROR_TRAIN/')
+                    except:
+                        pass
+
+                    try:
+                        os.mkdir(PATH+'PKL/')
+                    except:
+                        pass
 
                     list_results = []
                     
@@ -951,6 +968,8 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
 
                     sim['time'] = t1 - t0
 
+                    pd.Series(sim['ERROR_TRAIN']).to_csv(PATH+"CSV_ERROR_TRAIN/error_train_"+clf_name+"_%test_size_"+save_test_size+".csv", header=False)
+
                     # Erros no teste #TODO: precisei converter pra numpy pra dar certo. Conferir
                     # erros no teste no evaluate?
                     # mach = sim['ESTIMATOR'] 
@@ -964,7 +983,7 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                     # sim['ERROR_TEST'] = {'RMSE': r, 'MAPE': r2, 'RRMSE': r3}
     
 
-                    pk=(save_path+'__'+save_basename+
+                    pk=(PATH+'PKL/'+save_basename+
                                 '_run_'+str("{:02d}".format(run))+'_'+dataset_name+'_'+
                                 os.uname()[1]+'__'+ str.lower(sim['EST_NAME'])+'__'+
                                 target+'__%test_size_'+save_test_size+
@@ -994,15 +1013,17 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
 
 #%%
 
-def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'], save_file_error = True):
+def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'], save_test_size='', save_file_error = True):
 
     try:
         os.mkdir('./RESULTADOS/MACHINE_LEARNING')
     except:
         pass
 
+    PATH = './RESULTADOS/MACHINE_LEARNING/'+str.upper(name_estimator)+'/CSV_ERROR_TEST/'
+
     try:
-        os.mkdir('./RESULTADOS/MACHINE_LEARNING/CSV_ERROR')
+        os.mkdir(PATH)
     except:
         pass
 
@@ -1018,11 +1039,12 @@ def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE
     if 'score' in metrics:
         error_dict['score'] = estimator.score(X_test, y_test)
     if 'R2_SCORE' in metrics:
-        error_dict['score'] = -r2_score(y_test,y_pred)
+        error_dict['R2_SCORE'] = -r2_score(y_test,y_pred)
 
     if save_file_error:
         edd = pd.Series(error_dict)
-        edd.to_csv("RESULTADOS/MACHINE_LEARNING/CSV_ERROR/error_test_"+name_estimator+".csv", header=False)
+        edd.to_csv(PATH+"error_test_"+name_estimator+"_%test_size_"+save_test_size+".csv", header=False)
+
 
     return error_dict
 
