@@ -44,9 +44,10 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['clust']
+run_options = ['pre_trat', 'clust']
 
 # Possibilidades:
+# pre_trat: tratamento e retirada preeliminar de instancias
 # exp: analise exploratoria
 # out_an: analise de outliers (necessario que a analise exploratoria ocorra)
 # clust: clusteriazacao
@@ -108,6 +109,44 @@ opt_sel_col = {'col_env': col_env,
  
 #%%
 
+### TRATAMENTO PREELIMINAR DE BASE
+    ##  RETIRADA DE INSTÂNCIAS COM BASE EM BAIXA AMOSTRAGEM DE CARACTERÍSTICAS DE MEIO
+    
+if 'pre_trat' in run_options:
+   
+    n_datasets = []
+    
+    for dataset in datasets:
+
+        X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
+        Y_ = pd.DataFrame(dataset['y_train'][0], columns=dataset['target_names'])
+        
+        ext_atr = opt_sel_col['all_atr']+list(dataset['target_names'])
+        
+        Dt_ = pd.concat([X_, Y_], axis=1)
+        
+        ## LIMITES PROPOSTOS PARA pH
+        Dt_  = Dt_[ext_atr][(Dt_['pH'] >= 6.9) & (Dt_['pH'] <= 7.4)]
+        
+        ## LIMITES PROPOSTOS PARA Temp
+        Dt_  = Dt_[ext_atr][(Dt_['Temp (C)'] > 14.5) & (Dt_['Temp (C)'] < 45)]
+        
+        
+        
+        ndataset                                        = {} 
+    
+        ndataset['var_names'], ndataset['target_names'] = dataset['var_names'], dataset['target_names']
+        n                                               = f.split('.xlsx')[0].split('/')[-1].split('.')
+        ndataset['name']                                = n[0] + '_trat_env.' + n[-1]
+        ndataset['X_train'], ndataset['y_train'],       = Dt_[dataset['var_names']].values, [Dt_[dataset['target_names']].values]
+        ndataset['n_samples'], ndataset['n_features']   = Dt_[dataset['var_names']].shape
+        ndataset['task']                                = 'regression'
+        
+        n_datasets.append(ndataset)
+
+    datasets = datasets + n_datasets
+#%%
+
 ### ANÁLISE EXPLORATÓRIA
     ##  ANÁLISE DE CORRELAÇÃO EM CADA CLASSE DE ATRIBUTOS
     ##  GRÁFICOS BOXPLOT DA DISTRIBUIÇÃO DOS DADOS DE ENTRADA
@@ -121,7 +160,7 @@ if 'exp' in run_options:
     for dataset in datasets:
         
         X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
-        dataset_name = datasets[0]['name'].split('.')[0]
+        dataset_name = dataset['name'].split('.')[0]
         
         
         ## ANALISE DE ATRIBUTOS DO MEIO
@@ -226,15 +265,17 @@ if 'exp' in run_options and 'out_an' in run_options:
     ## ANÁLISE DIMENSIONAL E DE ESTRATÉGIA DE AGRUOAMENTO
 
 
-min_dim = 1
-max_dim = 3
-
 if 'clust' in run_options:
 
+    min_dim = 1
+    max_dim = 3
+    
     for dataset in datasets:
 
         X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
-        dataset_name = datasets[0]['name'].split('.')[0]
+        dataset_name = dataset['name'].split('.')[0]
+        
+        print(dataset_name)
         
         
         for atrs in opt_sel_col:
@@ -245,7 +286,7 @@ if 'clust' in run_options:
                 
                 red_x, results, covm = cll.run_pca(X_, opt_sel_col[atrs], str(atrs), newDim=d, save_txt=True, file_name=file_name, folder_name=dataset_name)
                 
-                if d==3:
+                if d==1 or d==2 or d==3:
                     cll.run_clust(red_x, clustering_names=['DBSCAN', 'KMeans', 'Ward'], file_name=file_name+'_'+atrs, folder_name=dataset_name)
             
 

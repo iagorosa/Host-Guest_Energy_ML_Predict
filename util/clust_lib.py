@@ -120,7 +120,7 @@ def run_clust(X, clustering_names=['DBSCAN', 'KMeans', 'Ward'], saveFig=True, fi
                 
                 try:
                     silh = __evaluate_silhouette_score(X, y_pred)
-                    print(silh)
+#                    print(silh)
                     x_lim = pl.xlim() 
                     y_lim = pl.ylim()
                     pl.text(x_lim[-1]-x_lim[-1]*0.29, y_lim[-1]-y_lim[-1]*0.31, 'silh = '+str(round(silh, 3)))
@@ -176,7 +176,7 @@ def run_clust(X, clustering_names=['DBSCAN', 'KMeans', 'Ward'], saveFig=True, fi
                     
                 try:
                     silh = __evaluate_silhouette_score(X, y_pred)
-                    print(silh)
+#                    print(silh)
                     x_lim = pl.xlim() 
                     y_lim = pl.ylim()
                     pl.text(x_lim[-1]-x_lim[-1]*0.70, y_lim[-1]-y_lim[-1]*0.09, 'silh = '+str(round(silh, 3)))
@@ -213,11 +213,22 @@ def run_clust(X, clustering_names=['DBSCAN', 'KMeans', 'Ward'], saveFig=True, fi
                 ax.scatter(list(pd.DataFrame(X)[0]), list(pd.DataFrame(X)[1]), list(pd.DataFrame(X)[2]), 
                            c=colors[y_pred].tolist(), marker='o', s=100)
                 
-                ax.set_xlabel('X coor')
                 ax.set_ylabel('Y coor')
                 ax.set_zlabel('Z coor')
                 
-                pl.savefig('./imgs/'+folder_name+'/PCA_Clust_results/plot_clust/'+name+'_'+file_name+'_dim_'+str(dim)+'_cluster_dispersion_graph.png', dpi=300)
+                try:
+                    silh = __evaluate_silhouette_score(X, y_pred)
+#                    print(silh)
+#                    x_lim = pl.xlim() 
+#                    y_lim = pl.ylim()
+#                    z_lim = pl.zlim()
+#                    pl.text(x_lim[-1]-x_lim[-1]*0.70, y_lim[-1]-y_lim[-1]*0.09, z_lim[-1]-z_lim[-1]*0.09, 'silh = '+str(round(silh, 3)))
+                    ax.set_xlabel('X coor      silh = ' + str(round(silh, 3)))
+                except:
+                    ax.set_xlabel('X coor')
+                    
+                
+                pl.savefig('./imgs/'+folder_name+'/PCA_Clust_results/plot_clust/'+file_name+'_dim_'+str(dim)+'_'+name+'_cluster_dispersion_graph.png', dpi=300)
 
             
             
