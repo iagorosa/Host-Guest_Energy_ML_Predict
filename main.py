@@ -44,7 +44,7 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['pre_trat', 'clust']
+run_options = ['pre_trat', 'exp', 'clust']
 
 # Possibilidades:
 # pre_trat: tratamento e retirada preeliminar de instancias
@@ -60,13 +60,18 @@ run_options = ['pre_trat', 'clust']
 datasets = []
 xls      = gl.glob('./data/*.csv')                                             # Encontra todos os arquivos .csv na pasta
 
+ids = []
+
 for f in xls:
     
     X               = pd.read_csv(f)                                           # Leitura de cada arquivo .csv em xls   
     
+    cols_to_ids     = ['BindingDB ITC_result_a_b_ab_id'] 
     cols_to_remove  = ['BindingDB ITC_result_a_b_ab_id']                       # colunas para remover da base de dados
     cols_target     = ['Delta_G0 (kJ/mol)']                                    # colunas com o target
-
+    
+    ids = X[cols_to_ids]
+    
     X.drop(cols_to_remove,  axis=1, inplace=True)                              # remove as colunas selecionadas anteriormente
     y_train         = X[cols_target]                                           # seleciona a coluna de target para y_train   
     X.drop(cols_target,  axis=1, inplace=True)                                 # remove a coluna de target de X 
@@ -83,6 +88,7 @@ for f in xls:
     dataset['X_train'], dataset['y_train'],       = X_train.values, [y_train.values]
     dataset['n_samples'], dataset['n_features']   = X_train.shape
     dataset['task']                               = 'regression'
+    dataset['ids'], dataset['id_cols_name']          = ids, cols_to_ids
     
     datasets.append(dataset)
 
@@ -116,22 +122,27 @@ if 'pre_trat' in run_options:
    
     n_datasets = []
     
+    ids_trat = []
+    
     for dataset in datasets:
 
         X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
         Y_ = pd.DataFrame(dataset['y_train'][0], columns=dataset['target_names'])
         
-        ext_atr = opt_sel_col['all_atr']+list(dataset['target_names'])
+        ext_atr = dataset['id_cols_name']+opt_sel_col['all_atr']+list(dataset['target_names'])
         
         Dt_ = pd.concat([X_, Y_], axis=1)
+        Dt_ = pd.concat([dataset['ids'], Dt_], axis=1)
         
         ## LIMITES PROPOSTOS PARA pH
         Dt_  = Dt_[ext_atr][(Dt_['pH'] >= 6.9) & (Dt_['pH'] <= 7.4)]
         
         ## LIMITES PROPOSTOS PARA Temp
-        Dt_  = Dt_[ext_atr][(Dt_['Temp (C)'] > 14.5) & (Dt_['Temp (C)'] < 45)]
+        Dt_  = Dt_[ext_atr][(Dt_['Temp (C)'] > 14.5) & (Dt_['Temp (C)'] <  30.1)]             #[24.85; 27]
         
         
+        ids_trat = Dt_[dataset['id_cols_name']]
+        Dt_.drop(dataset['id_cols_name'],  axis=1, inplace=True)                              # remove as colunas selecionadas anteriormente
         
         ndataset                                        = {} 
     
@@ -141,6 +152,7 @@ if 'pre_trat' in run_options:
         ndataset['X_train'], ndataset['y_train'],       = Dt_[dataset['var_names']].values, [Dt_[dataset['target_names']].values]
         ndataset['n_samples'], ndataset['n_features']   = Dt_[dataset['var_names']].shape
         ndataset['task']                                = 'regression'
+        ndataset['ids'], ndataset['id_cols_name']       = ids_trat, dataset['id_cols_name']
         
         n_datasets.append(ndataset)
 
@@ -165,21 +177,21 @@ if 'exp' in run_options:
         
         ## ANALISE DE ATRIBUTOS DO MEIO
     
-        edl.correlacoes(X_, col_env, "env", matrix = True, grafic = True, ext = 'png', save = True, show = True, file_name = dataset_name)
+        edl.correlacoes(X_, col_env, "env", matrix = True, grafic = True, ext = 'png', save = True, show = False, file_name = dataset_name)
         edl.boxplots(X_, col_env, "env", complete = False, file_name = dataset_name)
         edl.boxplots(X_, col_env, "env", file_name = dataset_name)
 
 
         ## ANALISE DE ATRIBUTOS DO HOSPEDEIRO
         
-        edl.correlacoes(X_, col_host, "host", matrix = True, grafic = True, ext = 'png', save = True, show = True, file_name = dataset_name)
+        edl.correlacoes(X_, col_host, "host", matrix = True, grafic = True, ext = 'png', save = True, show = False, file_name = dataset_name)
         edl.boxplots(X_, col_host, "host", complete = False, file_name = dataset_name)
         edl.boxplots(X_, col_host, "host", file_name = dataset_name)
 
 
         ## ANALISE DE ATRIBUTOS DO LIGANTE
         
-        edl.correlacoes(X_, col_lig, "ligante", matrix = True, grafic = True, ext = 'png', save = True, show = True, file_name = dataset_name)   
+        edl.correlacoes(X_, col_lig, "ligante", matrix = True, grafic = True, ext = 'png', save = True, show = False, file_name = dataset_name)   
         edl.boxplots(X_, col_lig, "ligante", complete = False, file_name = dataset_name)
         edl.boxplots(X_, col_lig, "ligante", file_name = dataset_name)
         
@@ -283,13 +295,12 @@ if 'clust' in run_options:
             for d in range(min_dim, min(max_dim+1, len(opt_sel_col[atrs]))):
                 
                 file_name = dataset_name+'_dim_'+str(d)
-                
+                  
                 red_x, results, covm = cll.run_pca(X_, opt_sel_col[atrs], str(atrs), newDim=d, save_txt=True, file_name=file_name, folder_name=dataset_name)
                 
                 if d==1 or d==2 or d==3:
-                    cll.run_clust(red_x, clustering_names=['DBSCAN', 'KMeans', 'Ward'], file_name=file_name+'_'+atrs, folder_name=dataset_name)
+                    kmeans = cll.run_clust(red_x, clustering_names=['DBSCAN', 'KMeans', 'Ward'], file_name=file_name+'_'+atrs, folder_name=dataset_name)
             
-
 
 #%%
 

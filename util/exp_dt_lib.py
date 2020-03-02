@@ -108,7 +108,7 @@ def boxplots(X, atributes, atr_type, complete = True, file_name=''):
         pl.tight_layout()
         pl.savefig("./imgs/"+file_name+'/'+atr_type+"/boxplots_"+atr_type+".png", dpi=300)
         
-        pl.show()
+#        pl.show()
 
     else:
         for atr in name_atr:
@@ -122,7 +122,7 @@ def boxplots(X, atributes, atr_type, complete = True, file_name=''):
             pl.tight_layout()
             pl.savefig("./imgs/"+file_name+"/"+atr_type+"/boxplot_"+atr+"_"+atr_type+".png", dpi=300)
             
-            pl.show()
+#            pl.show()
 
     
     pl.close('all')
@@ -252,7 +252,7 @@ def distribution_hist_outlier_trat(X, trat=False, val_trat='', folder_name=''):
 
         pl.tight_layout()
         pl.savefig("imgs/"+folder_name+"/hists/"+atr_name+"_"+trat_tex+".png")
-        pl.show()
+#        pl.show()
 
         pl.close()
 

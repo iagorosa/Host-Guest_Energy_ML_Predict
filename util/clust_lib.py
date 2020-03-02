@@ -161,6 +161,9 @@ def run_clust(X, clustering_names=['DBSCAN', 'KMeans', 'Ward'], saveFig=True, fi
                 else:
                     y_pred = algorithm.predict(X)
                 
+                if name == 'KMeans':
+                    return algorithm
+                    
                 # plot
                 pl.subplot(1, len(clustering_algorithms), plot_num)
                 pl.title(name, size=18)
@@ -254,7 +257,7 @@ def run_clust(X, clustering_names=['DBSCAN', 'KMeans', 'Ward'], saveFig=True, fi
         if saveFig == True and dim < 3:
             pl.savefig('./imgs/'+folder_name+'/PCA_Clust_results/plot_clust/'+file_name+'_dim_'+str(dim)+'_cluster_dispersion_graph.png', dpi=300)
         
-        pl.show()
+#        pl.show()
 
 #%%
 
