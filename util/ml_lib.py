@@ -1013,7 +1013,7 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
 
 #%%
 
-def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'], save_test_size='', save_file_error = True):
+def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'], save_test_size='', save_file_error = True, time = None):
 
     try:
         os.mkdir('./RESULTADOS/MACHINE_LEARNING')
@@ -1040,6 +1040,9 @@ def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE
         error_dict['score'] = estimator.score(X_test, y_test)
     if 'R2_SCORE' in metrics:
         error_dict['R2_SCORE'] = -r2_score(y_test,y_pred)
+
+    if time != None:
+        error_dict['time'] = time
 
     if save_file_error:
         edd = pd.Series(error_dict)

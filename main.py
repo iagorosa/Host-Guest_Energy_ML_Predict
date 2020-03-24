@@ -44,7 +44,7 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['pre_trat', 'exp', 'clust', 'mach_learn']
+run_options = ['mach_learn']
 
 reduce_dataset = True
 keep_non_trat_dataset = False
@@ -61,7 +61,7 @@ keep_non_trat_dataset = False
 
 ## IDENTIFICAÇÃO DE ARQUIVOS PARA LEITURA
 datasets = []
-xls      = gl.glob('./../CSV_DATABASE/data/*.csv')                             # Encontra todos os arquivos .csv na pasta
+xls      = gl.glob('./data/using/*.csv')                             # Encontra todos os arquivos .csv na pasta
 
 ids = []
 
@@ -341,17 +341,18 @@ if 'mach_learn' in run_options:
     
     pop_size    = 50                                                               # tamanho da populacao de individuos
     max_iter    = 50                                                               # quantidade maxima de iteracoes do DE 
-    n_splits    = 5                                                               # número de divisões da base realizada no k-fold
+    n_splits    = 5                                                                # número de divisões da base realizada no k-fold
     
     run0        = 0
     n_runs      = 1
     
     ## MÉTODOS DE APRENDISADO DE MÁQUINA UTILIZADOS
     
+    ml_methods=['KNN']
     # ml_methods  = ['XGB', 'ELM'] 
     # ml_methods = ['KNN', 'DTC', 'EN', 'BAG', 'ELM', 'XGB']
     # 'MLP' eh um problema
-    ml_methods = ['GB', 'SVM', 'KRR']
+    # ml_methods = ['GB', 'SVM', 'KRR']
 #    ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR'] 
 
 
@@ -391,7 +392,7 @@ if 'mach_learn' in run_options:
             ## ESTATÍSTICAS SOBRE OS DADOS DE TESTE
             for res in lr:
                 
-                res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], res['EST_NAME'], dataset['X_test'].to_numpy(), dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score', 'R2_SCORE'], save_test_size = str(ts))
+                res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], res['EST_NAME'], dataset['X_test'].to_numpy(), dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score', 'R2_SCORE'], save_test_size = str(ts), time=res['time'])
         
                 pk = res['name_pickle']
         
