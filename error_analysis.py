@@ -9,8 +9,8 @@ import pylab as pl
 
 test_size = [0.1, 0.7, 0.1]
 
-# ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR'] 
-ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'SVM', 'GB', 'KRR'] 
+ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR'] 
+# ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'SVM', 'GB', 'KRR'] 
 # ml_methods = ['KNN', 'XGB']
 
 error_types = ['ERROR_TEST', 'ERROR_TRAIN']
