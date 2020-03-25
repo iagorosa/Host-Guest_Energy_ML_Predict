@@ -377,7 +377,7 @@ if 'mach_learn' in run_options:
         # dataset['n_samples'] = len(dataset['X_train'])
         
         
-        for ts in mll.np.arange(*test_size):
+        for ts in list(mll.np.around(mll.np.arange(*test_size), 3)):
             
             ## DEFINIÇÃO DE CONJUNTOS DE TREINO E TESTE
             dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = mll.train_test_split(X_, y_, test_size=ts, random_state=50)
