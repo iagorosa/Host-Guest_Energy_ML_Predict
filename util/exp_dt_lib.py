@@ -207,11 +207,13 @@ def distribution_hist_outlier_trat(X, trat=False, val_trat='', folder_name=''):
         min_ = int(round(Y.min()-0.5))
         max_ = int(round(Y.max()+0.5))
 
-        print(min_)
-        print(max_)
-        print(atr)
-
-        pl.xticks(range(min_, max_, round((max_-min_)/10+0.5)))
+#        print(min_)
+#        print(max_)
+#        print(atr)
+        
+        step = round((max_-min_)/10+0.5)
+        
+        pl.xticks(range(min_, max_, max(1, step)))
        
         pl.xlabel(atr)
         pl.ylabel("Frequência")

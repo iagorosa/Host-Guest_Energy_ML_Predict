@@ -44,7 +44,7 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['mach_learn']
+run_options = ['pre_trat', 'exp', 'clust']
 
 reduce_dataset = True
 keep_non_trat_dataset = False
@@ -172,7 +172,7 @@ if 'pre_trat' in run_options:
         ndataset                                        = {} 
     
         ndataset['var_names'], ndataset['target_names'] = dataset['var_names'], dataset['target_names']
-        n                                               = f.split('.xlsx')[0].split('/')[-1].split('.')
+        n                                               = dataset['name'].split('.xlsx')[0].split('/')[-1].split('.')
         ndataset['name']                                = n[0] + '_trat_env.' + n[-1]
         ndataset['X_train'], ndataset['y_train'],       = Dt_[dataset['var_names']].values, [Dt_[dataset['target_names']].values]
         ndataset['n_samples'], ndataset['n_features']   = Dt_[dataset['var_names']].shape
@@ -202,37 +202,39 @@ if 'exp' in run_options:
         X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'], dtype=float)
 #        X_[['pH', 'Temp']] = X_[['pH', 'Temp']].astype(float)
         dataset_name = dataset['name'].split('.')[0]
+        print("\n\n####################\n\n")
+        print(dataset_name)
         
         
-        ## ANALISE DE ATRIBUTOS DO MEIO
+        print("## ANALISE DE ATRIBUTOS DO MEIO")
     
         edl.correlacoes(X_, col_env, "env", matrix = True, grafic = True, ext = 'png', save = True, show = False, file_name = dataset_name)
         edl.boxplots(X_, col_env, "env", complete = False, file_name = dataset_name)
         edl.boxplots(X_, col_env, "env", file_name = dataset_name)
 
 
-        ## ANALISE DE ATRIBUTOS DO HOSPEDEIRO
+        print("## ANALISE DE ATRIBUTOS DO HOSPEDEIRO")
         
         edl.correlacoes(X_, col_host, "host", matrix = True, grafic = True, ext = 'png', save = True, show = False, file_name = dataset_name)
         edl.boxplots(X_, col_host, "host", complete = False, file_name = dataset_name)
         edl.boxplots(X_, col_host, "host", file_name = dataset_name)
 
 
-        ## ANALISE DE ATRIBUTOS DO LIGANTE
+        print("## ANALISE DE ATRIBUTOS DO LIGANTE")
         
         edl.correlacoes(X_, col_lig, "ligante", matrix = True, grafic = True, ext = 'png', save = True, show = False, file_name = dataset_name)   
         edl.boxplots(X_, col_lig, "ligante", complete = False, file_name = dataset_name)
         edl.boxplots(X_, col_lig, "ligante", file_name = dataset_name)
         
         
-        ## ANALISE DE TODOS ATRIBUTOS
+        print("## ANALISE DE TODOS ATRIBUTOS")
     
         edl.correlacoes(X_, opt_sel_col['all_atr'], "all", matrix = True, \
                         grafic = True, ext = 'png', save = True, \
                         show = False, file_name = dataset_name)   
         
         
-        ## ANALISE DE OUTLIERS
+        print("## ANALISE DE OUTLIERS")
         
         out_host    = edl.outlier_identifier(X_, col_host)
         out_lig     = edl.outlier_identifier(X_, col_lig)
@@ -241,7 +243,7 @@ if 'exp' in run_options:
         df_out, qtd = edl.df_outliers(X_, out, folder_name = dataset_name)
 
 
-        ## ANÁLISE DE DISTRIBUIÇÃO DE ATRIBUTOS E HISTOGRAMAS
+        print("## ANÁLISE DE DISTRIBUIÇÃO DE ATRIBUTOS E HISTOGRAMAS")
         
         # Tratamento visual de outliers - dicionário com chave sendo o nome do atributo e valor sendo tupla com patamar mínimo e maximo
 #        val_trat = {'AMW': (0, 90), 'LabuteASA': (0, 1500), 'NumLipinskiHBA': (0, 100), 'NumRotableBonds': (0, 280),
@@ -251,7 +253,7 @@ if 'exp' in run_options:
 #        edl.distribution_hist_outlier_trat(X_, trat=True, val_trat=val_trat, folder_name=dataset_name)
         
         
-        ## ANALISE DE CORRELAÇÃO CRUZADA E NÃO LINEAR
+        print("## ANALISE DE CORRELAÇÃO CRUZADA E NÃO LINEAR")
         
         df_pf_lig  = edl.polynomial_features(X_, col_lig, 2)
         df_pf_host = edl.polynomial_features(X_, col_host, 2)
@@ -316,19 +318,30 @@ if 'clust' in run_options:
         X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
         dataset_name = dataset['name'].split('.')[0]
         
+        print("\n\n####################\n\n")
         print(dataset_name)
         
         
         for atrs in opt_sel_col:
+            
+            print("\n## Agrupamentos considerando os atributos:")
+            print(atrs)
+            
+            if atrs == 'col_host': continue
         
             for d in range(min_dim, min(max_dim+1, len(opt_sel_col[atrs]))):
                 
+                print("\n## Redução de Dimensão")
+                print(d)
+                
                 file_name = dataset_name+'_dim_'+str(d)
-                  
+                
+                print("\n## PCA")
                 red_x, results, covm = cll.run_pca(X_, opt_sel_col[atrs], str(atrs), newDim=d, save_txt=True, file_name=file_name, folder_name=dataset_name)
                 
                 if d==1 or d==2 or d==3:
-                    kmeans = cll.run_clust(red_x, clustering_names=['DBSCAN', 'KMeans', 'Ward'], file_name=file_name+'_'+atrs, folder_name=dataset_name)
+                    print("\n## CLUSTERING")
+                    cll.run_clust(red_x, clustering_names=['DBSCAN', 'KMeans', 'Ward'], file_name=file_name+'_'+atrs, folder_name=dataset_name)
             
 
 #%%
