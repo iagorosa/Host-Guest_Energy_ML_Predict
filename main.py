@@ -348,12 +348,12 @@ if 'mach_learn' in run_options:
     
     ## MÉTODOS DE APRENDISADO DE MÁQUINA UTILIZADOS
     
-    ml_methods=['KNN']
+    # ml_methods=['KNN']
     # ml_methods  = ['XGB', 'ELM'] 
     # ml_methods = ['KNN', 'DTC', 'EN', 'BAG', 'ELM', 'XGB']
     # 'MLP' eh um problema
     # ml_methods = ['GB', 'SVM', 'KRR']
-#    ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR'] 
+   ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR'] 
 
 
     ## PERCENTUAIS PARA TAMANHOS DE CONJUNTOS DE TESTES: [INICIAL, FINAL, PASSO]
