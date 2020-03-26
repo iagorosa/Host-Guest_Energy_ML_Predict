@@ -44,7 +44,7 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['pre_trat', 'exp', 'clust']
+run_options = ['mach_learn']
 
 reduce_dataset = True
 keep_non_trat_dataset = False
@@ -366,8 +366,8 @@ if 'mach_learn' in run_options:
     # ml_methods = ['KNN', 'DTC', 'EN', 'BAG', 'ELM', 'XGB']
     # 'MLP' eh um problema
     # ml_methods = ['GB', 'SVM', 'KRR']
-   ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR'] 
-
+#    ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR'] 
+    ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'SVM', 'GB', 'KRR'] 
 
     ## PERCENTUAIS PARA TAMANHOS DE CONJUNTOS DE TESTES: [INICIAL, FINAL, PASSO]
     test_size = [0.1, 0.7, 0.1]
@@ -378,6 +378,10 @@ if 'mach_learn' in run_options:
 
         X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
         dataset_name = datasets[0]['name'].split('.')[0]
+        
+        print("\n\n\n####################################################################\n\n\n")
+        print("DATASET NAME: " + str(dataset_name))
+        print("\n\n\n####################################################################\n\n\n")
 
         if type(dataset['y_train']) == list:
             y_ = dataset['y_train'][0]
@@ -391,6 +395,10 @@ if 'mach_learn' in run_options:
         
         
         for ts in list(mll.np.around(mll.np.arange(*test_size), 3)):
+            
+            print("\n\n\n####################################################################\n\n\n")
+            print("RUNNING OPT WITH TESTE SIZE: " + str(ts))
+            print("\n\n\n####################################################################\n\n\n")
             
             ## DEFINIÇÃO DE CONJUNTOS DE TREINO E TESTE
             dataset['X_train'], dataset['X_test'], dataset['y_train'], dataset['y_test'] = mll.train_test_split(X_, y_, test_size=ts, random_state=50)

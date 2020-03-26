@@ -912,7 +912,12 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                 ]
 
             for (clf_name, lb, ub, fun, args, random_seed) in optimizers:
-                    
+
+                print("\n\n\n####################################################################\n\n\n")
+                print(clf_name)
+                print("\n\n\n####################################################################\n\n\n")
+                      
+                try:                                
                     print()
                     print(clf_name, '%test_size:', save_test_size)
                     print()              
@@ -1006,6 +1011,12 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                     
                     pm = pk.replace('.pkl', '.dat')
                     pickle.dump(sim['ESTIMATOR'], open(pm, "wb"))
+                    
+                except:
+                    print("\n\n\n####################################################################\n\n\n")
+                    print("ERRO NO: " + str(clf_name))
+                    print("\n\n\n####################################################################\n\n\n")
+                    continue
                     
 
     return list_results_all
