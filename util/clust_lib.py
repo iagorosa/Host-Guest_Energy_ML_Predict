@@ -19,6 +19,7 @@ import time
 
 def run_clust(X, clustering_names=['DBSCAN', 'KMeans', 'Ward'], saveFig=True, file_name='', folder_name='', MAX_CLUSTERS=10, PER_CONNECT=0.5):
 
+
         ##########################################  PRE-METHODS DEFINITION ###########################################
     
         # connectivity matrix for structured Ward
@@ -160,9 +161,6 @@ def run_clust(X, clustering_names=['DBSCAN', 'KMeans', 'Ward'], saveFig=True, fi
                     y_pred = algorithm.labels_.astype(np.int)
                 else:
                     y_pred = algorithm.predict(X)
-                
-                if name == 'KMeans':
-                    return algorithm
                     
                 # plot
                 pl.subplot(1, len(clustering_algorithms), plot_num)
@@ -184,6 +182,7 @@ def run_clust(X, clustering_names=['DBSCAN', 'KMeans', 'Ward'], saveFig=True, fi
                     y_lim = pl.ylim()
                     pl.text(x_lim[-1]-x_lim[-1]*0.70, y_lim[-1]-y_lim[-1]*0.09, 'silh = '+str(round(silh, 3)))
                 except:
+                    print("entrei no pass")
                     pass
                     
     #            pl.text(.99, .01, ('%.2fs' % (t1 - t0)).lstrip('0'),
@@ -255,14 +254,16 @@ def run_clust(X, clustering_names=['DBSCAN', 'KMeans', 'Ward'], saveFig=True, fi
                 pass
         
         if saveFig == True and dim < 3:
+#            print("Dim save: " + str(dim))
             pl.savefig('./imgs/'+folder_name+'/PCA_Clust_results/plot_clust/'+file_name+'_dim_'+str(dim)+'_cluster_dispersion_graph.png', dpi=300)
         
+        pl.close('all')
 #        pl.show()
 
 #%%
 
 def run_pca(X, atributes, atr_type='', newDim=2, normMethod='MinMax', save_txt=True, file_name='', folder_name=''):
-    
+        
     # atr_type = 'host' if str.lower(atributes[0][:4]) == 'host' else 'ligante'
     X_ = X[atributes].dropna()
     
@@ -528,7 +529,7 @@ def __best_k_of_clusters(algorithm_name, X, upK, downK=1, connectivity=0, silhou
              
             pl.savefig('./imgs/'+folder_name+'/PCA_Clust_results/silh_res/'+algorithm_name+'_'+file_name+'_silhouette_search_graph.png', dpi=300)
         
-            
+    pl.close('all')        
     
     if silhouette:
         return (k_silh, '-', '-')
