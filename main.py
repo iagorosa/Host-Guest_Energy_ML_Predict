@@ -44,7 +44,7 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['mach_learn']
+run_options = ['pre_trat', 'mach_learn']
 
 reduce_dataset = True
 keep_non_trat_dataset = False

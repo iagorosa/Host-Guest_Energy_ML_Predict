@@ -918,9 +918,9 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
                 print("\n\n\n####################################################################\n\n\n")
                       
                 try:                                
-                    print()
+                    #print()
                     print(clf_name, '%test_size:', save_test_size)
-                    print()              
+                    #print()              
                     
                     PATH = './RESULTADOS/MACHINE_LEARNING/'+str.upper(clf_name)+'/'
 
