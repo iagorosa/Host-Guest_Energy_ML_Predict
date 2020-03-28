@@ -71,7 +71,7 @@ for f in xls:
     
     cols_to_ids     = ['BindingDB', 'Host', 'Guest'] 
     cols_to_remove  = ['Delta_H0 (k/mol)', \
-                       '-T Delta_S0 (kJ/mol)']                                 # colunas para remover da base de dados
+                       '-T Delta_S0 (kJ/mol)', 'Ligand SMILES', 'Host SMILES']                                 # colunas para remover da base de dados
     cols_target     = ['Delta_G0 (kJ/mol)']                                    # colunas com o target
     
     X.drop(cols_to_remove,  axis=1, inplace=True)                              # remove as colunas selecionadas anteriormente
@@ -348,12 +348,12 @@ if 'mach_learn' in run_options:
     
     ## MÉTODOS DE APRENDISADO DE MÁQUINA UTILIZADOS
     
-    ml_methods=['KNN']
+    # ml_methods=['KNN']
     # ml_methods  = ['XGB', 'ELM'] 
     # ml_methods = ['KNN', 'DTC', 'EN', 'BAG', 'ELM', 'XGB']
     # 'MLP' eh um problema
     # ml_methods = ['GB', 'SVM', 'KRR']
-#    ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR'] 
+    ml_methods = ['EN', 'XGB', 'DTC', 'BAG', 'KNN', 'ANN', 'ELM', 'SVM', 'GB', 'KRR'] 
 
 
     ## PERCENTUAIS PARA TAMANHOS DE CONJUNTOS DE TESTES: [INICIAL, FINAL, PASSO]
