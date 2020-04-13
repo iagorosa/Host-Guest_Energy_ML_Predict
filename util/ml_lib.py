@@ -842,7 +842,7 @@ def get_parameters(opt, flb=[], fub=[]):
 
 #%%
 
-def run_DE_optmization_train_ml_methods(datasets, name_opt, \
+def run_DE_optmization_train_ml_methods(dataset, name_opt, \
                                         de_run0 = 0, de_runf = 1, de_pop_size=50, de_max_iter=50, \
                                         kf_n_splits=5, \
                                             save_basename='host_guest_ml___', save_test_size = '', save_file_erro_train = True):
@@ -875,148 +875,149 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
         random_seed=run*10+100
         np.random.seed(random_seed)
 
-        for dataset in datasets:#[:1]:
 
-            # Definicao das variaveis associadas aos datasets
-            target, y_              = dataset['target_names'], dataset['y_train']
-            dataset_name, X_        = dataset['name'], dataset['X_train']
-            n_samples, n_features   = dataset['n_samples'], dataset['n_features']
-            task                    = dataset['task']
+        # Definicao das variaveis associadas aos datasets
+        target, y_              = dataset['target_names'], dataset['y_train']
+        dataset_name, X_        = dataset['name'], dataset['X_train']
+        n_samples, n_features   = dataset['n_samples'], dataset['n_features']
+        task                    = dataset['task']
 
-            list_results_all = []
+        list_results_all = []
+        
+#        print('='*80+'\n'+dataset_name+': '+target+'\n'+'='*80+'\n')
+        
+        # defindo o target y conforme a task associada
+        if task=='classification':
+            le = preprocessing.LabelEncoder()
+            #le=preprocessing.LabelBinarizer()
+            le.fit(y_)
+            y=le.transform(y_)
+        else:
+            y=y_.copy() #TODO: precisei pegar o indice 0 para funcionar
             
-            print('='*80+'\n'+dataset_name+': '+target+'\n'+'='*80+'\n')
-            
-            # defindo o target y conforme a task associada
-            if task=='classification':
-                le = preprocessing.LabelEncoder()
-                #le=preprocessing.LabelBinarizer()
-                le.fit(y_)
-                y=le.transform(y_)
-            else:
-                y=y_.copy() #TODO: precisei pegar o indice 0 para funcionar
+        X=X_.copy()
+        ##scale_X = MinMaxScaler(feature_range=(0.15,0.85)).fit(X_)
+        #scale_X = MinMaxScaler(feature_range=(0,1)).fit(X_)
+        #X= scale_X.transform(X_)
+        ##   scale_y = MinMaxScaler(feature_range=(0.15,0.85)).fit(y_)    
+        ##   X,y = scale_X.transform(X_), scale_y.transform(y_)
+
+        args = (X, y, 'eval', kf_n_splits, random_seed)
+
+        # lista das opcoes de algoritmos selecionados da lista acima
+        
+        optimizers=[      
+            (name, *get_parameters(name), args, random_seed) for name in name_opt 
+            ]
+
+        for (clf_name, lb, ub, fun, args, random_seed) in optimizers:
+
+            print("\n\n\n####################################################################\n\n\n")
+            print(clf_name)
+            print("\n\n\n####################################################################\n\n\n")
+                  
+            try:                                
+                #print()
+                print(clf_name, '%test_size:', save_test_size)
+                #print()              
                 
-            X=X_.copy()
-            ##scale_X = MinMaxScaler(feature_range=(0.15,0.85)).fit(X_)
-            #scale_X = MinMaxScaler(feature_range=(0,1)).fit(X_)
-            #X= scale_X.transform(X_)
-            ##   scale_y = MinMaxScaler(feature_range=(0.15,0.85)).fit(y_)    
-            ##   X,y = scale_X.transform(X_), scale_y.transform(y_)
+                PATH = './RESULTADOS/MACHINE_LEARNING/'+str.upper(clf_name)+'/'
 
-            args = (X, y, 'eval', kf_n_splits, random_seed)
-
-            # lista das opcoes de algoritmos selecionados da lista acima
-            
-            optimizers=[      
-                (name, *get_parameters(name), args, random_seed) for name in name_opt 
-                ]
-
-            for (clf_name, lb, ub, fun, args, random_seed) in optimizers:
-
-                print("\n\n\n####################################################################\n\n\n")
-                print(clf_name)
-                print("\n\n\n####################################################################\n\n\n")
-                      
-                try:                                
-                    #print()
-                    print(clf_name, '%test_size:', save_test_size)
-                    #print()              
-                    
-                    PATH = './RESULTADOS/MACHINE_LEARNING/'+str.upper(clf_name)+'/'
-
-                    try:
-                        os.mkdir(PATH)
-                    except:
-                        pass
-                    
-                    try:
-                        os.mkdir(PATH+'CSV_ERROR_TRAIN/')
-                    except:
-                        pass
-
-                    try:
-                        os.mkdir(PATH+'PKL/')
-                    except:
-                        pass
-
-                    list_results = []
-                    
-                    #print(clf_name, random_seed)
-                    #print(clf_name, fun, random_seed)
-                    np.random.seed(random_seed)
-                    
-                    t0 = time.time()
-
-                    algo = pg.algorithm(pg.de(gen = de_max_iter, variant = 1, seed=random_seed))
-
-                    algo.set_verbosity(1)
-                    prob = pg.problem(evoML(args, fun, lb, ub))
-                    pop = pg.population(prob, de_pop_size, seed=random_seed)
-                    pop = algo.evolve(pop)
-                    
-                    xopt = pop.champion_x
-                    sim = fun(xopt, *(X.to_numpy(),y,'run',kf_n_splits,random_seed)) #TODO: verificar inserção do to_numpy()
-
-                    t1 = time.time()
-                    sim['ALGO'] = algo.get_name()
-
-                    sim['ACTIVE_VAR_NAMES']=dataset['var_names'][sim['ACTIVE_VAR']]
-                    if task=='classification':
-                        sim['Y_TRAIN_TRUE'] = le.inverse_transform(sim['Y_TRUE'])
-                        sim['Y_TRAIN_PRED'] = le.inverse_transform(sim['Y_PRED'])
-                    else: # TODO: pq isso mds?
-                        sim['Y_TRAIN_TRUE'] = sim['Y_TRUE']
-                        sim['Y_TRAIN_PRED'] = sim['Y_PRED']
-
-                    sim['RUN']=run #sim['Y_NAME']=yc
-                    sim['DATASET_NAME']=dataset_name
-
-                    sim['time'] = t1 - t0
-
-                    pd.Series(sim['ERROR_TRAIN']).to_csv(PATH+"CSV_ERROR_TRAIN/error_train_"+clf_name+"_%test_size_"+save_test_size+".csv", header=False)
-
-                    # Erros no teste #TODO: precisei converter pra numpy pra dar certo. Conferir
-                    # erros no teste no evaluate?
-                    # mach = sim['ESTIMATOR'] 
-                    # y_p = mach.predict(dataset['X_test'].to_numpy())
-                    # y_t = dataset['y_test']
-
-                    # r  = RMSE(y_t, y_p)
-                    # r2 = MAPE(y_t, y_p)
-                    # r3 = RRMSE(y_t, y_p)
-
-                    # sim['ERROR_TEST'] = {'RMSE': r, 'MAPE': r2, 'RRMSE': r3}
-    
-
-                    pk=(PATH+'PKL/'+save_basename+
-                                '_run_'+str("{:02d}".format(run))+'_'+dataset_name+'_'+
-                                os.uname()[1]+'__'+ str.lower(sim['EST_NAME'])+'__'+
-                                target+'__%test_size_'+save_test_size+
-                                #time.strftime("%Y_%m_%d_") + time.strftime("_%Hh_%Mm_%S")+
-                                #'_loo'+
-                                '.pkl') 
-
-                    pk=pk[0].replace(' ','_').replace("'","")
-                    # pk=pk[0].replace(' ','_').replace("'","").lower() #TODO: precisei pegar o indice 0 para funcionar
-                    
-                    sim['name_pickle'] = pk
-                    
-                    
-                    list_results.append(sim)
-                    list_results_all.append(sim)
-            
-                    # data = pd.DataFrame(list_results)
-                    # data.to_pickle(pk)
-
-                    
-                    pm = pk.replace('.pkl', '.dat')
-                    pickle.dump(sim['ESTIMATOR'], open(pm, "wb"))
-                    
+                try:
+                    os.mkdir(PATH)
                 except:
-                    print("\n\n\n####################################################################\n\n\n")
-                    print("ERRO NO: " + str(clf_name))
-                    print("\n\n\n####################################################################\n\n\n")
-                    continue
+                    pass
+                
+                try:
+                    os.mkdir(PATH+'CSV_ERROR_TRAIN/')
+                except:
+                    pass
+
+                try:
+                    os.mkdir(PATH+'PKL/')
+                except:
+                    pass
+
+                list_results = []
+                
+                #print(clf_name, random_seed)
+                #print(clf_name, fun, random_seed)
+                np.random.seed(random_seed)
+                
+                t0 = time.time()
+
+                algo = pg.algorithm(pg.de(gen = de_max_iter, variant = 1, seed=random_seed))
+
+                algo.set_verbosity(1)
+                prob = pg.problem(evoML(args, fun, lb, ub))
+                pop = pg.population(prob, de_pop_size, seed=random_seed)
+                pop = algo.evolve(pop)
+                
+                xopt = pop.champion_x
+                sim = fun(xopt, *(X.to_numpy(),y,'run',kf_n_splits,random_seed)) #TODO: verificar inserção do to_numpy()
+
+                t1 = time.time()
+                sim['ALGO'] = algo.get_name()
+
+                sim['ACTIVE_VAR_NAMES']=dataset['var_names'][sim['ACTIVE_VAR']]
+                if task=='classification':
+                    sim['Y_TRAIN_TRUE'] = le.inverse_transform(sim['Y_TRUE'])
+                    sim['Y_TRAIN_PRED'] = le.inverse_transform(sim['Y_PRED'])
+                else: # TODO: pq isso mds?
+                    sim['Y_TRAIN_TRUE'] = sim['Y_TRUE']
+                    sim['Y_TRAIN_PRED'] = sim['Y_PRED']
+
+                sim['RUN']=run #sim['Y_NAME']=yc
+                sim['DATASET_NAME']=dataset_name
+
+                sim['time'] = t1 - t0
+                
+                sim['ERROR_TRAIN']['time'] = sim['time']
+
+                pd.Series(sim['ERROR_TRAIN']).to_csv(PATH+"CSV_ERROR_TRAIN/"+dataset_name+"_error_train_"+clf_name+"_%test_size_"+save_test_size+".csv", header=False)
+
+                # Erros no teste #TODO: precisei converter pra numpy pra dar certo. Conferir
+                # erros no teste no evaluate?
+                # mach = sim['ESTIMATOR'] 
+                # y_p = mach.predict(dataset['X_test'].to_numpy())
+                # y_t = dataset['y_test']
+
+                # r  = RMSE(y_t, y_p)
+                # r2 = MAPE(y_t, y_p)
+                # r3 = RRMSE(y_t, y_p)
+
+                # sim['ERROR_TEST'] = {'RMSE': r, 'MAPE': r2, 'RRMSE': r3}
+
+
+                pk=(PATH+'PKL/'+save_basename+
+                            '_run_'+str("{:02d}".format(run))+'_'+dataset_name+'_'+
+                            os.uname()[1]+'__'+ str.lower(sim['EST_NAME'])+'__'+
+                            target+'__%test_size_'+save_test_size+
+                            #time.strftime("%Y_%m_%d_") + time.strftime("_%Hh_%Mm_%S")+
+                            #'_loo'+
+                            '.pkl') 
+
+                pk=pk[0].replace(' ','_').replace("'","")
+                # pk=pk[0].replace(' ','_').replace("'","").lower() #TODO: precisei pegar o indice 0 para funcionar
+                
+                sim['name_pickle'] = pk
+                
+                
+                list_results.append(sim)
+                list_results_all.append(sim)
+        
+                # data = pd.DataFrame(list_results)
+                # data.to_pickle(pk)
+
+                
+                pm = pk.replace('.pkl', '.dat')
+                pickle.dump(sim['ESTIMATOR'], open(pm, "wb"))
+                
+            except:
+                print("\n\n\n####################################################################\n\n\n")
+                print("ERRO NO: " + str(clf_name))
+                print("\n\n\n####################################################################\n\n\n")
+                continue
                     
 
     return list_results_all
@@ -1024,7 +1025,7 @@ def run_DE_optmization_train_ml_methods(datasets, name_opt, \
 
 #%%
 
-def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'], save_test_size='', save_file_error = True, time = None):
+def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE', 'RRMSE', 'score'], save_test_size='', save_file_error = True, dataset_name=''):
 
     try:
         os.mkdir('./RESULTADOS/MACHINE_LEARNING')
@@ -1052,12 +1053,12 @@ def evaluate(estimator, name_estimator, X_test, y_test, metrics = ['RMSE', 'MAPE
     if 'R2_SCORE' in metrics:
         error_dict['R2_SCORE'] = -r2_score(y_test,y_pred)
 
-    if time != None:
-        error_dict['time'] = time
+#    if time != None:
+#        error_dict['time'] = time
 
     if save_file_error:
         edd = pd.Series(error_dict)
-        edd.to_csv(PATH+"error_test_"+name_estimator+"_%test_size_"+save_test_size+".csv", header=False)
+        edd.to_csv(PATH+dataset_name+"error_test_"+name_estimator+"_%test_size_"+save_test_size+".csv", header=False)
 
 
     return error_dict

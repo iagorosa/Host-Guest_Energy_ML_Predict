@@ -44,10 +44,11 @@ except:
 
 # Escolha das celulas que rodarao:
 
-run_options = ['pre_trat', 'mach_learn']
+run_options = ['pre_trat']
 
 reduce_dataset = True
 keep_non_trat_dataset = False
+save_csv_trat = True
 
 # Possibilidades:
 # pre_trat: tratamento e retirada preeliminar de instancias
@@ -61,7 +62,7 @@ keep_non_trat_dataset = False
 
 ## IDENTIFICAÇÃO DE ARQUIVOS PARA LEITURA
 datasets = []
-xls      = gl.glob('./data/using/*.csv')                             # Encontra todos os arquivos .csv na pasta
+xls      = gl.glob('./data/using/*.csv')                                       # Encontra todos os arquivos .csv na pasta
 
 ids = []
 
@@ -77,6 +78,9 @@ for f in xls:
     X.drop(cols_to_remove,  axis=1, inplace=True)                              # remove as colunas selecionadas anteriormente
     X.dropna(inplace=True)
     
+    print(f)
+    print(X[cols_target].shape)
+    
     X.reset_index(inplace=True, drop=True)
     drop = list(X[['Host', 'Guest']].drop_duplicates().index)
     X = X.iloc[drop,:]
@@ -85,6 +89,8 @@ for f in xls:
     
     ids = X[cols_to_ids]
     X.drop(cols_to_ids,  axis=1, inplace=True)
+    
+    print(X[cols_target].shape)
     
     X['Temp'] = [float(s.split()[0]) for s in X['Temp']]
     
@@ -165,6 +171,11 @@ if 'pre_trat' in run_options:
         ## LIMITES PROPOSTOS PARA Temp
         Dt_  = Dt_[ext_atr][(Dt_['Temp'] > 14.5) & (Dt_['Temp'] <  30.1)]      #[24.85; 27]
         
+        n                                               = dataset['name'].split('.xlsx')[0].split('/')[-1].split('.')
+        name_trat                                       = n[0] + '_trat_env.' + n[-1]
+        
+        if save_csv_trat:
+            Dt_.to_csv(name_trat, index=False)
         
         ids_trat = Dt_[dataset['id_cols_name']]
         Dt_.drop(dataset['id_cols_name'],  axis=1, inplace=True)               # remove as colunas selecionadas anteriormente
@@ -172,8 +183,8 @@ if 'pre_trat' in run_options:
         ndataset                                        = {} 
     
         ndataset['var_names'], ndataset['target_names'] = dataset['var_names'], dataset['target_names']
-        n                                               = dataset['name'].split('.xlsx')[0].split('/')[-1].split('.')
-        ndataset['name']                                = n[0] + '_trat_env.' + n[-1]
+        #n                                               = dataset['name'].split('.xlsx')[0].split('/')[-1].split('.')
+        ndataset['name']                                = name_trat
         ndataset['X_train'], ndataset['y_train'],       = Dt_[dataset['var_names']].values, [Dt_[dataset['target_names']].values]
         ndataset['n_samples'], ndataset['n_features']   = Dt_[dataset['var_names']].shape
         ndataset['task']                                = 'regression'
@@ -377,7 +388,7 @@ if 'mach_learn' in run_options:
     for dataset in datasets:
 
         X_ = pd.DataFrame(dataset['X_train'], columns=dataset['var_names'])
-        dataset_name = datasets[0]['name'].split('.')[0]
+        dataset_name = dataset['name'].split('.')[0]
         
         print("\n\n\n####################################################################\n\n\n")
         print("DATASET NAME: " + str(dataset_name))
@@ -405,7 +416,7 @@ if 'mach_learn' in run_options:
             dataset['n_sample_train'] = len(dataset['X_train'])
         
             ## TREINAMENTO E VALIDAÇÃO DAS MÁQUINAS
-            lr = mll.run_DE_optmization_train_ml_methods(datasets, ml_methods, \
+            lr = mll.run_DE_optmization_train_ml_methods(dataset, ml_methods, \
                                                          de_run0 = run0, de_runf = n_runs, de_pop_size=pop_size, de_max_iter=max_iter, \
                                                          kf_n_splits=n_splits, \
                                                          save_basename='host_guest_ml___', save_test_size = str(ts))    
@@ -413,7 +424,10 @@ if 'mach_learn' in run_options:
             ## ESTATÍSTICAS SOBRE OS DADOS DE TESTE
             for res in lr:
                 
-                res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], res['EST_NAME'], dataset['X_test'].to_numpy(), dataset['y_test'], metrics = ['RMSE', 'MAPE', 'RRMSE', 'score', 'R2_SCORE'], save_test_size = str(ts), time=res['time'])
+                res['ERROR_TEST'] = mll.evaluate(res['ESTIMATOR'], res['EST_NAME'], \
+                                   dataset['X_test'].to_numpy(), dataset['y_test'], \
+                                   metrics = ['RMSE', 'MAPE', 'RRMSE', 'score', 'R2_SCORE'], \
+                                   save_test_size = str(ts), dataset_name=dataset_name)
         
                 pk = res['name_pickle']
         
@@ -422,7 +436,7 @@ if 'mach_learn' in run_options:
         
         
             data = pd.DataFrame(lr)
-            data.to_pickle('RESULTADOS/MACHINE_LEARNING/all_data_test_size_'+str(ts)+'.pkl')
+            data.to_pickle('RESULTADOS/MACHINE_LEARNING/'+str(dataset_name)+'_all_data_test_size_'+str(ts)+'.pkl')
             
     t1 = time.time()
     

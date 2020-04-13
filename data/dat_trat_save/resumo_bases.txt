@@ -1,0 +1,313 @@
+Base beta.csv
+size: (84, 244)
+with_diplicate: 150
+
+Base alpha.csv
+size: (43, 244)
+with_diplicate: 43
+
+Base gamma.csv
+size: (186, 244)
+with_diplicate: 292
+
+Base tudo.csv
+size: (313, 244)
+with_diplicate: 485
+
+- Conferir o tamanho das bases e as redundâncias
+
+
+#	DEFINIÇÃO DE ATRIBUTOS
+	## ATRIBUTOS DO MEIO - ENVIRONMENT     
+	col_env = ['pH', 'Temp']
+
+	## ATRIBUTOS DO LIGANTE - LIGANT
+	col_lig = ['SlogP', 'SMR', 'LabuteASA', 'TPSA', 'AMW', 'NumLipinskiHBA', 'NumLipinskiHBD', 'NumRotatableBonds', 'NumAtoms', 'Formal Charge']
+
+	## ATRIBUTOS DO HOSPEDEIRO - HOST
+	col_host = [i + ' (#1)' for i in col_lig]
+	col_host = col_host[:-1] #(Carga nao entra)
+
+
+#	TRATAMENTO DE FAIXAS DE pH e Temp
+        ## LIMITES PROPOSTOS PARA pH
+        Dt_  = Dt_[ext_atr][(Dt_['pH'] >= 6.9) & (Dt_['pH'] <= 7.4)]
+        
+        ## LIMITES PROPOSTOS PARA Temp
+        Dt_  = Dt_[ext_atr][(Dt_['Temp'] > 14.5) & (Dt_['Temp'] <  30.1)]
+
+
+Base beta_trat_env.csv
+size: (72, 21)           #menos 54 - tem alguns valores faltantes
+
+Base alpha_trat_env.csv
+size: (43, 21)
+
+Base gamma_trat_env.csv
+size: (159, 21)
+
+Base tudo_trat_env.csv
+size: (274, 21)
+
+
+
+
+#############  Atributos da base original
+
+### META-DESCRITORES
+
+    cols_to_ids     = ['BindingDB', 'Host', 'Guest'] 
+
+    cols_to_remove  = ['Delta_H0 (k/mol)', 
+                       '-T Delta_S0 (kJ/mol)', 
+		       'Ligand SMILES', 
+		       'Host SMILES']  
+
+    cols_target     = ['Delta_G0 (kJ/mol)'] 
+
+### DESCRITORES
+
+pH
+Temp
+SlogP
+SMR
+LabuteASA
+TPSA
+AMW
+ExactMW
+NumLipinskiHBA
+NumLipinskiHBD
+NumRotatableBonds
+NumHBD
+NumHBA
+NumAmideBonds
+NumHeteroAtoms
+NumHeavyAtoms
+NumAtoms
+NumStereocenters
+NumUnspecifiedStereocenters
+NumRings
+NumAromaticRings
+NumSaturatedRings
+NumAliphaticRings
+NumAromaticHeterocycles
+NumSaturatedHeterocycles
+NumAliphaticHeterocycles
+NumAromaticCarbocycles
+NumSaturatedCarbocycles
+NumAliphaticCarbocycles
+FractionCSP3
+Chi0v
+Chi1v
+Chi2v
+Chi3v
+Chi4v
+Chi1n
+Chi2n
+Chi3n
+Chi4n
+HallKierAlpha
+kappa1
+kappa2
+kappa3
+slogp_VSA1
+slogp_VSA2
+slogp_VSA3
+slogp_VSA4
+slogp_VSA5
+slogp_VSA6
+slogp_VSA7
+slogp_VSA8
+slogp_VSA9
+slogp_VSA10
+slogp_VSA11
+slogp_VSA12
+smr_VSA1
+smr_VSA2
+smr_VSA3
+smr_VSA4
+smr_VSA5
+smr_VSA6
+smr_VSA7
+smr_VSA8
+smr_VSA9
+smr_VSA10
+peoe_VSA1
+peoe_VSA2
+peoe_VSA3
+peoe_VSA4
+peoe_VSA5
+peoe_VSA6
+peoe_VSA7
+peoe_VSA8
+peoe_VSA9
+peoe_VSA10
+peoe_VSA11
+peoe_VSA12
+peoe_VSA13
+peoe_VSA14
+MQN1
+MQN2
+MQN3
+MQN4
+MQN5
+MQN6
+MQN7
+MQN8
+MQN9
+MQN10
+MQN11
+MQN12
+MQN13
+MQN14
+MQN15
+MQN16
+MQN17
+MQN18
+MQN19
+MQN20
+MQN21
+MQN22
+MQN23
+MQN24
+MQN25
+MQN26
+MQN27
+MQN28
+MQN29
+MQN30
+MQN31
+MQN32
+MQN33
+MQN34
+MQN35
+MQN36
+MQN37
+MQN38
+MQN39
+MQN40
+MQN41
+MQN42
+XLogP
+Formal Charge
+SlogP (#1)
+SMR (#1)
+LabuteASA (#1)
+TPSA (#1)
+AMW (#1)
+ExactMW (#1)
+NumLipinskiHBA (#1)
+NumLipinskiHBD (#1)
+NumRotatableBonds (#1)
+NumHBD (#1)
+NumHBA (#1)
+NumAmideBonds (#1)
+NumHeteroAtoms (#1)
+NumHeavyAtoms (#1)
+NumAtoms (#1)
+NumStereocenters (#1)
+NumUnspecifiedStereocenters (#1)
+NumRings (#1)
+NumAromaticRings (#1)
+NumSaturatedRings (#1)
+NumAliphaticRings (#1)
+NumAromaticHeterocycles (#1)
+NumSaturatedHeterocycles (#1)
+NumAliphaticHeterocycles (#1)
+NumAromaticCarbocycles (#1)
+NumSaturatedCarbocycles (#1)
+NumAliphaticCarbocycles (#1)
+FractionCSP3 (#1)
+Chi0v (#1)
+Chi1v (#1)
+Chi2v (#1)
+Chi3v (#1)
+Chi4v (#1)
+Chi1n (#1)
+Chi2n (#1)
+Chi3n (#1)
+Chi4n (#1)
+HallKierAlpha (#1)
+kappa1 (#1)
+kappa2 (#1)
+kappa3 (#1)
+slogp_VSA1 (#1)
+slogp_VSA2 (#1)
+slogp_VSA3 (#1)
+slogp_VSA4 (#1)
+slogp_VSA5 (#1)
+slogp_VSA6 (#1)
+slogp_VSA7 (#1)
+slogp_VSA8 (#1)
+slogp_VSA9 (#1)
+slogp_VSA10 (#1)
+slogp_VSA11 (#1)
+slogp_VSA12 (#1)
+smr_VSA1 (#1)
+smr_VSA2 (#1)
+smr_VSA3 (#1)
+smr_VSA4 (#1)
+smr_VSA5 (#1)
+smr_VSA6 (#1)
+smr_VSA7 (#1)
+smr_VSA8 (#1)
+smr_VSA9 (#1)
+smr_VSA10 (#1)
+peoe_VSA1 (#1)
+peoe_VSA2 (#1)
+peoe_VSA3 (#1)
+peoe_VSA4 (#1)
+peoe_VSA5 (#1)
+peoe_VSA6 (#1)
+peoe_VSA7 (#1)
+peoe_VSA8 (#1)
+peoe_VSA9 (#1)
+peoe_VSA10 (#1)
+peoe_VSA11 (#1)
+peoe_VSA12 (#1)
+peoe_VSA13 (#1)
+peoe_VSA14 (#1)
+MQN1 (#1)
+MQN2 (#1)
+MQN3 (#1)
+MQN4 (#1)
+MQN5 (#1)
+MQN6 (#1)
+MQN7 (#1)
+MQN8 (#1)
+MQN9 (#1)
+MQN10 (#1)
+MQN11 (#1)
+MQN12 (#1)
+MQN13 (#1)
+MQN14 (#1)
+MQN15 (#1)
+MQN16 (#1)
+MQN17 (#1)
+MQN18 (#1)
+MQN19 (#1)
+MQN20 (#1)
+MQN21 (#1)
+MQN22 (#1)
+MQN23 (#1)
+MQN24 (#1)
+MQN25 (#1)
+MQN26 (#1)
+MQN27 (#1)
+MQN28 (#1)
+MQN29 (#1)
+MQN30 (#1)
+MQN31 (#1)
+MQN32 (#1)
+MQN33 (#1)
+MQN34 (#1)
+MQN35 (#1)
+MQN36 (#1)
+MQN37 (#1)
+MQN38 (#1)
+MQN39 (#1)
+MQN40 (#1)
+MQN41 (#1)
+MQN42 (#1)
+XLogP (#1)
+Formal Charge (#1)
